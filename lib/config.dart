@@ -48,13 +48,82 @@ class SiteConfig {
   );
   //AppBar
   static AppBar getAppBar(BuildContext context, String title) {
+    List<Widget> navigationButtons = [
+      TextButton(
+        autofocus: title == "Home",
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => const HomePage(),
+              settings: const RouteSettings(name: "/Home"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        child: const Text("Home"),
+      ),
+      TextButton(
+        autofocus: title == "Blog",
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => const BlogPage(),
+              settings: const RouteSettings(name: "/Blog"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        child: const Text("Blog"),
+      ),
+      TextButton(
+        autofocus: title == "Contato",
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => const ContactPage(),
+              settings: const RouteSettings(name: "/Contato"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        child: const Text("Contato"),
+      ),
+      TextButton(
+        autofocus: title == "Sobre mim",
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => const AboutPage(),
+              settings: const RouteSettings(name: "/Sobre-mim"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        child: const Text("Sobre mim"),
+      ),
+    ];
+
     return AppBar(
       centerTitle: true,
       title: const AppBarTitle(),
       leading: ResponsiveVisibility(
         hiddenWhen: const [Condition.largerThan(name: TABLET)],
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: navigationButtons,
+                ),
+              ),
+            );
+          },
           icon: const Icon(Icons.menu),
         ),
       ),
@@ -62,71 +131,7 @@ class SiteConfig {
         ResponsiveVisibility(
           visible: false,
           visibleWhen: const [Condition.largerThan(name: TABLET)],
-          child: TextButton(
-            autofocus: title == "Home",
-            onPressed: () {
-              Navigator.of(context).pushReplacement(
-                PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => const HomePage(),
-                  settings: const RouteSettings(name: "/Home"),
-                  reverseTransitionDuration: Duration.zero,
-                  transitionDuration: Duration.zero,
-                ),
-              );
-            },
-            child: const Text("Home"),
-          ),
-        ),
-        ResponsiveVisibility(
-          visible: false,
-          visibleWhen: const [Condition.largerThan(name: TABLET)],
-          child: TextButton(
-              autofocus: title == "Blog",
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const BlogPage(),
-                    settings: const RouteSettings(name: "/Blog"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              child: const Text("Blog")),
-        ),
-        ResponsiveVisibility(
-          visible: false,
-          visibleWhen: const [Condition.largerThan(name: TABLET)],
-          child: TextButton(
-              autofocus: title == "Contato",
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const ContactPage(),
-                    settings: const RouteSettings(name: "/Contato"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              child: const Text("Contato")),
-        ),
-        ResponsiveVisibility(
-          visible: false,
-          visibleWhen: const [Condition.largerThan(name: TABLET)],
-          child: TextButton(
-              autofocus: title == "Sobre mim",
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const AboutPage(),
-                    settings: const RouteSettings(name: "/Sobre-mim"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              child: const Text("Sobre mim")),
+          child: Row(children: navigationButtons),
         ),
         IconButton(
           icon: const Icon(Icons.mark_email_unread_rounded),
