@@ -148,7 +148,7 @@ class Post {
   final String title;
   final String authorName;
   late String content;
-  late Image? image;
+  late String image;
 
   Post({
     required this.id,
@@ -165,10 +165,11 @@ class Post {
       print("image found");
       String imagePath = content.substring(imgIndex);
       imagePath = imagePath.substring(0, imagePath.indexOf('"'));
-      image = Image.network(imagePath);
+      image = imagePath;
+
       print(imagePath);
     } else {
-      image = null;
+      image = "";
     }
 
     // text content

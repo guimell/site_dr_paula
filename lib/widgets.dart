@@ -273,7 +273,12 @@ class BlogPost extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              post.image ?? const SizedBox(),
+              post.image == ""
+                  ? const SizedBox()
+                  : FadeInImage.assetNetwork(
+                      placeholder: "assets/images/Ripple.gif",
+                      image: post.image,
+                    ),
               Text(post.published),
               // Text(post.authorName),
               Text(post.content),
@@ -283,7 +288,7 @@ class BlogPost extends StatelessWidget {
                   // go to url
                   print(post.url);
                 },
-                child: Text("Read More!"),
+                child: const Text("Read More!"),
               )
             ],
           ),
