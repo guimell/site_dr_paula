@@ -11,6 +11,25 @@ class BlogPage extends StatefulWidget {
 }
 
 class _BlogPageState extends State<BlogPage> {
+  List<BlogPost> postItems = [];
+
+  Future<void> getBlogPosts() async {
+    await Blog.getBlog();
+    if (mounted) {
+      setState(() {
+        for (Post post in Blog.posts) {
+          postItems.add(BlogPost(post: post));
+        }
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getBlogPosts();
+  }
+
   @override
   Widget build(BuildContext context) {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
@@ -24,7 +43,7 @@ class _BlogPageState extends State<BlogPage> {
               Container(
                 height: SiteConfig.screenHeight * 0.2,
                 width: SiteConfig.screenWidth / 1,
-                color: Colors.amber.withAlpha(100),
+                color: Colors.grey.withAlpha(20),
                 child: const Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -33,126 +52,16 @@ class _BlogPageState extends State<BlogPage> {
                   ),
                 ),
               ),
-              ResponsiveRowColumn(
-                rowMainAxisAlignment: MainAxisAlignment.center,
-                rowPadding: const EdgeInsets.all(20),
-                columnPadding: const EdgeInsets.all(16),
-                layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
-                    ? ResponsiveRowColumnType.COLUMN
-                    : ResponsiveRowColumnType.ROW,
-                children: [
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              ResponsiveRowColumn(
-                rowMainAxisAlignment: MainAxisAlignment.center,
-                rowPadding: const EdgeInsets.all(20),
-                columnPadding: const EdgeInsets.all(16),
-                layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
-                    ? ResponsiveRowColumnType.COLUMN
-                    : ResponsiveRowColumnType.ROW,
-                children: [
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  ResponsiveRowColumnItem(
-                    rowFlex: 1,
-                    child: Column(
-                      children: [
-                        const MyContainer(),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text("Ler mais"),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              AnimatedSize(
+                duration: const Duration(seconds: 1),
+                child: Column(
+                  children: postItems,
+                ),
               ),
               Container(
-                height: SiteConfig.screenHeight * 0.2,
-                width: SiteConfig.screenWidth / 1,
-                color: Colors.amber.withAlpha(100),
+                height: SiteConfig.screenHeight * 0.25,
+                width: SiteConfig.screenWidth,
+                color: Colors.grey.withAlpha(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

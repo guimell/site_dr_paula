@@ -257,3 +257,38 @@ class MyContainer extends StatelessWidget {
     );
   }
 }
+
+class BlogPost extends StatelessWidget {
+  final Post post;
+  const BlogPost({Key? key, required this.post}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        color: Colors.grey.withAlpha(10),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              post.image ?? const SizedBox(),
+              Text(post.published),
+              // Text(post.authorName),
+              Text(post.content),
+              // Text(post.id),
+              ElevatedButton(
+                onPressed: () {
+                  // go to url
+                  print(post.url);
+                },
+                child: Text("Read More!"),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

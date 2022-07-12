@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'blog.dart';
+import 'package:http/http.dart' as http;
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'dart:async';
+import 'dart:convert';
 
-import 'about.dart';
+import 'blog.dart';
 import 'home.dart';
+import 'about.dart';
 import 'contact.dart';
 import 'widgets.dart';
 
@@ -136,5 +138,88 @@ class SiteConfig {
         ),
       ],
     );
+  }
+}
+
+class Post {
+  final String id;
+  final String published;
+  final String url;
+  final String title;
+  final String authorName;
+  late String content;
+  late Image? image;
+
+  Post({
+    required this.id,
+    required this.published,
+    required this.url,
+    required this.title,
+    required this.authorName,
+    required this.content,
+  }) {
+    // find image path
+    int imgIndex = content.indexOf('src="');
+    if (imgIndex >= 0) {
+      imgIndex += 5;
+      print("image found");
+      String imagePath = content.substring(imgIndex);
+      imagePath = imagePath.substring(0, imagePath.indexOf('"'));
+      image = Image.network(imagePath);
+      print(imagePath);
+    } else {
+      image = null;
+    }
+
+    // text content
+    // print(content);
+    int startIndex = content.indexOf("+++");
+    int endIndex = content.lastIndexOf("+++");
+    content = content.substring(startIndex + 3, endIndex);
+    print(content);
+  }
+}
+
+class Blog {
+  static const String apiKey = "AIzaSyADhFrefjuOoDgHeQZsp2Twilx031KWGKk";
+  static const String blogID = "476912652482766745";
+  static final Uri uri = Uri.parse(
+    "https://www.googleapis.com/blogger/v3/blogs/$blogID/posts?key=$apiKey",
+  );
+
+  static int id = 0;
+  static List<Post> posts = [];
+
+  static Future<void> getBlog() async {
+    http.Response response = await http.get(uri);
+    var jsonData = jsonDecode(response.body);
+    // print(jsonData);
+
+    if (jsonData != null) {
+      posts = [];
+      for (var post in jsonData["items"]) {
+        posts.add(
+          Post(
+            id: post["id"] ??= "",
+            published: post["published"] ??= "",
+            url: post["url"] ??= "",
+            title: post["title"] ??= "",
+            content: post["content"] ??= "",
+            authorName: post["author"]["displayName"] ??= "",
+          ),
+        );
+      }
+    } else {
+      print("NULL JSONDATA");
+    }
+
+    for (Post post in posts) {
+      // print(post.id);
+      // print(post.published);
+      // print(post.url);
+      print(post.title);
+      print(post.content);
+      // print(post.authorName);
+    }
   }
 }
