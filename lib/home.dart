@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:site_dr_paula/config.dart';
 import 'widgets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'config.dart';
+import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,46 +24,65 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: SiteConfig.screenHeight * 0.5,
-              width: SiteConfig.screenWidth,
-              color: Colors.amber,
-              child: Image.asset("assets/images/header_image.png"),
+            SizedBox(
+              height: 900,
+              width: 3000,
+              child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Image.asset("assets/images/paula/paulaBanner.jpg")),
             ),
-            CarouselSlider(
-              options: CarouselOptions(height: 400.0),
-              items: [1, 2, 3, 4, 5].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 216, 45, 45)),
-                        child: Text(
-                          'text $i',
-                          style: const TextStyle(fontSize: 16.0),
-                        ));
-                  },
-                );
-              }).toList(),
+            Padding(
+              padding: const EdgeInsets.only(top: 117),
+              child: CarouselSlider(
+                options: CarouselOptions(height: 400.0),
+                items: [1, 2, 3, 4, 5, 7].map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 216, 45, 45)),
+                          child: Text(
+                            'text $i',
+                            style: const TextStyle(fontSize: 16.0),
+                          ));
+                    },
+                  );
+                }).toList(),
+              ),
             ),
-            Row(
+            ResponsiveRowColumn(
+              rowMainAxisAlignment: MainAxisAlignment.center,
+              rowPadding: const EdgeInsets.all(30),
+              columnPadding: const EdgeInsets.all(30),
+              layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
+                  ? ResponsiveRowColumnType.COLUMN
+                  : ResponsiveRowColumnType.ROW,
               children: [
-                Container(
-                  height: SiteConfig.screenHeight * 1.5,
-                  width: SiteConfig.screenWidth / 2,
-                  color: Colors.amber,
-                ),
-                Container(
-                  height: SiteConfig.screenHeight * 0.5,
-                  width: SiteConfig.screenWidth / 2,
-                  color: Colors.amber,
+                ResponsiveRowColumnItem(
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: SiteConfig.screenHeight * 1.5,
+                        width: SiteConfig.screenWidth * 0.4,
+                        child: FittedBox(
+                            fit: BoxFit.fitHeight,
+                            child: Image.asset(
+                                "assets/images/paula/paulaPerfil.jpg")),
+                      ),
+                      Container(
+                        height: SiteConfig.screenHeight * 0.5,
+                        width: SiteConfig.screenWidth / 2,
+                        color: Colors.amber,
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
             const Text(
-              "Titulo muito grande aqui descrevendo algo muito importante",
+              "Ajudo a melhorar sua auto-estima através de uma cirurgia plástica segura.",
               style: TextStyle(fontSize: 40),
             ),
             const Padding(
@@ -76,7 +98,7 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: 300,
                   width: 300,
-                  color: Colors.red,
+                  child: Image.asset("assets/images/paula/paulaMesa.jpg"),
                 ),
                 SizedBox(
                   height: 200,
@@ -103,9 +125,50 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
-              height: SiteConfig.screenHeight * 0.5,
+              height: SiteConfig.screenHeight * 0.3,
               width: SiteConfig.screenWidth,
-              color: Colors.green,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: SizedBox(
+                          height: 200,
+                          width: 200,
+                          child:
+                              Image.asset("assets/images/paula/logoMarca.jpeg"),
+                        ),
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 60),
+                    child: SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Text(loremIpsum()),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 60),
+                    child: SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Text(loremIpsum()),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 60),
+                    child: SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Text(loremIpsum()),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
