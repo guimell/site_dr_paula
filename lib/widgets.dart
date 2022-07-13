@@ -188,52 +188,76 @@ class MyTextField extends StatelessWidget {
   }
 }
 
-class AboutBlock extends StatelessWidget {
+class ContentBlock extends StatelessWidget {
+  final bool rowCol;
   final Image? image;
+  final Color? color;
+  final String? title;
   final String text;
 
-  final Color color;
-  const AboutBlock(
-      {Key? key, this.image, required this.text, required this.color})
-      : super(key: key);
+  const ContentBlock({
+    Key? key,
+    this.rowCol = true,
+    this.image,
+    this.color,
+    this.title,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> rowColChildren = [
+    List<Widget> children = [];
+
+    if (title != null) {
+      children.add(
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Center(
+            child: Text(
+              title!,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      );
+    }
+    if (image != null) {
+      children.add(
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Center(child: image),
+        ),
+      );
+    }
+    children.add(
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Text(
             text,
-            textAlign: TextAlign.center,
           ),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    ];
-    return SizedBox(
-      height: 400,
-      width: SiteConfig.screenWidth,
+    );
+
+    double width = SiteConfig.screenWidth;
+    if (rowCol) {
+      width = SiteConfig.screenHeight > SiteConfig.screenWidth
+          ? SiteConfig.screenWidth
+          : SiteConfig.screenWidth / 2;
+    }
+
+    return AnimatedSize(
+      curve: Curves.ease,
+      duration: const Duration(milliseconds: 500),
       child: Container(
-        color: color,
-        padding: const EdgeInsets.all(8.0),
-        child: SiteConfig.screenWidth > SiteConfig.screenHeight
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: rowColChildren,
-              )
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: rowColChildren,
-              ),
+        // color: Colors.black.withAlpha(200),
+        width: width,
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: children,
+        ),
       ),
     );
   }
