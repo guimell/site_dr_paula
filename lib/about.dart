@@ -24,16 +24,19 @@ class AboutPageState extends State<AboutPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ContentBlock(
+            InteractiveContent(
               text: loremIpsum(paragraphs: 2, words: 200),
+              icon: Icons.access_alarm_rounded,
               rowCol: false,
             ),
-            ContentBlock(
+            InteractiveContent(
               text: loremIpsum(paragraphs: 3, words: 300),
+              icon: Icons.access_alarm_rounded,
               rowCol: false,
             ),
-            ContentBlock(
+            InteractiveContent(
               text: loremIpsum(paragraphs: 2, words: 250),
+              icon: Icons.access_alarm_rounded,
               rowCol: false,
             ),
             SiteConfig.getFooter(),
