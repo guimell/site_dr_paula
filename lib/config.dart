@@ -4,12 +4,14 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ui' as ui;
 
 import 'blog.dart';
 import 'home.dart';
 import 'about.dart';
 import 'contact.dart';
 import 'widgets.dart';
+import 'services.dart';
 
 class SiteConfig {
   //Screen size
@@ -27,7 +29,7 @@ class SiteConfig {
     onSecondary: Colors.black,
     error: Color(0xffb00020),
     onError: Colors.white,
-    background: Colors.white,
+    background: Color.fromARGB(255, 237, 237, 237),
     onBackground: Colors.black,
     surface: Colors.white,
     onSurface: Colors.black,
@@ -46,11 +48,17 @@ class SiteConfig {
     surface: Color(0xff121212),
     onSurface: Colors.white,
   );
+
+  static ButtonStyle buttonStyle = ButtonStyle(
+    foregroundColor: MaterialStateProperty.all(Colors.white),
+  );
+
   //AppBar
   static AppBar getAppBar(BuildContext context, String title) {
     List<Widget> navigationButtons = [
       TextButton(
         autofocus: title == "Home",
+        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -65,6 +73,7 @@ class SiteConfig {
       ),
       TextButton(
         autofocus: title == "Blog",
+        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -79,6 +88,7 @@ class SiteConfig {
       ),
       TextButton(
         autofocus: title == "Contato",
+        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -92,7 +102,23 @@ class SiteConfig {
         child: const Text("Contato"),
       ),
       TextButton(
+        autofocus: title == "Services",
+        style: buttonStyle,
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => const ServicesPage(),
+              settings: const RouteSettings(name: "/Services"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        child: const Text("Services"),
+      ),
+      TextButton(
         autofocus: title == "Sobre mim",
+        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -116,10 +142,16 @@ class SiteConfig {
           onPressed: () {
             showDialog(
               context: context,
-              builder: (BuildContext context) => Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: navigationButtons,
+              builder: (BuildContext context) => BackdropFilter(
+                filter: ui.ImageFilter.blur(
+                  sigmaX: 8.0,
+                  sigmaY: 8.0,
+                ),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: navigationButtons,
+                  ),
                 ),
               ),
             );
