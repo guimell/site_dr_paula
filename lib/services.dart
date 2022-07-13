@@ -20,9 +20,28 @@ class ServicesPageState extends State<ServicesPage> {
     bool smallScreen = SiteConfig.screenHeight > SiteConfig.screenWidth;
 
     List<Widget> children = [
-      const Text(
-        "What We Can Provide For You",
-        style: TextStyle(fontSize: 30),
+      SizedBox(
+        height: SiteConfig.screenHeight / 2,
+        width: SiteConfig.screenWidth,
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                "assets/images/nope/service_temp.png",
+                opacity: const AlwaysStoppedAnimation<double>(100),
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            const Align(
+              alignment: Alignment.center,
+              child: Text(
+                "What We Can Provide For You",
+                style: TextStyle(fontSize: 30),
+              ),
+            ),
+          ],
+        ),
       ),
       ContentBlock(
         title: "Service 1",
@@ -58,21 +77,25 @@ class ServicesPageState extends State<ServicesPage> {
       ),
     ];
 
+    SizedBox spacer = SizedBox(width: SiteConfig.screenWidth * 0.1 - 16);
+
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Services"),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: smallScreen
-              ? children
-              : [
-                  children[0],
-                  Row(children: [children[1], children[2]]),
-                  Row(children: [children[3], children[4]]),
-                  Row(children: [children[5], children[6]]),
-                  Row(children: [children[7], children[8]]),
-                ],
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: smallScreen
+                ? children + [SiteConfig.getFooter()]
+                : [
+                    children[0],
+                    Row(children: [spacer, children[3], children[4]]),
+                    Row(children: [spacer, children[5], children[6]]),
+                    Row(children: [spacer, children[7], children[8]]),
+                    SiteConfig.getFooter(),
+                  ],
+          ),
         ),
       ),
     );

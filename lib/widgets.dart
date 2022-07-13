@@ -188,7 +188,7 @@ class MyTextField extends StatelessWidget {
   }
 }
 
-class ContentBlock extends StatelessWidget {
+class ContentBlock extends StatefulWidget {
   final bool rowCol;
   final Image? image;
   final Color? color;
@@ -205,27 +205,34 @@ class ContentBlock extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() => ContentBlockState();
+}
+
+class ContentBlockState extends State<ContentBlock> {
+  bool mouseOver = false;
+
+  @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
 
-    if (title != null) {
+    if (widget.title != null) {
       children.add(
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Center(
             child: Text(
-              title!,
+              widget.title!,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
         ),
       );
     }
-    if (image != null) {
+    if (widget.image != null) {
       children.add(
         Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Center(child: image),
+          child: Center(child: widget.image),
         ),
       );
     }
@@ -234,26 +241,33 @@ class ContentBlock extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Text(
-            text,
+            widget.text,
           ),
         ),
       ),
     );
 
     double width = SiteConfig.screenWidth;
-    if (rowCol) {
+    if (widget.rowCol) {
       width = SiteConfig.screenHeight > SiteConfig.screenWidth
           ? SiteConfig.screenWidth
-          : SiteConfig.screenWidth / 2;
+          : SiteConfig.screenWidth * .4;
     }
 
-    return AnimatedSize(
-      curve: Curves.ease,
-      duration: const Duration(milliseconds: 500),
+    return MouseRegion(
+      onEnter: (_) => setState(() => mouseOver = true),
+      onExit: (_) => setState(() => mouseOver = false),
       child: Container(
-        // color: Colors.black.withAlpha(200),
+        height: 250,
         width: width,
-        padding: const EdgeInsets.all(24.0),
+        margin: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: mouseOver
+              ? Colors.white.withAlpha(200)
+              : Colors.white.withAlpha(100),
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: children,
