@@ -80,15 +80,18 @@ class ServicesPageState extends State<ServicesPage> {
     SizedBox spacer = SizedBox(width: SiteConfig.screenWidth * 0.1 - 16);
 
     return Scaffold(
-      appBar: SiteConfig.getAppBar(context, "Services"),
+      // appBar: SiteConfig.getAppBar(context, "Services"),
       body: SingleChildScrollView(
         child: Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: smallScreen
-                ? children + [SiteConfig.getFooter()]
+                ? [SiteConfig.getHeader(context, "Services")] +
+                    children +
+                    [SiteConfig.getFooter()]
                 : [
+                    SiteConfig.getHeader(context, "Services"),
                     children[0],
                     Row(children: [spacer, children[3], children[4]]),
                     Row(children: [spacer, children[5], children[6]]),
