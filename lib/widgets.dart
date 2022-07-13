@@ -188,64 +188,63 @@ class MyTextField extends StatelessWidget {
   }
 }
 
-class ContentBlock extends StatefulWidget {
+class InteractiveContent extends StatefulWidget {
   final bool rowCol;
   final Image? image;
   final Color? color;
   final String? title;
   final String text;
+  final IconData icon;
 
-  const ContentBlock({
+  const InteractiveContent({
     Key? key,
     this.rowCol = true,
     this.image,
     this.color,
     this.title,
+    required this.icon,
     required this.text,
   }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => ContentBlockState();
+  State<StatefulWidget> createState() => InteractiveContentState();
 }
 
-class ContentBlockState extends State<ContentBlock> {
+class InteractiveContentState extends State<InteractiveContent> {
   bool mouseOver = false;
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = [];
-
-    if (widget.title != null) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Center(
-            child: Text(
-              widget.title!,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+    List<Widget> children = [
+      Icon(widget.icon, size: 125),
+      Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Text(
+            widget.title!,
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-      );
-    }
-    if (widget.image != null) {
-      children.add(
-        Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Center(child: widget.image),
-        ),
-      );
-    }
-    children.add(
+      ),
       Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Text(
             widget.text,
           ),
         ),
       ),
-    );
+    ];
+
+    if (widget.image != null) {
+      children.add(
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Center(child: widget.image),
+        ),
+      );
+    }
 
     double width = SiteConfig.screenWidth;
     if (widget.rowCol) {
@@ -255,8 +254,22 @@ class ContentBlockState extends State<ContentBlock> {
     }
 
     return MouseRegion(
-      onEnter: (_) => setState(() => mouseOver = true),
-      onExit: (_) => setState(() => mouseOver = false),
+      onEnter: (_) => setState(() {
+        mouseOver = true;
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent, // end
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
+      }),
+      onExit: (_) => setState(() {
+        mouseOver = false;
+        scrollController.animateTo(
+          0, // start
+          duration: const Duration(milliseconds: 1000),
+          curve: Curves.ease,
+        );
+      }),
       child: Container(
         height: 250,
         width: width,
@@ -264,13 +277,29 @@ class ContentBlockState extends State<ContentBlock> {
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           color: mouseOver
-              ? Colors.white.withAlpha(200)
+              ? Colors.white.withAlpha(150)
               : Colors.white.withAlpha(100),
           borderRadius: BorderRadius.circular(8),
+          boxShadow: mouseOver
+              ? [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                  ),
+                ]
+              : [],
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: children,
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          child: SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
+            controller: scrollController,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: children,
+            ),
+          ),
         ),
       ),
     );

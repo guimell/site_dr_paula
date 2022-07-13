@@ -43,37 +43,45 @@ class ServicesPageState extends State<ServicesPage> {
           ],
         ),
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 1",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 2",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 3",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 4",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 5",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 6",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 7",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
-      ContentBlock(
+      InteractiveContent(
         title: "Service 8",
         text: loremIpsum(paragraphs: 1, words: 100),
+        icon: Icons.access_alarm_rounded,
       ),
     ];
 
