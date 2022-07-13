@@ -1,3 +1,5 @@
+import 'package:lorem_ipsum/lorem_ipsum.dart';
+
 import 'widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -22,17 +24,17 @@ class AboutPageState extends State<AboutPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AboutBlock(
-              text: "SOU UMA PESOA BOA",
-              color: Colors.amber.withAlpha(20),
+            ContentBlock(
+              text: loremIpsum(paragraphs: 2, words: 200),
+              rowCol: false,
             ),
-            AboutBlock(
-              text: "EU JURO!",
-              color: Colors.purple.withAlpha(20),
+            ContentBlock(
+              text: loremIpsum(paragraphs: 3, words: 300),
+              rowCol: false,
             ),
-            AboutBlock(
-              text: "100% PODE CREER",
-              color: Colors.amber.withAlpha(20),
+            ContentBlock(
+              text: loremIpsum(paragraphs: 2, words: 250),
+              rowCol: false,
             ),
           ],
         ),
