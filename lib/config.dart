@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:lorem_ipsum/lorem_ipsum.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'dart:async';
@@ -15,8 +16,6 @@ import 'services.dart';
 
 class SiteConfig {
   //Screen size
-  static StreamController<List<double>> screenSizeStreamController =
-      StreamController<List<double>>.broadcast();
   static double screenWidth = 0;
   static double screenHeight = 0;
 
@@ -174,6 +173,54 @@ class SiteConfig {
           onPressed: () {},
         ),
       ],
+    );
+  }
+
+  static Widget getFooter() {
+    return SizedBox(
+      height: SiteConfig.screenHeight * 0.3,
+      width: SiteConfig.screenWidth,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Image.asset("assets/images/paula/logoMarca.jpeg"),
+                ),
+              )
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 60),
+            child: SizedBox(
+              height: 200,
+              width: 200,
+              child: Text(loremIpsum()),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 60),
+            child: SizedBox(
+              height: 200,
+              width: 200,
+              child: Text(loremIpsum()),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 60),
+            child: SizedBox(
+              height: 200,
+              width: 200,
+              child: Text(loremIpsum()),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

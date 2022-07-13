@@ -36,6 +36,7 @@ class AboutPageState extends State<AboutPage> {
               text: loremIpsum(paragraphs: 2, words: 250),
               rowCol: false,
             ),
+            SiteConfig.getFooter(),
           ],
         ),
       ),

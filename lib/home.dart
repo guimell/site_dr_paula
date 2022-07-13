@@ -15,9 +15,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SiteConfig.screenSizeStreamController.add(
-      [MediaQuery.of(context).size.height, MediaQuery.of(context).size.width],
-    );
+    SiteConfig.screenHeight = MediaQuery.of(context).size.height;
+    SiteConfig.screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, title),
@@ -124,52 +123,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
             ),
-            Container(
-              height: SiteConfig.screenHeight * 0.3,
-              width: SiteConfig.screenWidth,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: SizedBox(
-                          height: 200,
-                          width: 200,
-                          child:
-                              Image.asset("assets/images/paula/logoMarca.jpeg"),
-                        ),
-                      )
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 60),
-                    child: SizedBox(
-                      height: 200,
-                      width: 200,
-                      child: Text(loremIpsum()),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 60),
-                    child: SizedBox(
-                      height: 200,
-                      width: 200,
-                      child: Text(loremIpsum()),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 60),
-                    child: SizedBox(
-                      height: 200,
-                      width: 200,
-                      child: Text(loremIpsum()),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            SiteConfig.getFooter(),
           ],
         ),
       ),

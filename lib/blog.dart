@@ -167,6 +167,7 @@ class _BlogPageState extends State<BlogPage> {
                   ],
                 ),
               ),
+              SiteConfig.getFooter(),
             ],
           ),
         ),
