@@ -277,8 +277,8 @@ class InteractiveContentState extends State<InteractiveContent> {
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           color: mouseOver
-              ? Colors.white.withAlpha(150)
-              : Colors.white.withAlpha(100),
+              ? const Color.fromARGB(255, 175, 127, 75).withAlpha(100)
+              : const Color.fromARGB(255, 175, 127, 75).withAlpha(50),
           borderRadius: BorderRadius.circular(8),
           boxShadow: mouseOver
               ? [

@@ -20,19 +20,6 @@ class SiteConfig {
   static double screenHeight = 0;
 
   // theme colors
-  // static ColorScheme lightColors = const ColorScheme(
-  //   brightness: Brightness.light,
-  //   primary: Color(0xff6200ee),
-  //   onPrimary: Colors.white,
-  //   secondary: Color(0xff03dac6),
-  //   onSecondary: Colors.black,
-  //   error: Color(0xffb00020),
-  //   onError: Colors.white,
-  //   background: Colors.white,
-  //   onBackground: Colors.black,
-  //   surface: Colors.white,
-  //   onSurface: Colors.black,
-  // );
   static ColorScheme lightColors = const ColorScheme(
     brightness: Brightness.light,
     primary: Color.fromARGB(255, 175, 127, 75),
@@ -46,10 +33,9 @@ class SiteConfig {
     surface: Colors.white,
     onSurface: Colors.black,
   );
-
   static ColorScheme darkColors = const ColorScheme(
     brightness: Brightness.dark,
-    primary: Color.fromARGB(255, 172, 136, 206),
+    primary: Color.fromARGB(255, 175, 127, 75),
     onPrimary: Colors.black,
     secondary: Color(0xff03dac6),
     onSecondary: Colors.black,
@@ -270,7 +256,7 @@ class SiteConfig {
     return Container(
       height: screenHeight * 0.05 + 20,
       width: screenWidth,
-      color: Colors.black.withAlpha(50),
+      color: const Color.fromARGB(255, 175, 127, 75).withAlpha(25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
