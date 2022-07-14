@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'widgets.dart';
 import 'config.dart';
 
@@ -10,6 +11,35 @@ class ContactPage extends StatefulWidget {
 }
 
 class ContactPageState extends State<ContactPage> {
+  void trySendEmail() {
+    try {
+      SiteConfig.sendEmail(
+        name: 'my name',
+        email: 'guimell11@hotmail.com',
+        subject: 'my subject',
+        message: 'my message',
+      ).then((bool success) {
+        if (success) {
+          SiteConfig.showSnackBar(
+            context,
+            "sucess!",
+          );
+        } else {
+          SiteConfig.showSnackBar(
+            context,
+            "FAIL",
+          );
+        }
+      });
+    } catch (e) {
+      print(e);
+      SiteConfig.showSnackBar(
+        context,
+        "FAIL",
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
@@ -64,7 +94,10 @@ class ContactPageState extends State<ContactPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ElevatedButton(
-                                  onPressed: () {}, child: const Text("Enviar"))
+                                  onPressed: () async {
+                                    trySendEmail();
+                                  },
+                                  child: const Text("Enviar"))
                             ],
                           ),
                         ),

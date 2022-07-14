@@ -351,6 +351,51 @@ class SiteConfig {
             ],
           );
   }
+
+  static void showSnackBar(BuildContext context, String text) {
+    final snackBar = SnackBar(
+      content: Text(text),
+    );
+    ScaffoldMessenger.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(snackBar);
+  }
+
+  static Future<bool> sendEmail({
+    required String name,
+    required String email,
+    required String subject,
+    required String message,
+  }) async {
+    const serviceID = 'service_5io0bdq';
+    const templateID = 'template_ksmrhks';
+    const userID = '7HSzBI9HYk-Fk7Ye3';
+
+    final uri = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+    final response = await http.post(
+      uri,
+      headers: {
+        'origin': 'http://localhost',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        "service_id": serviceID,
+        "template_id": templateID,
+        "user_id": userID,
+        "template_params": {
+          "user_name": name,
+          "user_email": email,
+          "user_subject": subject,
+          "user_message": message,
+        },
+      }),
+    );
+    print(response.body);
+    if (response.body == "OK") {
+      return true;
+    }
+    return false;
+  }
 }
 
 class Post {
