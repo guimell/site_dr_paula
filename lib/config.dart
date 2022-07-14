@@ -1,3 +1,4 @@
+import 'package:html/parser.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lorem_ipsum/lorem_ipsum.dart';
@@ -361,6 +362,14 @@ class Post {
   late String content;
   late String image;
 
+  String _parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String parsedString =
+        parse(document.body!.text).documentElement!.text;
+
+    return parsedString;
+  }
+
   Post({
     required this.id,
     required this.published,
@@ -373,22 +382,14 @@ class Post {
     int imgIndex = content.indexOf('src="');
     if (imgIndex >= 0) {
       imgIndex += 5;
-      print("image found");
       String imagePath = content.substring(imgIndex);
       imagePath = imagePath.substring(0, imagePath.indexOf('"'));
       image = imagePath;
-
-      print(imagePath);
     } else {
       image = "";
     }
-
     // text content
-    // print(content);
-    int startIndex = content.indexOf("+++");
-    int endIndex = content.lastIndexOf("+++");
-    content = content.substring(startIndex + 3, endIndex);
-    print(content);
+    content = _parseHtmlString(content);
   }
 }
 
