@@ -53,19 +53,7 @@ class ContactPageState extends State<ContactPage> {
                           labelText: 'Sobrenome :',
                         ),
                         const MyTextField(
-                          labelText: 'Nome da empresa :',
-                        ),
-                        const MyTextField(
-                          labelText: "CNPJ",
-                        ),
-                        const MyTextField(
-                          labelText: 'E-mail corporativo :',
-                        ),
-                        const MyTextField(
-                          labelText: 'Quantidade de funcionarios :',
-                        ),
-                        const MyTextField(
-                          labelText: 'Cidade e estado da empresa :',
+                          labelText: 'E-mail :',
                         ),
                         const MyTextField(
                           labelText: 'Mensagem :',

@@ -23,7 +23,6 @@ class AppWidget extends StatelessWidget {
       ),
       title: 'Flutter Responsive Framework',
       theme: ThemeData.from(colorScheme: SiteConfig.lightColors),
-      darkTheme: ThemeData.from(colorScheme: SiteConfig.darkColors),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );

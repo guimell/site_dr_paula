@@ -39,14 +39,15 @@ class HomePage extends StatelessWidget {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 216, 45, 45)),
-                          child: Text(
-                            'text $i',
-                            style: const TextStyle(fontSize: 16.0),
-                          ));
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 216, 45, 45)),
+                        child: Text(
+                          'text $i',
+                          style: const TextStyle(fontSize: 16.0),
+                        ),
+                      );
                     },
                   );
                 }).toList(),
@@ -64,42 +65,44 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(
-                        height: SiteConfig.screenHeight * 1.5,
+                        height: SiteConfig.screenHeight * 0.9,
                         width: SiteConfig.screenWidth * 0.4,
                         child: FittedBox(
-                            fit: BoxFit.fitHeight,
-                            child: Image.asset(
-                                "assets/images/paula/paulaPerfil.jpg")),
+                          fit: BoxFit.fitHeight,
+                          child: Image.asset(
+                              "assets/images/paula/paulaPerfil.jpg"),
+                        ),
                       ),
                       Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: const Color.fromARGB(255, 175, 127, 75)
-                                .withAlpha(50),
-                          ),
-                          height: SiteConfig.screenHeight * 0.2,
-                          width: SiteConfig.screenWidth / 2,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "Dr.Paula",
-                                style: TextStyle(fontSize: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: const Color.fromARGB(255, 175, 127, 75)
+                              .withAlpha(200),
+                        ),
+                        height: SiteConfig.screenHeight * 0.2,
+                        width: SiteConfig.screenWidth / 2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "Dr.Paula",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Text(
+                                "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
+                                " venho realizando diversos cursos de atualização,"
+                                " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
+                                " ou seja, você que está visitando minha página! \n\n"
+                                "Sou apaixonada pela estética desde minha infância,"
+                                " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
+                                " através da HARMONIZAÇÃO OROFACIAL.",
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Text(
-                                  "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
-                                  " venho realizando diversos cursos de atualização,"
-                                  " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
-                                  " ou seja, você que está visitando minha página! \n\n"
-                                  "Sou apaixonada pela estética desde minha infância,"
-                                  " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
-                                  " através da HARMONIZAÇÃO OROFACIAL.",
-                                ),
-                              ),
-                            ],
-                          ))
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 )
