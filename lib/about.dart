@@ -20,27 +20,25 @@ class AboutPageState extends State<AboutPage> {
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Sobre mim"),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            InteractiveContent(
-              text: loremIpsum(paragraphs: 2, words: 200),
-              icon: Icons.access_alarm_rounded,
-              rowCol: false,
-            ),
-            InteractiveContent(
-              text: loremIpsum(paragraphs: 3, words: 300),
-              icon: Icons.access_alarm_rounded,
-              rowCol: false,
-            ),
-            InteractiveContent(
-              text: loremIpsum(paragraphs: 2, words: 250),
-              icon: Icons.access_alarm_rounded,
-              rowCol: false,
-            ),
-            SiteConfig.getFooter(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                "Get to know me...",
+                style: TextStyle(fontSize: 50),
+              ),
+              const SizedBox(height: 100),
+              Text(loremIpsum(paragraphs: 2, words: 200)),
+              const SizedBox(height: 100),
+              Text(loremIpsum(paragraphs: 3, words: 300)),
+              const SizedBox(height: 100),
+              Text(loremIpsum(paragraphs: 2, words: 250)),
+              SiteConfig.getFooter(),
+            ],
+          ),
         ),
       ),
     );
