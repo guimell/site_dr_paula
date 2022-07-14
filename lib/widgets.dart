@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'courser_data.dart';
-
 import 'config.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -75,62 +73,6 @@ class PageHeader extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class CourseTile extends StatelessWidget {
-  final Course course;
-  const CourseTile({
-    Key? key,
-    required this.course,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 500,
-      child: Card(
-        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-        // color: Colors.blueGrey[50],
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Image.asset(
-                course.image,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                course.title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                course.time,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 152, 154, 155),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                course.description,
-                style: const TextStyle(fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
