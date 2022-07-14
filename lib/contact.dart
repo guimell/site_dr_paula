@@ -28,7 +28,7 @@ class ContactPageState extends State<ContactPage> {
               color:
                   MediaQuery.platformBrightnessOf(context) == Brightness.light
                       ? Colors.white
-                      : Colors.black,
+                      : const Color.fromARGB(255, 175, 127, 75).withAlpha(25),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
