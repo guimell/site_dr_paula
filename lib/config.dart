@@ -302,51 +302,53 @@ class SiteConfig {
   }
 
   static Widget getFooter() {
-    return SizedBox(
-      height: SiteConfig.screenHeight * 0.3,
-      width: SiteConfig.screenWidth,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Image.asset("assets/images/paula/logoMarca.jpeg"),
-                ),
-              )
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 60),
-            child: SizedBox(
-              height: 200,
-              width: 200,
-              child: Text(loremIpsum()),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 60),
-            child: SizedBox(
-              height: 200,
-              width: 200,
-              child: Text(loremIpsum()),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 60),
-            child: SizedBox(
-              height: 200,
-              width: 200,
-              child: Text(loremIpsum()),
-            ),
-          ),
-        ],
+    int words = 40;
+    double sizeH = 200;
+    double sizeW = 200;
+    final bool smallScreen = sizeW * 4.5 > screenWidth;
+    List<Widget> children = [
+      Container(
+        height: sizeH,
+        width: sizeW,
+        margin: const EdgeInsets.all(8),
+        child: Image.asset(
+          "assets/images/paula/logoMarca.jpeg",
+          fit: BoxFit.contain,
+        ),
       ),
-    );
+      Container(
+        height: sizeH,
+        width: sizeW,
+        margin: const EdgeInsets.all(8),
+        child: Center(child: Text(loremIpsum(words: words))),
+      ),
+      Container(
+        height: sizeH,
+        width: sizeW,
+        margin: const EdgeInsets.all(8),
+        child: Center(child: Text(loremIpsum(words: words))),
+      ),
+      Container(
+        height: sizeH,
+        width: sizeW,
+        margin: const EdgeInsets.all(8),
+        child: Center(child: Text(loremIpsum(words: words))),
+      ),
+    ];
+    return smallScreen
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: children,
+          )
+        : Column(
+            children: [
+              SizedBox(height: screenHeight * 0.1),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: children,
+              ),
+            ],
+          );
   }
 }
 
