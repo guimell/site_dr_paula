@@ -113,13 +113,18 @@ class SubscribeBlock extends StatelessWidget {
 
 class MyTextField extends StatelessWidget {
   final String labelText;
-  const MyTextField({Key? key, required this.labelText}) : super(key: key);
+  final TextEditingController myController;
+
+  const MyTextField(
+      {Key? key, required this.labelText, required this.myController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        controller: myController,
         decoration: InputDecoration(
             border: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black),
