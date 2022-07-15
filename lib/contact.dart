@@ -11,13 +11,29 @@ class ContactPage extends StatefulWidget {
 }
 
 class ContactPageState extends State<ContactPage> {
+  final myControllerName = TextEditingController();
+  final myControllerSobreName = TextEditingController();
+  final myControllerEmail = TextEditingController();
+  final myControllerMensagem = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myControllerName.dispose();
+    myControllerSobreName.dispose();
+    myControllerEmail.dispose();
+    myControllerMensagem.dispose();
+
+    super.dispose();
+  }
+
   void trySendEmail() {
     try {
       SiteConfig.sendEmail(
-        name: 'my name',
-        email: 'guimell11@hotmail.com',
-        subject: 'my subject',
-        message: 'my message',
+        name: myControllerName.text,
+        email: myControllerEmail.text,
+        subject: myControllerSobreName.text,
+        message: myControllerMensagem.text,
       ).then((bool success) {
         if (success) {
           SiteConfig.showSnackBar(
@@ -75,17 +91,21 @@ class ContactPageState extends State<ContactPage> {
                                         : Colors.white),
                           ),
                         ),
-                        const MyTextField(
+                        MyTextField(
                           labelText: 'Nome :',
+                          myController: myControllerName,
                         ),
-                        const MyTextField(
+                        MyTextField(
                           labelText: 'Sobrenome :',
+                          myController: myControllerSobreName,
                         ),
-                        const MyTextField(
+                        MyTextField(
                           labelText: 'E-mail :',
+                          myController: myControllerEmail,
                         ),
-                        const MyTextField(
+                        MyTextField(
                           labelText: 'Mensagem :',
+                          myController: myControllerMensagem,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
