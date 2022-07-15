@@ -46,6 +46,7 @@ class ContactPageState extends State<ContactPage> {
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Contato"),
+      floatingActionButton: SiteConfig.getFAB(),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
@@ -57,10 +58,8 @@ class ContactPageState extends State<ContactPage> {
                   child: Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    color: MediaQuery.platformBrightnessOf(context) ==
-                            Brightness.light
-                        ? Colors.white
-                        : const Color.fromARGB(255, 175, 127, 75).withAlpha(25),
+                    color:
+                        const Color.fromARGB(255, 175, 127, 75).withAlpha(200),
                     child: Column(
                       children: [
                         Padding(
