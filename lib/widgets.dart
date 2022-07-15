@@ -306,3 +306,47 @@ class BlogPost extends StatelessWidget {
     );
   }
 }
+
+class MyContainerService extends StatelessWidget {
+  final String text;
+  final String title;
+  const MyContainerService(
+    this.title,
+    this.text, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(5),
+            color: const Color.fromARGB(255, 175, 127, 75)),
+        width: SiteConfig.screenWidth * 0.6,
+        child: Column(
+          children: [
+            Text(
+              title,
+              style: const TextStyle(fontSize: 40),
+            ),
+            Text(
+              text,
+              style: TextStyle(fontSize: 18),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
