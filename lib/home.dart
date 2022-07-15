@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, title),
+      floatingActionButton: SiteConfig.getFAB(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -34,20 +35,22 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 117),
               child: CarouselSlider(
-                options: CarouselOptions(height: 400.0),
-                items: [1, 2, 3, 4, 5, 7].map((i) {
+                options:
+                    CarouselOptions(height: 400.0, enableInfiniteScroll: false),
+                items: [
+                  Image.asset("assets/images/paula/paulaMesa.jpg"),
+                  Image.asset("assets/images/paula/paulaPerfil.jpg"),
+                  Image.asset("assets/images/paula/paulaBanner.jpg"),
+                  Image.asset("assets/images/paula/logoMarca.jpeg")
+                ].map((i) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 216, 45, 45)),
-                        child: Text(
-                          'text $i',
-                          style: const TextStyle(fontSize: 16.0),
-                        ),
-                      );
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.symmetric(horizontal: 1),
+                          decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 216, 45, 45)),
+                          child: i);
                     },
                   );
                 }).toList(),
@@ -75,6 +78,15 @@ class HomePage extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
                           borderRadius: BorderRadius.circular(20),
                           color: const Color.fromARGB(255, 175, 127, 75)
                               .withAlpha(200),
@@ -107,49 +119,6 @@ class HomePage extends StatelessWidget {
                   ),
                 )
               ],
-            ),
-            const Text(
-              "Ajudo a melhorar sua auto-estima através de uma cirurgia plástica segura.",
-              style: TextStyle(fontSize: 40),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Text(
-                "Sou uma otima medica, pode confiar",
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: 300,
-                  width: 300,
-                  child: Image.asset("assets/images/paula/paulaMesa.jpg"),
-                ),
-                SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 40),
-                    child: Column(
-                      children: const [
-                        Text("data"),
-                        Text("data"),
-                        Text("data"),
-                        Text("data"),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Text(
-                "Sou uma otima medica, pode confiar",
-                style: TextStyle(fontSize: 20),
-              ),
             ),
             SiteConfig.getFooter(),
           ],
