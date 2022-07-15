@@ -36,6 +36,7 @@ class _BlogPageState extends State<BlogPage> {
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Blog"),
+      floatingActionButton: SiteConfig.getFAB(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
