@@ -175,6 +175,17 @@ class SiteConfig {
     );
   }
 
+  static Widget getFAB() {
+    return FloatingActionButton(
+      // foregroundColor: const Color.fromARGB(255, 175, 127, 75),
+      backgroundColor: const Color.fromARGB(255, 175, 127, 75),
+      child: Icon(Icons.chat),
+      onPressed: (() {
+        print("object");
+      }),
+    );
+  }
+
   static Widget getHeader(BuildContext context, String title) {
     List<Widget> navigationButtons = [
       TextButton(
