@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:site_dr_paula/config.dart';
 import 'widgets.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'config.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
@@ -56,65 +55,51 @@ class HomePage extends StatelessWidget {
                 }).toList(),
               ),
             ),
-            ResponsiveRowColumn(
-              rowMainAxisAlignment: MainAxisAlignment.center,
-              rowPadding: const EdgeInsets.all(30),
-              columnPadding: const EdgeInsets.all(30),
-              layout: ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
-                  ? ResponsiveRowColumnType.COLUMN
-                  : ResponsiveRowColumnType.ROW,
+            Row(
               children: [
-                ResponsiveRowColumnItem(
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        height: SiteConfig.screenHeight * 0.9,
-                        width: SiteConfig.screenWidth * 0.4,
-                        child: FittedBox(
-                          fit: BoxFit.fitHeight,
-                          child: Image.asset(
-                              "assets/images/paula/paulaPerfil.jpg"),
+                SizedBox(
+                  height: SiteConfig.screenHeight * 0.9,
+                  width: SiteConfig.screenWidth * 0.4,
+                  child: FittedBox(
+                    fit: BoxFit.fitHeight,
+                    child: Image.asset("assets/images/paula/paulaPerfil.jpg"),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(20),
+                    color:
+                        const Color.fromARGB(255, 175, 127, 75).withAlpha(200),
+                  ),
+                  height: SiteConfig.screenHeight * 0.2,
+                  width: SiteConfig.screenWidth / 2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Dr.Paula",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
+                          " venho realizando diversos cursos de atualização,"
+                          " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
+                          " ou seja, você que está visitando minha página! \n\n"
+                          "Sou apaixonada pela estética desde minha infância,"
+                          " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
+                          " através da HARMONIZAÇÃO OROFACIAL.",
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3), // changes position of shadow
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color.fromARGB(255, 175, 127, 75)
-                              .withAlpha(200),
-                        ),
-                        height: SiteConfig.screenHeight * 0.2,
-                        width: SiteConfig.screenWidth / 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text(
-                              "Dr.Paula",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Text(
-                                "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
-                                " venho realizando diversos cursos de atualização,"
-                                " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
-                                " ou seja, você que está visitando minha página! \n\n"
-                                "Sou apaixonada pela estética desde minha infância,"
-                                " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
-                                " através da HARMONIZAÇÃO OROFACIAL.",
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 )
