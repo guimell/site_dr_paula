@@ -1,6 +1,7 @@
-import 'package:html/parser.dart';
-import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
 
 import 'dart:async';
@@ -48,6 +49,7 @@ class SiteConfig {
   );
 
   static AppBar getAppBar(BuildContext context, String title) {
+    print(screenWidth);
     List<Widget> navigationButtons = [
       TextButton(
         autofocus: title == "Home",
@@ -140,7 +142,7 @@ class SiteConfig {
           const Text('Dr. Paula'),
         ],
       ),
-      leading: screenHeight > screenWidth
+      leading: screenWidth < 565
           ? IconButton(
               onPressed: () {
                 showDialog(
@@ -163,9 +165,7 @@ class SiteConfig {
             )
           : null,
       actions: [
-        screenHeight > screenWidth
-            ? const SizedBox()
-            : Row(children: navigationButtons),
+        screenWidth < 565 ? const SizedBox() : Row(children: navigationButtons),
         IconButton(
           icon: const Icon(Icons.mark_email_unread_rounded),
           onPressed: () {},
@@ -176,12 +176,18 @@ class SiteConfig {
 
   static Widget getFAB() {
     return FloatingActionButton(
-      // foregroundColor: const Color.fromARGB(255, 175, 127, 75),
-      backgroundColor: const Color.fromARGB(255, 175, 127, 75),
-      child: Icon(Icons.chat),
-      onPressed: (() {
+      foregroundColor: lightColors.background,
+      backgroundColor: lightColors.primary,
+      onPressed: (() async {
         print("object");
+        Uri uri = Uri.parse("https://wa.me/?text=Your Message here");
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri);
+        } else {
+          throw 'Could not launch $uri';
+        }
       }),
+      child: const Icon(Icons.chat),
     );
   }
 

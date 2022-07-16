@@ -66,13 +66,14 @@ class _BlogPageState extends State<BlogPage> {
             ),
           ),
           SizedBox(
-            height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 70,
+            height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 50,
             width: SiteConfig.screenWidth,
-            child: SingleChildScrollView(
+            // child: SingleChildScrollView(
+            child: ListView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: postItems,
-              ),
+              // child: Row(
+              children: postItems,
+              // ),
             ),
           ),
         ],

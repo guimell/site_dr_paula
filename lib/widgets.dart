@@ -265,83 +265,82 @@ class BlogPost extends StatelessWidget {
     final double width = smallScreen
         ? SiteConfig.screenWidth * 0.8
         : SiteConfig.screenWidth * 0.8 / 3;
-    return Padding(
-      padding: const EdgeInsets.all(30.0),
-      child: SizedBox(
-        height: SiteConfig.screenHeight * 0.8,
-        width: width,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              // image section
-              Expanded(
-                flex: 4,
-                child: post.image == ""
-                    ? Container(color: Colors.white)
-                    : Stack(
-                        children: [
-                          const Center(child: CircularProgressIndicator()),
-                          Center(
-                            child: FadeInImage.memoryNetwork(
-                              placeholder: kTransparentImage,
-                              image: post.image,
-                              fit: BoxFit.cover,
-                            ),
+    return Container(
+      // color: Colors.black,
+      margin: const EdgeInsets.all(30.0),
+      height: SiteConfig.screenHeight,
+      width: width,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            // image section
+            Expanded(
+              flex: 8,
+              child: post.image == ""
+                  ? Container(color: Colors.white)
+                  : Stack(
+                      children: [
+                        const Center(child: CircularProgressIndicator()),
+                        Center(
+                          child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: post.image,
+                            fit: BoxFit.cover,
                           ),
-                        ],
-                      ),
-              ),
-              // title section
-              Expanded(
-                flex: 2,
-                child: Center(
-                  child: Text(
-                    post.title,
-                    overflow: TextOverflow.fade,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-              ),
-              // text section
-              Expanded(
-                flex: 4,
+            ),
+            // title section
+            Expanded(
+              flex: 4,
+              child: Center(
                 child: Text(
-                  post.content,
+                  post.title,
                   overflow: TextOverflow.fade,
-                  style: TextStyle(
-                    color: Colors.grey.withAlpha(200),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              // info section
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  width: width - 16,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(post.authorName),
-                      Text(post.published),
-                      // Text(post.updated),
-                      ElevatedButton(
-                        onPressed: () {
-                          // html.window.open(post.url, "read blog");
-                        },
-                        child: const Text("Read More!"),
-                      ),
-                    ],
-                  ),
+            ),
+            // text section
+            Expanded(
+              flex: 8,
+              child: Text(
+                post.content,
+                overflow: TextOverflow.fade,
+                style: TextStyle(
+                  color: Colors.grey.withAlpha(200),
                 ),
               ),
-            ],
-          ),
+            ),
+            // info section
+            Expanded(
+              flex: 6,
+              child: Container(
+                padding: const EdgeInsets.only(top: 8),
+                width: width - 16,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(post.authorName),
+                    Text(post.published),
+                    // Text(post.updated),
+                    ElevatedButton(
+                      onPressed: () {
+                        // html.window.open(post.url, "read blog");
+                      },
+                      child: const Text("Read More!"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
