@@ -168,10 +168,6 @@ class SiteConfig {
           icon: const Icon(Icons.mark_email_unread_rounded),
           onPressed: () {},
         ),
-        IconButton(
-          icon: const Icon(Icons.logout_rounded),
-          onPressed: () {},
-        ),
       ],
     );
   }
