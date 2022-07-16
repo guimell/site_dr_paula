@@ -39,6 +39,7 @@ dependencies:
   html: ^0.15.0
   transparent_image:
   intl: ^0.17.0
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_test:
