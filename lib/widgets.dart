@@ -5,20 +5,6 @@ import 'package:transparent_image/transparent_image.dart';
 
 import 'config.dart';
 
-class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        Icon(Icons.school_rounded),
-        Text(' Dr.Paula'),
-      ],
-    );
-  }
-}
-
 class MenuTextButton extends StatelessWidget {
   final String text;
   const MenuTextButton({Key? key, required this.text}) : super(key: key);

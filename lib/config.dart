@@ -47,15 +47,10 @@ class SiteConfig {
     onSurface: Colors.white,
   );
 
-  static ButtonStyle buttonStyle = ButtonStyle(
-    foregroundColor: MaterialStateProperty.all(Colors.white),
-  );
-
   static AppBar getAppBar(BuildContext context, String title) {
     List<Widget> navigationButtons = [
       TextButton(
         autofocus: title == "Home",
-        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -70,7 +65,6 @@ class SiteConfig {
       ),
       TextButton(
         autofocus: title == "Blog",
-        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -85,7 +79,6 @@ class SiteConfig {
       ),
       TextButton(
         autofocus: title == "Contato",
-        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -100,7 +93,6 @@ class SiteConfig {
       ),
       TextButton(
         autofocus: title == "Services",
-        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -115,7 +107,6 @@ class SiteConfig {
       ),
       TextButton(
         autofocus: title == "Sobre mim",
-        style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
@@ -131,8 +122,22 @@ class SiteConfig {
     ];
 
     return AppBar(
+      toolbarHeight: 70,
+      backgroundColor: lightColors.background,
+      foregroundColor: lightColors.primary,
       centerTitle: true,
-      title: const AppBarTitle(),
+      title: Row(
+        children: [
+          SizedBox(
+            height: 60,
+            child: Image.asset(
+              "assets/images/paula/logoMarcaT.png",
+              fit: BoxFit.contain,
+            ),
+          ),
+          const Text('Dr. Paula'),
+        ],
+      ),
       leading: screenHeight > screenWidth
           ? IconButton(
               onPressed: () {

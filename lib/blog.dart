@@ -54,7 +54,7 @@ class _BlogPageState extends State<BlogPage> {
       body: Column(
         children: [
           Container(
-            height: 85,
+            height: 80,
             width: SiteConfig.screenWidth * 0.70,
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
@@ -67,7 +67,7 @@ class _BlogPageState extends State<BlogPage> {
             ),
           ),
           SizedBox(
-            height: SiteConfig.screenHeight - 85 - 10 - 10 - 10 - 10 - 36,
+            height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 70,
             width: SiteConfig.screenWidth,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
