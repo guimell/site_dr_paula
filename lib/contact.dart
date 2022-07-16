@@ -71,57 +71,47 @@ class ContactPageState extends State<ContactPage> {
               children: [
                 SizedBox(
                   width: SiteConfig.screenHeight * 0.8,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    color:
-                        const Color.fromARGB(255, 175, 127, 75).withAlpha(200),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Contato",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color:
-                                    MediaQuery.platformBrightnessOf(context) ==
-                                            Brightness.light
-                                        ? Colors.black
-                                        : Colors.white),
+                  child: Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Contato",
+                          style: TextStyle(
+                            fontSize: 20,
                           ),
                         ),
-                        MyTextField(
-                          labelText: 'Nome :',
-                          myController: myControllerName,
+                      ),
+                      MyTextField(
+                        labelText: 'Nome :',
+                        myController: myControllerName,
+                      ),
+                      MyTextField(
+                        labelText: 'Sobrenome :',
+                        myController: myControllerSobreName,
+                      ),
+                      MyTextField(
+                        labelText: 'E-mail :',
+                        myController: myControllerEmail,
+                      ),
+                      MyTextField(
+                        labelText: 'Mensagem :',
+                        myController: myControllerMensagem,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                                onPressed: () async {
+                                  trySendEmail();
+                                },
+                                child: const Text("Enviar"))
+                          ],
                         ),
-                        MyTextField(
-                          labelText: 'Sobrenome :',
-                          myController: myControllerSobreName,
-                        ),
-                        MyTextField(
-                          labelText: 'E-mail :',
-                          myController: myControllerEmail,
-                        ),
-                        MyTextField(
-                          labelText: 'Mensagem :',
-                          myController: myControllerMensagem,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                  onPressed: () async {
-                                    trySendEmail();
-                                  },
-                                  child: const Text("Enviar"))
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 SiteConfig.getFooter(),
