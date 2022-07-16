@@ -2,7 +2,6 @@ import 'package:html/parser.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lorem_ipsum/lorem_ipsum.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -134,35 +133,32 @@ class SiteConfig {
     return AppBar(
       centerTitle: true,
       title: const AppBarTitle(),
-      leading: ResponsiveVisibility(
-        hiddenWhen: const [Condition.largerThan(name: TABLET)],
-        child: IconButton(
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) => BackdropFilter(
-                filter: ui.ImageFilter.blur(
-                  sigmaX: 8.0,
-                  sigmaY: 8.0,
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: navigationButtons,
+      leading: screenHeight > screenWidth
+          ? IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => BackdropFilter(
+                    filter: ui.ImageFilter.blur(
+                      sigmaX: 8.0,
+                      sigmaY: 8.0,
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: navigationButtons,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            );
-          },
-          icon: const Icon(Icons.menu),
-        ),
-      ),
+                );
+              },
+              icon: const Icon(Icons.menu),
+            )
+          : null,
       actions: [
-        ResponsiveVisibility(
-          visible: false,
-          visibleWhen: const [Condition.largerThan(name: TABLET)],
-          child: Row(children: navigationButtons),
-        ),
+        screenHeight > screenWidth
+            ? const SizedBox()
+            : Row(children: navigationButtons),
         IconButton(
           icon: const Icon(Icons.mark_email_unread_rounded),
           onPressed: () {},
@@ -272,34 +268,28 @@ class SiteConfig {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          ResponsiveVisibility(
-            hiddenWhen: const [Condition.largerThan(name: TABLET)],
-            child: IconButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) => BackdropFilter(
-                    filter: ui.ImageFilter.blur(
-                      sigmaX: 8.0,
-                      sigmaY: 8.0,
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: navigationButtons,
+          screenHeight > screenWidth
+              ? IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => BackdropFilter(
+                        filter: ui.ImageFilter.blur(
+                          sigmaX: 8.0,
+                          sigmaY: 8.0,
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: navigationButtons,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.menu),
-            ),
-          ),
-          ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: Row(children: navigationButtons),
-          ),
+                    );
+                  },
+                  icon: const Icon(Icons.menu),
+                )
+              : Row(children: navigationButtons),
           IconButton(
             icon: const Icon(Icons.mark_email_unread_rounded),
             onPressed: () {},
@@ -361,6 +351,118 @@ class SiteConfig {
               ),
             ],
           );
+  }
+
+  static Widget getFooter2() {
+    return Container(
+      height: SiteConfig.screenHeight * 0.25,
+      width: SiteConfig.screenWidth,
+      color: Colors.grey.withAlpha(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: SizedBox(
+              height: 200,
+              width: 200,
+              child: Column(
+                children: [
+                  const Text(
+                    "Redes sociais",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Icons.photo_camera),
+                      Text(" Instagram")
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Icons.facebook_rounded),
+                      Text(" Facebook")
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Icons.airplanemode_active),
+                      Text(" Twitter")
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: Column(
+              children: [
+                const Text(
+                  "Contato",
+                  style: TextStyle(fontSize: 20),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Icon(Icons.phone_android),
+                      Text(
+                        " 71-9991-1325",
+                        style: TextStyle(),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.email_rounded),
+                      Text(
+                        " exemplo@hotmail.com",
+                        style: TextStyle(),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.location_on),
+                      Text(" Salvador-BA"),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.home),
+                      Text(" Rua praia dos santos"),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Column(
+              children: const [
+                Text(
+                  "Alguma coisa",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   static void showSnackBar(BuildContext context, String text) {
@@ -426,6 +528,17 @@ class Post {
     return parsedString;
   }
 
+  bool contains(String keywords) {
+    if (title.toLowerCase().contains(keywords)) {
+      return true;
+    } else if (content.toLowerCase().contains(keywords)) {
+      return true;
+    } else if (authorName.toLowerCase().contains(keywords)) {
+      return true;
+    }
+    return false;
+  }
+
   Post({
     required this.id,
     required this.published,
@@ -482,13 +595,13 @@ class Blog {
       print("NULL JSONDATA");
     }
 
-    for (Post post in posts) {
-      // print(post.id);
-      // print(post.published);
-      // print(post.url);
-      print(post.title);
-      print(post.content);
-      // print(post.authorName);
-    }
+    // for (Post post in posts) {
+    //   print(post.id);
+    //   print(post.published);
+    //   print(post.url);
+    //   print(post.title);
+    //   print(post.content);
+    //   print(post.authorName);
+    // }
   }
 }
