@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -374,13 +375,38 @@ class MyContainerService extends StatelessWidget {
         width: SiteConfig.screenWidth * 0.7,
         child: Column(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontSize: 40),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                title,
+                style: const TextStyle(fontSize: 40),
+              ),
             ),
-            Text(
-              text,
-              style: TextStyle(fontSize: 18),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 30),
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 18),
+              ),
+            ),
+            CarouselSlider(
+              options: CarouselOptions(
+                  height: 400.0, enableInfiniteScroll: true, autoPlay: true),
+              items: [
+                Image.asset("assets/images/paula/paulaMesa.jpg"),
+                Image.asset("assets/images/paula/paulaPerfil.jpg"),
+                Image.asset("assets/images/paula/paulaBanner.jpg"),
+                Image.asset("assets/images/paula/logoMarca.jpeg")
+              ].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 1),
+                        child: i);
+                  },
+                );
+              }).toList(),
             ),
           ],
         ),
