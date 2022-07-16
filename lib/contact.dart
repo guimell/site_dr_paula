@@ -74,7 +74,7 @@ class ContactPageState extends State<ContactPage> {
                   child: Column(
                     children: [
                       const Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(30.0),
                         child: Text(
                           "Contato",
                           style: TextStyle(
@@ -94,12 +94,25 @@ class ContactPageState extends State<ContactPage> {
                         labelText: 'E-mail :',
                         myController: myControllerEmail,
                       ),
-                      MyTextField(
-                        labelText: 'Mensagem :',
-                        myController: myControllerMensagem,
+                      // MyTextField(
+                      //   labelText: 'Mensagem :',
+                      //   myController: myControllerMensagem,
+                      // ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: TextFormField(
+                          maxLines: 10,
+                          controller: myControllerMensagem,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
+                            labelText: 'Mensagem :',
+                          ),
+                        ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -114,6 +127,7 @@ class ContactPageState extends State<ContactPage> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 50),
                 SiteConfig.getFooter(),
               ],
             ),
