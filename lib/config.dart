@@ -122,6 +122,8 @@ class SiteConfig {
     ];
 
     return AppBar(
+      elevation: 8,
+      shadowColor: lightColors.primary.withAlpha(100),
       toolbarHeight: 70,
       backgroundColor: lightColors.background,
       foregroundColor: lightColors.primary,
