@@ -1,6 +1,7 @@
 import 'package:html/parser.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -515,10 +516,11 @@ class SiteConfig {
 
 class Post {
   final String id;
-  final String published;
   final String url;
   final String title;
   final String authorName;
+  late String published;
+  late String updated;
   late String content;
   late String image;
 
@@ -544,6 +546,7 @@ class Post {
   Post({
     required this.id,
     required this.published,
+    required this.updated,
     required this.url,
     required this.title,
     required this.authorName,
@@ -561,6 +564,11 @@ class Post {
     }
     // text content
     content = _parseHtmlString(content);
+    // format date
+    DateTime date = DateTime.parse(published);
+    published = DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br').format(date);
+    date = DateTime.parse(updated);
+    updated = DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br').format(date);
   }
 }
 
@@ -586,6 +594,7 @@ class Blog {
           Post(
             id: post["id"] ??= "",
             published: post["published"] ??= "",
+            updated: post["updated"] ??= "",
             url: post["url"] ??= "",
             title: post["title"] ??= "",
             content: post["content"] ??= "",

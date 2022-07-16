@@ -1,6 +1,6 @@
+import 'package:transparent_image/transparent_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 // import 'dart:html' as html;
 
@@ -320,11 +320,16 @@ class BlogPost extends StatelessWidget {
               // info section
               Expanded(
                 flex: 2,
-                child: Center(
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  width: width - 16,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(post.authorName),
                       Text(post.published),
+                      // Text(post.updated),
                       ElevatedButton(
                         onPressed: () {
                           // html.window.open(post.url, "read blog");
