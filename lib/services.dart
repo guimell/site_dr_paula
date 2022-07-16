@@ -1,5 +1,3 @@
-import 'package:lorem_ipsum/lorem_ipsum.dart';
-
 import 'widgets.dart';
 import 'package:flutter/material.dart';
 
