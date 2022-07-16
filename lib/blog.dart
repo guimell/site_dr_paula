@@ -57,7 +57,6 @@ class _BlogPageState extends State<BlogPage> {
             height: 80,
             width: SiteConfig.screenWidth * 0.70,
             margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
             child: MyTextField(
               labelText: 'Search topics and key words',
               myController: searchController,
