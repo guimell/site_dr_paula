@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:transparent_image/transparent_image.dart';
+
+// import 'dart:html' as html;
 
 import 'config.dart';
 
@@ -52,23 +54,7 @@ class PageHeader extends StatelessWidget {
           'Our Courses',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: ResponsiveValue(
-              context,
-              defaultValue: 60.0,
-              valueWhen: const [
-                Condition.smallerThan(
-                  name: MOBILE,
-                  value: 40.0,
-                ),
-                Condition.largerThan(
-                  name: TABLET,
-                  value: 80.0,
-                )
-              ],
-            ).value,
-            // color: MediaQuery.platformBrightnessOf(context) == Brightness.light
-            //     ? Colors.black
-            //     : Colors.white,
+            fontSize: 30 + SiteConfig.screenWidth * 0.01,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -114,10 +100,14 @@ class SubscribeBlock extends StatelessWidget {
 class MyTextField extends StatelessWidget {
   final String labelText;
   final TextEditingController myController;
+  final Function(String)? onChanged;
 
-  const MyTextField(
-      {Key? key, required this.labelText, required this.myController})
-      : super(key: key);
+  const MyTextField({
+    Key? key,
+    required this.labelText,
+    required this.myController,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -126,10 +116,16 @@ class MyTextField extends StatelessWidget {
       child: TextField(
         controller: myController,
         decoration: InputDecoration(
-            border: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
-            ),
-            labelText: labelText),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black),
+          ),
+          labelText: labelText,
+        ),
+        onChanged: onChanged != null
+            ? (text) {
+                onChanged!(text);
+              }
+            : null,
       ),
     );
   }
@@ -278,32 +274,80 @@ class BlogPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool smallScreen = SiteConfig.screenHeight > SiteConfig.screenWidth;
+    final double width = smallScreen
+        ? SiteConfig.screenWidth * 0.8
+        : SiteConfig.screenWidth * 0.8 / 3;
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        color: Colors.grey.withAlpha(10),
+      padding: const EdgeInsets.all(30.0),
+      child: SizedBox(
+        height: SiteConfig.screenHeight * 0.8,
+        width: width,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              post.image == ""
-                  ? const SizedBox()
-                  : FadeInImage.assetNetwork(
-                      placeholder: "assets/images/Ripple.gif",
-                      image: post.image,
+              // image section
+              Expanded(
+                flex: 4,
+                child: post.image == ""
+                    ? Container(color: Colors.white)
+                    : Stack(
+                        children: [
+                          const Center(child: CircularProgressIndicator()),
+                          Center(
+                            child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: post.image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
+              // title section
+              Expanded(
+                flex: 2,
+                child: Center(
+                  child: Text(
+                    post.title,
+                    overflow: TextOverflow.fade,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
-              Text(post.published),
-              // Text(post.authorName),
-              Text(post.content),
-              // Text(post.id),
-              ElevatedButton(
-                onPressed: () {
-                  // go to url
-                  print(post.url);
-                },
-                child: const Text("Read More!"),
-              )
+                  ),
+                ),
+              ),
+              // text section
+              Expanded(
+                flex: 4,
+                child: Text(
+                  post.content,
+                  overflow: TextOverflow.fade,
+                  style: TextStyle(
+                    color: Colors.grey.withAlpha(200),
+                  ),
+                ),
+              ),
+              // info section
+              Expanded(
+                flex: 2,
+                child: Center(
+                  child: Column(
+                    children: [
+                      Text(post.authorName),
+                      Text(post.published),
+                      ElevatedButton(
+                        onPressed: () {
+                          // html.window.open(post.url, "read blog");
+                        },
+                        child: const Text("Read More!"),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -324,21 +368,10 @@ class MyContainerService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(22),
       child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-            borderRadius: BorderRadius.circular(5),
-            color: const Color.fromARGB(255, 175, 127, 75)),
-        width: SiteConfig.screenWidth * 0.6,
+        padding: const EdgeInsets.all(12),
+        width: SiteConfig.screenWidth * 0.7,
         child: Column(
           children: [
             Text(
