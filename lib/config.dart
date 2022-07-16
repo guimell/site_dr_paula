@@ -1,7 +1,6 @@
 import 'package:html/parser.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -323,19 +322,19 @@ class SiteConfig {
         height: sizeH,
         width: sizeW,
         margin: const EdgeInsets.all(8),
-        child: Center(child: Text(loremIpsum(words: words))),
+        // child: Center(child: Text(loremIpsum(words: words))),
       ),
       Container(
         height: sizeH,
         width: sizeW,
         margin: const EdgeInsets.all(8),
-        child: Center(child: Text(loremIpsum(words: words))),
+        // child: Center(child: Text(loremIpsum(words: words))),
       ),
       Container(
         height: sizeH,
         width: sizeW,
         margin: const EdgeInsets.all(8),
-        child: Center(child: Text(loremIpsum(words: words))),
+        // child: Center(child: Text(loremIpsum(words: words))),
       ),
     ];
     return smallScreen

@@ -1,5 +1,3 @@
-import 'package:lorem_ipsum/lorem_ipsum.dart';
-
 import 'widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -31,11 +29,11 @@ class AboutPageState extends State<AboutPage> {
                 style: TextStyle(fontSize: 50),
               ),
               const SizedBox(height: 100),
-              Text(loremIpsum(paragraphs: 2, words: 200)),
-              const SizedBox(height: 100),
-              Text(loremIpsum(paragraphs: 3, words: 300)),
-              const SizedBox(height: 100),
-              Text(loremIpsum(paragraphs: 2, words: 250)),
+              // Text(loremIpsum(paragraphs: 2, words: 200)),
+              // const SizedBox(height: 100),
+              // Text(loremIpsum(paragraphs: 3, words: 300)),
+              // const SizedBox(height: 100),
+              // Text(loremIpsum(paragraphs: 2, words: 250)),
               SiteConfig.getFooter(),
             ],
           ),

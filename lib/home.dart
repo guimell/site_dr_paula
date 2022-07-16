@@ -5,7 +5,6 @@ import 'package:site_dr_paula/config.dart';
 import 'widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'config.dart';
-import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
