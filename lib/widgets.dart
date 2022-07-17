@@ -311,32 +311,33 @@ class BlogPost extends StatelessWidget {
             // image section
             Expanded(
               flex: 8,
-              child: post.image == ""
-                  ? Container(color: Colors.white)
-                  : Stack(
-                      children: [
-                        const Center(child: CircularProgressIndicator()),
-                        Center(
-                          child: FadeInImage.memoryNetwork(
+              child: Stack(
+                children: [
+                  const Center(child: CircularProgressIndicator()),
+                  Center(
+                    child: post.image == ""
+                        ? Image.asset(
+                            "assets/images/nope/service_temp.png",
+                            fit: BoxFit.cover,
+                          )
+                        : FadeInImage.memoryNetwork(
                             placeholder: kTransparentImage,
                             image: post.image,
                             fit: BoxFit.cover,
                           ),
-                        ),
-                      ],
-                    ),
+                  ),
+                ],
+              ),
             ),
             // title section
             Expanded(
               flex: 4,
-              child: Center(
-                child: Text(
-                  post.title,
-                  overflow: TextOverflow.fade,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+              child: Text(
+                post.title,
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -345,7 +346,6 @@ class BlogPost extends StatelessWidget {
               flex: 8,
               child: Text(
                 post.content,
-                overflow: TextOverflow.fade,
                 style: TextStyle(
                   color: Colors.grey.withAlpha(200),
                 ),
