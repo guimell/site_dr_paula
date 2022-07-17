@@ -6,6 +6,40 @@ import 'package:flutter/material.dart';
 
 import 'config.dart';
 
+class AppBarButton extends StatelessWidget {
+  final String text;
+  final Widget page;
+  final bool autofocus;
+  const AppBarButton({
+    Key? key,
+    required this.text,
+    required this.page,
+    required this.autofocus,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: TextButton(
+        style: SiteConfig.buttonStyle,
+        autofocus: autofocus,
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => page,
+              settings: RouteSettings(name: "/$text"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        child: Text(text),
+      ),
+    );
+  }
+}
+
 class MenuTextButton extends StatelessWidget {
   final String text;
   const MenuTextButton({Key? key, required this.text}) : super(key: key);

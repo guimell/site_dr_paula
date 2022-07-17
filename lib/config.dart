@@ -48,87 +48,46 @@ class SiteConfig {
     onSurface: Colors.white,
   );
 
+  static ButtonStyle buttonStyle = ButtonStyle(
+    minimumSize: MaterialStateProperty.all(Size(100, 50)),
+    maximumSize: MaterialStateProperty.all(Size(150, 100)),
+  );
+
   static AppBar getAppBar(BuildContext context, String title) {
-    print(screenWidth);
-    List<Widget> navigationButtons = [
-      TextButton(
+    const int navButtonsWidth = 775;
+    final List<Widget> navigationButtons = [
+      AppBarButton(
+        text: "Home",
+        page: const HomePage(),
         autofocus: title == "Home",
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const HomePage(),
-              settings: const RouteSettings(name: "/Home"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Home"),
       ),
-      TextButton(
+      AppBarButton(
+        text: "Blog",
+        page: const BlogPage(),
         autofocus: title == "Blog",
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const BlogPage(),
-              settings: const RouteSettings(name: "/Blog"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Blog"),
       ),
-      TextButton(
+      AppBarButton(
+        text: "Contato",
+        page: const ContactPage(),
         autofocus: title == "Contato",
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const ContactPage(),
-              settings: const RouteSettings(name: "/Contato"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Contato"),
       ),
-      TextButton(
+      AppBarButton(
+        text: "Services",
+        page: const ServicesPage(),
         autofocus: title == "Services",
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const ServicesPage(),
-              settings: const RouteSettings(name: "/Services"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Services"),
       ),
-      TextButton(
+      AppBarButton(
+        text: "Sobre mim",
+        page: const AboutPage(),
         autofocus: title == "Sobre mim",
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const AboutPage(),
-              settings: const RouteSettings(name: "/Sobre-mim"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Sobre mim"),
       ),
     ];
-
     return AppBar(
       elevation: 8,
       shadowColor: lightColors.primary.withAlpha(100),
       toolbarHeight: 70,
-      backgroundColor: lightColors.background,
-      foregroundColor: lightColors.primary,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      foregroundColor: Theme.of(context).colorScheme.primary,
       centerTitle: true,
       title: Row(
         children: [
@@ -142,7 +101,7 @@ class SiteConfig {
           const Text('Dr. Paula'),
         ],
       ),
-      leading: screenWidth < 565
+      leading: screenWidth < navButtonsWidth
           ? IconButton(
               onPressed: () {
                 showDialog(
@@ -165,7 +124,9 @@ class SiteConfig {
             )
           : null,
       actions: [
-        screenWidth < 565 ? const SizedBox() : Row(children: navigationButtons),
+        screenWidth < navButtonsWidth
+            ? const SizedBox()
+            : Row(children: navigationButtons),
         IconButton(
           icon: const Icon(Icons.mark_email_unread_rounded),
           onPressed: () {},
@@ -180,14 +141,19 @@ class SiteConfig {
       backgroundColor: lightColors.primary,
       onPressed: (() async {
         print("object");
-        Uri uri = Uri.parse("https://wa.me/?text=Your Message here");
+        String phone = "557199512008";
+        String text = Uri.encodeFull("Ola Dr. Paula!");
+        Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
         if (await canLaunchUrl(uri)) {
           await launchUrl(uri);
         } else {
           throw 'Could not launch $uri';
         }
       }),
-      child: const Icon(Icons.chat),
+      child: const Icon(
+        Icons.whatsapp_rounded,
+        size: 40,
+      ),
     );
   }
 
