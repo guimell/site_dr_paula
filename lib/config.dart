@@ -276,13 +276,19 @@ class SiteConfig {
   }
 
   static Widget getFooter() {
-    double sizeI = 50;
-    final bool smallScreen = screenWidth < 10 * sizeI;
+    final double sizeI = 20 + screenWidth / 100;
+    final bool smallScreen = screenWidth < screenHeight;
     List<Widget> children = [
       Expanded(
-        child: Image.asset(
-          "assets/images/paula/logoMarca.jpeg",
-          fit: BoxFit.contain,
+        flex: smallScreen ? 1 : 5,
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Image.asset(
+            "assets/images/paula/logoMarca.jpeg",
+            fit: BoxFit.contain,
+            height: sizeI * 10,
+            width: sizeI * 10,
+          ),
         ),
       ),
       Expanded(
@@ -294,7 +300,7 @@ class SiteConfig {
           icon: FaIcon(
             FontAwesomeIcons.instagram,
             color: SiteConfig.lightColors.primary,
-            size: 50,
+            size: sizeI,
           ),
         ),
       ),
@@ -307,7 +313,7 @@ class SiteConfig {
           icon: FaIcon(
             FontAwesomeIcons.twitter,
             color: SiteConfig.lightColors.primary,
-            size: 50,
+            size: sizeI,
           ),
         ),
       ),
@@ -320,33 +326,21 @@ class SiteConfig {
           icon: FaIcon(
             FontAwesomeIcons.facebook,
             color: SiteConfig.lightColors.primary,
-            size: 50,
+            size: sizeI,
           ),
         ),
       )
     ];
-    return smallScreen
-        ? SizedBox(
-            height: 250,
-            width: screenWidth,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: children,
-            ),
-          )
-        : SizedBox(
-            // height: 100,
-            width: screenWidth,
-            child: Column(
-              children: [
-                SizedBox(height: screenHeight * 0.1),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: children,
-                ),
-              ],
-            ),
-          );
+    return Container(
+      // color: Colors.black,
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      height: sizeI * 4,
+      width: screenWidth,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
+      ),
+    );
   }
 
   static Future<void> tryLaunchUri(Uri uri) async {
