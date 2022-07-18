@@ -1,3 +1,4 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -297,20 +298,41 @@ class SiteConfig {
         height: sizeH,
         width: sizeW,
         margin: const EdgeInsets.all(8),
-        // child: Center(child: Text(loremIpsum(words: words))),
+        child: IconButton(
+          onPressed: () {},
+          icon: FaIcon(
+            FontAwesomeIcons.instagram,
+            color: SiteConfig.lightColors.primary,
+            size: 50,
+          ),
+        ),
       ),
       Container(
         height: sizeH,
         width: sizeW,
         margin: const EdgeInsets.all(8),
-        // child: Center(child: Text(loremIpsum(words: words))),
+        child: IconButton(
+          onPressed: () {},
+          icon: FaIcon(
+            FontAwesomeIcons.twitter,
+            color: SiteConfig.lightColors.primary,
+            size: 50,
+          ),
+        ),
       ),
       Container(
         height: sizeH,
         width: sizeW,
         margin: const EdgeInsets.all(8),
-        // child: Center(child: Text(loremIpsum(words: words))),
-      ),
+        child: IconButton(
+          onPressed: () {},
+          icon: FaIcon(
+            FontAwesomeIcons.facebook,
+            color: SiteConfig.lightColors.primary,
+            size: 50,
+          ),
+        ),
+      )
     ];
     return smallScreen
         ? Column(
@@ -326,118 +348,6 @@ class SiteConfig {
               ),
             ],
           );
-  }
-
-  static Widget getFooter2() {
-    return Container(
-      height: SiteConfig.screenHeight * 0.25,
-      width: SiteConfig.screenWidth,
-      color: Colors.grey.withAlpha(20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: SizedBox(
-              height: 200,
-              width: 200,
-              child: Column(
-                children: [
-                  const Text(
-                    "Redes sociais",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Row(
-                    children: const [
-                      Icon(Icons.photo_camera),
-                      Text(" Instagram")
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(Icons.facebook_rounded),
-                      Text(" Facebook")
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(Icons.airplanemode_active),
-                      Text(" Twitter")
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 200,
-            width: 200,
-            child: Column(
-              children: [
-                const Text(
-                  "Contato",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Icon(Icons.phone_android),
-                      Text(
-                        " 71-9991-1325",
-                        style: TextStyle(),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.email_rounded),
-                      Text(
-                        " exemplo@hotmail.com",
-                        style: TextStyle(),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.location_on),
-                      Text(" Salvador-BA"),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.home),
-                      Text(" Rua praia dos santos"),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Column(
-              children: const [
-                Text(
-                  "Alguma coisa",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   static void showSnackBar(BuildContext context, String text) {
