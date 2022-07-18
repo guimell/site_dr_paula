@@ -1,20 +1,20 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
+import 'package:html/parser.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ui' as ui;
 
-import 'blog.dart';
-import 'home.dart';
-import 'about.dart';
-import 'contact.dart';
 import 'widgets.dart';
-import 'services.dart';
+import 'screens/blog.dart';
+import 'screens/home.dart';
+import 'screens/about.dart';
+import 'screens/contact.dart';
+import 'screens/services.dart';
 
 class SiteConfig {
   //Screen size
@@ -50,8 +50,8 @@ class SiteConfig {
   );
 
   static ButtonStyle buttonStyle = ButtonStyle(
-    minimumSize: MaterialStateProperty.all(Size(100, 50)),
-    maximumSize: MaterialStateProperty.all(Size(150, 100)),
+    minimumSize: MaterialStateProperty.all(const Size(100, 50)),
+    maximumSize: MaterialStateProperty.all(const Size(150, 100)),
   );
 
   static AppBar getAppBar(BuildContext context, String title) {
@@ -145,11 +145,7 @@ class SiteConfig {
         String phone = "557199512008";
         String text = Uri.encodeFull("Ola Dr. Paula!");
         Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
-        if (await canLaunchUrl(uri)) {
-          await launchUrl(uri);
-        } else {
-          throw 'Could not launch $uri';
-        }
+        tryLaunchUri(uri);
       }),
       child: const Icon(
         Icons.whatsapp_rounded,
@@ -299,7 +295,10 @@ class SiteConfig {
         width: sizeW,
         margin: const EdgeInsets.all(8),
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Uri uri = Uri.parse("https://www.instagram.com/guimell___eu/");
+            tryLaunchUri(uri);
+          },
           icon: FaIcon(
             FontAwesomeIcons.instagram,
             color: SiteConfig.lightColors.primary,
@@ -312,7 +311,10 @@ class SiteConfig {
         width: sizeW,
         margin: const EdgeInsets.all(8),
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Uri uri = Uri.parse("https://www.twitter.com");
+            tryLaunchUri(uri);
+          },
           icon: FaIcon(
             FontAwesomeIcons.twitter,
             color: SiteConfig.lightColors.primary,
@@ -325,7 +327,10 @@ class SiteConfig {
         width: sizeW,
         margin: const EdgeInsets.all(8),
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Uri uri = Uri.parse("https://www.facebook.com/davi.guimell");
+            tryLaunchUri(uri);
+          },
           icon: FaIcon(
             FontAwesomeIcons.facebook,
             color: SiteConfig.lightColors.primary,
@@ -348,6 +353,14 @@ class SiteConfig {
               ),
             ],
           );
+  }
+
+  static Future<void> tryLaunchUri(Uri uri) async {
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $uri';
+    }
   }
 
   static void showSnackBar(BuildContext context, String text) {

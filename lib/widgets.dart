@@ -1,11 +1,9 @@
-import 'package:transparent_image/transparent_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
-// import 'dart:html' as html;
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 import 'config.dart';
-import 'services.dart';
+import 'screens/services.dart';
 
 class AppBarButton extends StatelessWidget {
   final String text;
@@ -367,7 +365,8 @@ class BlogPost extends StatelessWidget {
                     // Text(post.updated),
                     ElevatedButton(
                       onPressed: () {
-                        // html.window.open(post.url, "read blog");
+                        Uri uri = Uri.parse(post.url);
+                        SiteConfig.tryLaunchUri(uri);
                       },
                       child: const Text("Read More!"),
                     ),
