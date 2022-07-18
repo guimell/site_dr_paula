@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // import 'dart:html' as html;
 
 import 'config.dart';
+import 'services.dart';
 
 class AppBarButton extends StatelessWidget {
   final String text;
@@ -431,6 +432,54 @@ class MyContainerService extends StatelessWidget {
                   },
                 );
               }).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CarouselItem extends StatelessWidget {
+  final List<String> items;
+  const CarouselItem({Key? key, required this.items}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushReplacement(
+          PageRouteBuilder(
+            pageBuilder: (_, __, ___) => const ServicesPage(),
+            settings: const RouteSettings(name: "/Services"),
+            reverseTransitionDuration: Duration.zero,
+            transitionDuration: Duration.zero,
+          ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                child: Image.asset(items[0]),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                child: Image.asset(items[1]),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                child: Image.asset(items[2]),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                child: Image.asset(items[3]),
+              ),
             ),
           ],
         ),
