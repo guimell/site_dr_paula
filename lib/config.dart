@@ -276,24 +276,16 @@ class SiteConfig {
   }
 
   static Widget getFooter() {
-    int words = 40;
-    double sizeH = 200;
-    double sizeW = 200;
-    final bool smallScreen = sizeW * 4.5 > screenWidth;
+    double sizeI = 50;
+    final bool smallScreen = screenWidth < 10 * sizeI;
     List<Widget> children = [
-      Container(
-        height: sizeH,
-        width: sizeW,
-        margin: const EdgeInsets.all(8),
+      Expanded(
         child: Image.asset(
           "assets/images/paula/logoMarca.jpeg",
           fit: BoxFit.contain,
         ),
       ),
-      Container(
-        height: sizeH,
-        width: sizeW,
-        margin: const EdgeInsets.all(8),
+      Expanded(
         child: IconButton(
           onPressed: () {
             Uri uri = Uri.parse("https://www.instagram.com/guimell___eu/");
@@ -306,10 +298,7 @@ class SiteConfig {
           ),
         ),
       ),
-      Container(
-        height: sizeH,
-        width: sizeW,
-        margin: const EdgeInsets.all(8),
+      Expanded(
         child: IconButton(
           onPressed: () {
             Uri uri = Uri.parse("https://www.twitter.com");
@@ -322,10 +311,7 @@ class SiteConfig {
           ),
         ),
       ),
-      Container(
-        height: sizeH,
-        width: sizeW,
-        margin: const EdgeInsets.all(8),
+      Expanded(
         child: IconButton(
           onPressed: () {
             Uri uri = Uri.parse("https://www.facebook.com/davi.guimell");
@@ -340,18 +326,26 @@ class SiteConfig {
       )
     ];
     return smallScreen
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: children,
+        ? SizedBox(
+            height: 250,
+            width: screenWidth,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: children,
+            ),
           )
-        : Column(
-            children: [
-              SizedBox(height: screenHeight * 0.1),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: children,
-              ),
-            ],
+        : SizedBox(
+            // height: 100,
+            width: screenWidth,
+            child: Column(
+              children: [
+                SizedBox(height: screenHeight * 0.1),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: children,
+                ),
+              ],
+            ),
           );
   }
 
