@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'config.dart';
-import 'widgets.dart';
+
+import '../config.dart';
+import '../widgets.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({Key? key}) : super(key: key);

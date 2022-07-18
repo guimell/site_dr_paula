@@ -1,7 +1,7 @@
-import 'widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'config.dart';
+import '../config.dart';
+import '../widgets.dart';
 
 class ServicesPage extends StatefulWidget {
   final String textService1 =

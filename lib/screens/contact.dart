@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'widgets.dart';
-import 'config.dart';
+import '../config.dart';
+import '../widgets.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
