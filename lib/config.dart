@@ -12,7 +12,6 @@ import 'dart:ui' as ui;
 import 'widgets.dart';
 import 'screens/blog.dart';
 import 'screens/home.dart';
-import 'screens/about.dart';
 import 'screens/contact.dart';
 import 'screens/services.dart';
 
@@ -76,11 +75,6 @@ class SiteConfig {
         text: "Services",
         page: const ServicesPage(),
         autofocus: title == "Services",
-      ),
-      AppBarButton(
-        text: "Sobre mim",
-        page: const AboutPage(),
-        autofocus: title == "Sobre mim",
       ),
     ];
     return AppBar(
@@ -215,21 +209,6 @@ class SiteConfig {
           );
         },
         child: const Text("Services"),
-      ),
-      TextButton(
-        autofocus: title == "Sobre mim",
-        // style: buttonStyle,
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const AboutPage(),
-              settings: const RouteSettings(name: "/Sobre-mim"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Sobre mim"),
       ),
     ];
 
