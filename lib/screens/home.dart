@@ -20,16 +20,6 @@ class HomePage extends StatelessWidget {
       Expanded(
         flex: 1,
         child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
@@ -44,13 +34,10 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Text(
-
-
-            "Dra.Paula Brasil\nDentista\nEspecialista",
+            "Dra.Paula Brasil\nHarmonização Orofacial\nEspecialista",
             style: TextStyle(
               fontSize: SiteConfig.screenWidth / 75 + 15,
               color: const Color.fromARGB(255, 175, 127, 75),
-
             ),
           ),
         ),
@@ -61,7 +48,6 @@ class HomePage extends StatelessWidget {
         flex: smallScreen ? 2 : 2,
         child: Padding(
           padding: const EdgeInsets.all(50),
-
           child: Text(
             "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
             " venho realizando diversos cursos de atualização,"
@@ -79,16 +65,6 @@ class HomePage extends StatelessWidget {
       Expanded(
         flex: 1,
         child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
           child: Image.asset(
             "assets/images/paula/paulaVacina.jpg",
             fit: BoxFit.fill,
@@ -128,16 +104,6 @@ class HomePage extends StatelessWidget {
       Expanded(
         flex: 1,
         child: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Color.fromARGB(255, 80, 80, 80).withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 6), // changes position of shadow
-              ),
-            ],
-          ),
           child: Image.asset(
             "assets/images/paula/paulaPerfil.jpg",
             fit: BoxFit.fill,
@@ -163,16 +129,6 @@ class HomePage extends StatelessWidget {
               height: SiteConfig.screenHeight * 0.6,
               width: SiteConfig.screenWidth,
               child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
                 child: Image.asset(
                   "assets/images/paula/paulaDedo.jpg",
                   fit: BoxFit.fitWidth,
