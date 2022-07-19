@@ -14,6 +14,88 @@ class HomePage extends StatelessWidget {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
 
+    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+
+    List<Widget> topInnerRectangle = [
+      Expanded(
+        flex: 1,
+        child: Image.asset(
+          "assets/images/paula/logoMarca.jpeg",
+          fit: BoxFit.fill,
+        ),
+      ),
+      const Expanded(
+        flex: 2,
+        child: Padding(
+          padding: EdgeInsets.all(50),
+          child: Text(
+            "Dr.Paula\nDentista\nEspecialista",
+            style: TextStyle(fontSize: 50),
+          ),
+        ),
+      ),
+    ];
+    List<Widget> botInnerRectangle = [
+      const Expanded(
+        flex: 2,
+        child: Padding(
+          padding: EdgeInsets.all(50),
+          child: Text(
+            "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
+            " venho realizando diversos cursos de atualização,"
+            " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
+            " ou seja, você que está visitando minha página! \n\n"
+            "Sou apaixonada pela estética desde minha infância,"
+            " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
+            " através da HARMONIZAÇÃO OROFACIAL.",
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Image.asset(
+          "assets/images/paula/paulaVacina.jpg",
+          fit: BoxFit.fill,
+        ),
+      ),
+    ];
+
+    List<Widget> innerRectangle = [
+      Expanded(
+        child: Container(
+          color: SiteConfig.lightColors.primary.withAlpha(25),
+          child: Row(
+            children: topInnerRectangle,
+          ),
+        ),
+      ),
+      Expanded(
+        child: Container(
+          color: SiteConfig.lightColors.primary.withAlpha(25),
+          child: Row(
+            children: botInnerRectangle,
+          ),
+        ),
+      ),
+    ];
+
+    List<Widget> outerRectangle = [
+      Expanded(
+        flex: 1,
+        child: Image.asset(
+          "assets/images/paula/paulaPerfil.jpg",
+          fit: BoxFit.fill,
+        ),
+      ),
+      Expanded(
+        flex: 2,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: innerRectangle,
+        ),
+      ),
+    ];
+
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, title),
       floatingActionButton: SiteConfig.getFAB(),
@@ -21,12 +103,13 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-                height: SiteConfig.screenHeight * 0.6,
-                width: SiteConfig.screenWidth,
-                child: Image.asset(
-                  "assets/images/paula/paulaDedo.jpg",
-                  fit: BoxFit.fitWidth,
-                )),
+              height: SiteConfig.screenHeight * 0.6,
+              width: SiteConfig.screenWidth,
+              child: Image.asset(
+                "assets/images/paula/paulaDedo.jpg",
+                fit: BoxFit.fitWidth,
+              ),
+            ),
             CarouselSlider(
               options: CarouselOptions(
                   height: 400.0, enableInfiniteScroll: true, autoPlay: true),
@@ -61,84 +144,7 @@ class HomePage extends StatelessWidget {
               height: SiteConfig.screenHeight * 0.8,
               width: SiteConfig.screenWidth,
               child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Image.asset(
-                      "assets/images/paula/paulaPerfil.jpg",
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: SiteConfig.lightColors.primary.withAlpha(25),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Image.asset(
-                                    "assets/images/paula/logoMarca.jpeg",
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(50),
-                                      child: Text(
-                                        "Dr.Paula\nDentista\nEspecialista",
-                                        style: TextStyle(fontSize: 50),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            color: SiteConfig.lightColors.primary.withAlpha(25),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(50),
-                                      child: Text(
-                                        "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
-                                        " venho realizando diversos cursos de atualização,"
-                                        " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
-                                        " ou seja, você que está visitando minha página! \n\n"
-                                        "Sou apaixonada pela estética desde minha infância,"
-                                        " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
-                                        " através da HARMONIZAÇÃO OROFACIAL.",
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Image.asset(
-                                    "assets/images/paula/paulaVacina.jpg",
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                children: outerRectangle,
               ),
             ),
             SiteConfig.getFooter(),
