@@ -123,17 +123,34 @@ class ServicesPageState extends State<ServicesPage> {
           children: [
             Align(
               alignment: Alignment.center,
-              child: Image.asset(
-                "assets/images/nope/service_temp.png",
-                opacity: const AlwaysStoppedAnimation<double>(100),
-                fit: BoxFit.fitWidth,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Image.asset(
+                    "assets/images/paula/paulaMesa.jpg",
+                    opacity: const AlwaysStoppedAnimation<double>(100),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
               ),
             ),
             const Align(
               alignment: Alignment.center,
               child: Text(
-                "What We Can Provide For You",
-                style: TextStyle(fontSize: 30),
+                "serviços:",
+                style: TextStyle(
+                  fontSize: 60,
+                ),
               ),
             ),
           ],

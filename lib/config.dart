@@ -273,7 +273,7 @@ class SiteConfig {
       Expanded(
         child: IconButton(
           onPressed: () {
-            Uri uri = Uri.parse("https://www.instagram.com/guimell___eu/");
+            Uri uri = Uri.parse("https://www.instagram.com/drapaulabrasil/");
             tryLaunchUri(uri);
           },
           icon: FaIcon(
@@ -299,7 +299,7 @@ class SiteConfig {
       Expanded(
         child: IconButton(
           onPressed: () {
-            Uri uri = Uri.parse("https://www.facebook.com/davi.guimell");
+            Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
             tryLaunchUri(uri);
           },
           icon: FaIcon(

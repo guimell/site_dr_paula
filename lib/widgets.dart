@@ -397,6 +397,17 @@ class MyContainerService extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(22),
       child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
         padding: const EdgeInsets.all(12),
         width: SiteConfig.screenWidth * 0.7,
         child: Column(
@@ -405,7 +416,10 @@ class MyContainerService extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 title,
-                style: const TextStyle(fontSize: 40),
+                style: const TextStyle(
+                  fontSize: 40,
+                  color: Color.fromARGB(255, 175, 127, 75),
+                ),
               ),
             ),
             Padding(
@@ -419,10 +433,13 @@ class MyContainerService extends StatelessWidget {
               options: CarouselOptions(
                   height: 400.0, enableInfiniteScroll: true, autoPlay: true),
               items: [
-                Image.asset("assets/images/paula/paulaMesa.jpg"),
-                Image.asset("assets/images/paula/paulaPerfil.jpg"),
-                Image.asset("assets/images/paula/paulaBanner.jpg"),
-                Image.asset("assets/images/paula/logoMarca.jpeg")
+                Image.asset("assets/images/serviços/pdo.jpg"),
+                Image.asset(
+                  "assets/images/serviços/pdo1.webp",
+                  fit: BoxFit.fitWidth,
+                ),
+                Image.asset("assets/images/serviços/pdo2.jpg"),
+                Image.asset("assets/images/serviços/pdo3.png")
               ].map((i) {
                 return Builder(
                   builder: (BuildContext context) {
@@ -467,16 +484,28 @@ class CarouselItem extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Image.asset(items[0]),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(items[0]),
+              ),
             ),
             Expanded(
-              child: Image.asset(items[1]),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(items[1]),
+              ),
             ),
             Expanded(
-              child: Image.asset(items[2]),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(items[2]),
+              ),
             ),
             Expanded(
-              child: Image.asset(items[3]),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(items[3]),
+              ),
             ),
           ],
         ),

@@ -129,6 +129,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Container(
+
                   color: SiteConfig.lightColors.primary.withAlpha(25),
                   child: const GoogleMaps(),
                 ),
