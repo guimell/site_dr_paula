@@ -30,7 +30,10 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(50),
           child: Text(
             "Dr.Paula\nDentista\nEspecialista",
-            style: TextStyle(fontSize: SiteConfig.screenWidth / 75 + 15),
+            style: TextStyle(
+              fontSize: SiteConfig.screenWidth / 75 + 15,
+              color: SiteConfig.lightColors.primary,
+            ),
           ),
         ),
       ),
@@ -38,8 +41,8 @@ class HomePage extends StatelessWidget {
     List<Widget> botInnerRectangle = [
       Expanded(
         flex: smallScreen ? 1 : 2,
-        child: const Padding(
-          padding: EdgeInsets.all(50),
+        child: Padding(
+          padding: const EdgeInsets.all(50),
           child: Text(
             "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
             " venho realizando diversos cursos de atualização,"
@@ -48,6 +51,9 @@ class HomePage extends StatelessWidget {
             "Sou apaixonada pela estética desde minha infância,"
             " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
             " através da HARMONIZAÇÃO OROFACIAL.",
+            style: TextStyle(
+              color: SiteConfig.lightColors.primary,
+            ),
           ),
         ),
       ),
