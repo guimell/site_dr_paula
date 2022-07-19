@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../config.dart';
+import '../google.dart';
 import '../widgets.dart';
 
 class ContactPage extends StatefulWidget {
@@ -127,6 +128,7 @@ class ContactPageState extends State<ContactPage> {
                     ],
                   ),
                 ),
+                const maps(),
                 const SizedBox(height: 50),
                 SiteConfig.getFooter(),
               ],
