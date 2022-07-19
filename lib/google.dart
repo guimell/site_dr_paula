@@ -51,7 +51,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
                 mapType: MapType.normal,
                 initialCameraPosition: const CameraPosition(
                     target: LatLng(-12.974347285704514, -38.513044658283896),
-                    zoom: 13),
+                    zoom: 17),
               ),
             )
           : const CircularProgressIndicator(),
