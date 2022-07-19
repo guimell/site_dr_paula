@@ -1,19 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:site_dr_paula/config.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class maps extends StatefulWidget {
-  const maps({Key? key}) : super(key: key);
+class GoogleMaps extends StatefulWidget {
+  const GoogleMaps({Key? key}) : super(key: key);
 
   @override
-  State<maps> createState() => _mapsState();
+  State<GoogleMaps> createState() => _GoogleMapsState();
 }
 
-// ignore: camel_case_types
-class _mapsState extends State<maps> {
+class _GoogleMapsState extends State<GoogleMaps> {
   late GoogleMapController mapscontroller;
   final List<Marker> _markers = [];
   bool showmaps = true;
