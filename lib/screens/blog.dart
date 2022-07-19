@@ -56,8 +56,10 @@ class _BlogPageState extends State<BlogPage> {
       body: Column(
         children: [
           Container(
-            height: 80,
-            width: SiteConfig.screenWidth * 0.70,
+            height: 70,
+            width: smallScreen
+                ? SiteConfig.screenWidth * 0.70
+                : SiteConfig.screenWidth * 0.60,
             margin: const EdgeInsets.all(10),
             child: MyTextField(
               labelText: 'Search topics and key words',
