@@ -19,9 +19,24 @@ class HomePage extends StatelessWidget {
     List<Widget> topInnerRectangle = [
       Expanded(
         flex: 1,
-        child: Image.asset(
-          "assets/images/paula/logoMarca.jpeg",
-          fit: BoxFit.fill,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              "assets/images/paula/logoMarca.jpeg",
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
       ),
       Expanded(
@@ -29,8 +44,11 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Text(
-            "Dr.Paula\nDentista\nEspecialista",
-            style: TextStyle(fontSize: SiteConfig.screenWidth / 75 + 15),
+            "Dra.Paula Brasil\nDentista\nEspecialista",
+            style: TextStyle(
+              fontSize: SiteConfig.screenWidth / 75 + 15,
+              color: const Color.fromARGB(255, 175, 127, 75),
+            ),
           ),
         ),
       ),
@@ -49,16 +67,31 @@ class HomePage extends StatelessWidget {
               "Sou apaixonada pela estética desde minha infância,"
               " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
               " através da HARMONIZAÇÃO OROFACIAL.",
-              style: TextStyle(fontSize: SiteConfig.screenWidth / 200 + 12),
+              style: TextStyle(
+                fontSize: SiteConfig.screenWidth / 200 + 12,
+                color: Color.fromARGB(255, 175, 127, 75),
+              ),
             ),
           ),
         ),
       ),
       Expanded(
         flex: 1,
-        child: Image.asset(
-          "assets/images/paula/paulaVacina.jpg",
-          fit: BoxFit.fill,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Image.asset(
+            "assets/images/paula/paulaVacina.jpg",
+            fit: BoxFit.fill,
+          ),
         ),
       ),
     ];
@@ -93,9 +126,21 @@ class HomePage extends StatelessWidget {
     List<Widget> outerRectangle = [
       Expanded(
         flex: 1,
-        child: Image.asset(
-          "assets/images/paula/paulaPerfil.jpg",
-          fit: BoxFit.fill,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(255, 80, 80, 80).withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 6), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Image.asset(
+            "assets/images/paula/paulaPerfil.jpg",
+            fit: BoxFit.fill,
+          ),
         ),
       ),
       Expanded(
@@ -116,9 +161,21 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: SiteConfig.screenHeight * 0.6,
               width: SiteConfig.screenWidth,
-              child: Image.asset(
-                "assets/images/paula/paulaDedo.jpg",
-                fit: BoxFit.fitWidth,
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Image.asset(
+                  "assets/images/paula/paulaDedo.jpg",
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
             CarouselSlider(
@@ -130,17 +187,17 @@ class HomePage extends StatelessWidget {
               items: [
                 const CarouselItem(
                   items: [
-                    "assets/images/dart_course.png",
-                    "assets/images/paula/paulaMesa.jpg",
-                    "assets/images/paula/paulaPerfil.jpg",
-                    "assets/images/paula/paulaBanner.jpg",
+                    "assets/images/serviços/bichectomia.jpg",
+                    "assets/images/serviços/bioestimuladores.jpg",
+                    "assets/images/serviços/botox.png",
+                    "assets/images/serviços/microagulhamento.jpg",
                   ],
                 ),
                 const CarouselItem(
                   items: [
-                    "assets/images/paula/paulaMesa.jpg",
-                    "assets/images/paula/paulaPerfil.jpg",
-                    "assets/images/paula/paulaBanner.jpg",
+                    "assets/images/serviços/pdo.jpg",
+                    "assets/images/serviços/peeling.jpg",
+                    "assets/images/serviços/Preenchimento.jpg",
                     "assets/images/paula/logoMarca.jpeg"
                   ],
                 )
@@ -167,7 +224,10 @@ class HomePage extends StatelessWidget {
                       children: outerRectangle,
                     ),
             ),
-            SiteConfig.getFooter(),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: SiteConfig.getFooter(),
+            ),
           ],
         ),
       ),
