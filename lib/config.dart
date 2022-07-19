@@ -131,19 +131,25 @@ class SiteConfig {
   }
 
   static Widget getFAB() {
-    return FloatingActionButton(
-      foregroundColor: lightColors.background,
-      backgroundColor: lightColors.primary,
-      onPressed: (() async {
-        print("object");
-        String phone = "557199512008";
-        String text = Uri.encodeFull("Ola Dr. Paula!");
-        Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
-        tryLaunchUri(uri);
-      }),
-      child: const Icon(
-        Icons.whatsapp_rounded,
-        size: 40,
+    return SizedBox(
+      height: 250.0,
+      width: 250.0,
+      child: FittedBox(
+        child: FloatingActionButton(
+          foregroundColor: lightColors.background,
+          backgroundColor: lightColors.primary,
+          onPressed: (() async {
+            print("object");
+            String phone = "557199512008";
+            String text = Uri.encodeFull("Ola Dr. Paula!");
+            Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
+            tryLaunchUri(uri);
+          }),
+          child: const Icon(
+            Icons.whatsapp_rounded,
+            size: 40,
+          ),
+        ),
       ),
     );
   }
