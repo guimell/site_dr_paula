@@ -71,6 +71,7 @@ flutter:
     - assets/images/
     - assets/images/paula/
     - assets/images/nope/
+    - assets/images/serviços/
    
 
   # An image asset can refer to one or more resolution-specific "variants", see
