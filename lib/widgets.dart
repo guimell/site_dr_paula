@@ -445,6 +445,7 @@ class CarouselItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
     return InkWell(
       onTap: () {
         Navigator.of(context).pushReplacement(
@@ -457,28 +458,23 @@ class CarouselItem extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 10),
+        padding: EdgeInsets.symmetric(
+          horizontal: smallScreen ? 50 : 200,
+          vertical: 10,
+        ),
         child: Row(
           children: [
             Expanded(
-              child: Container(
-                child: Image.asset(items[0]),
-              ),
+              child: Image.asset(items[0]),
             ),
             Expanded(
-              child: Container(
-                child: Image.asset(items[1]),
-              ),
+              child: Image.asset(items[1]),
             ),
             Expanded(
-              child: Container(
-                child: Image.asset(items[2]),
-              ),
+              child: Image.asset(items[2]),
             ),
             Expanded(
-              child: Container(
-                child: Image.asset(items[3]),
-              ),
+              child: Image.asset(items[3]),
             ),
           ],
         ),
