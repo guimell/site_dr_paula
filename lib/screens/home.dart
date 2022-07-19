@@ -37,12 +37,11 @@ class HomePage extends StatelessWidget {
     ];
     List<Widget> botInnerRectangle = [
       Expanded(
-        flex: smallScreen ? 1 : 2,
+        flex: smallScreen ? 2 : 2,
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Container(
-            color: Colors.amber,
-            child: const Text(
+            child: Text(
               "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
               " venho realizando diversos cursos de atualização,"
               " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
@@ -50,6 +49,7 @@ class HomePage extends StatelessWidget {
               "Sou apaixonada pela estética desde minha infância,"
               " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
               " através da HARMONIZAÇÃO OROFACIAL.",
+              style: TextStyle(fontSize: SiteConfig.screenWidth / 200 + 12),
             ),
           ),
         ),
