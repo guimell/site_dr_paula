@@ -299,83 +299,85 @@ class BlogPost extends StatelessWidget {
         ? SiteConfig.screenWidth * 0.8
         : SiteConfig.screenWidth * 0.8 / 3;
     return Container(
-      // color: Colors.black,
-      margin: const EdgeInsets.all(30.0),
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(8),
+      //   color: SiteConfig.lightColors.primary.withAlpha(25),
+      // ),
+      margin: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(10.0),
       height: SiteConfig.screenHeight,
       width: width,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            // image section
-            Expanded(
-              flex: 8,
-              child: Stack(
-                children: [
-                  const Center(child: CircularProgressIndicator()),
-                  Center(
-                    child: post.image == ""
-                        ? Image.asset(
-                            "assets/images/nope/service_temp.png",
-                            fit: BoxFit.cover,
-                          )
-                        : FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image: post.image,
-                            fit: BoxFit.cover,
-                          ),
+      child: Column(
+        children: [
+          // image section
+          SiteConfig.screenHeight < 400
+              ? const SizedBox()
+              : Expanded(
+                  flex: 8,
+                  child: Stack(
+                    children: [
+                      const Center(child: CircularProgressIndicator()),
+                      Center(
+                        child: post.image == ""
+                            ? Image.asset(
+                                "assets/images/nope/service_temp.png",
+                                fit: BoxFit.cover,
+                              )
+                            : FadeInImage.memoryNetwork(
+                                placeholder: kTransparentImage,
+                                image: post.image,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            // title section
-            Expanded(
-              flex: 4,
-              child: Text(
-                post.title,
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
                 ),
+          // title section
+          Expanded(
+            flex: 4,
+            child: Text(
+              post.title,
+              textAlign: TextAlign.left,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            // text section
-            Expanded(
-              flex: 8,
-              child: Text(
-                post.content,
-                style: TextStyle(
-                  color: Colors.grey.withAlpha(200),
-                ),
-              ),
-            ),
-            // info section
-            Expanded(
-              flex: 6,
-              child: Container(
-                padding: const EdgeInsets.only(top: 8),
-                width: width - 16,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(post.authorName),
-                    Text(post.published),
-                    // Text(post.updated),
-                    ElevatedButton(
-                      onPressed: () {
-                        Uri uri = Uri.parse(post.url);
-                        SiteConfig.tryLaunchUri(uri);
-                      },
-                      child: const Text("Read More!"),
+          ),
+          // text section
+          SiteConfig.screenHeight < 600
+              ? const SizedBox()
+              : Expanded(
+                  flex: 8,
+                  child: Text(
+                    post.content,
+                    style: TextStyle(
+                      color: Colors.grey.withAlpha(200),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+          // info section
+          Container(
+            padding: const EdgeInsets.only(top: 8),
+            width: width - 16,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(post.authorName),
+                Text(post.published),
+                // Text(post.updated),
+                ElevatedButton(
+                  onPressed: () {
+                    Uri uri = Uri.parse(post.url);
+                    SiteConfig.tryLaunchUri(uri);
+                  },
+                  child: const Text("Read More!"),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
