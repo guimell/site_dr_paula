@@ -41,6 +41,7 @@ class _BlogPageState extends State<BlogPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     postItems = [];
@@ -71,7 +72,7 @@ class _BlogPageState extends State<BlogPage> {
             width: SiteConfig.screenWidth,
             // child: SingleChildScrollView(
             child: ListView(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: smallScreen ? Axis.vertical : Axis.horizontal,
               // child: Row(
               children: postItems,
               // ),
