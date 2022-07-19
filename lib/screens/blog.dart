@@ -41,9 +41,9 @@ class _BlogPageState extends State<BlogPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
+    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
     postItems = [];
     for (Post post in Blog.posts) {
       if (post.contains(searchController.text) || searchController.text == "") {
