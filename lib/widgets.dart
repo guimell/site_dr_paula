@@ -392,17 +392,6 @@ class MyContainerService extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(22),
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
         padding: const EdgeInsets.all(12),
         width: SiteConfig.screenWidth * 0.7,
         child: Column(
