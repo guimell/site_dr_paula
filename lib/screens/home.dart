@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
         flex: 1,
         child: Image.asset(
           "assets/images/paula/logoMarcaT.png",
-          fit: BoxFit.fill,
+          fit: BoxFit.contain,
         ),
       ),
       Expanded(
@@ -116,9 +116,26 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: SiteConfig.screenHeight * 0.6,
               width: SiteConfig.screenWidth,
-              child: Image.asset(
-                "assets/images/paula/paulaMao.jpg",
-                fit: BoxFit.fitWidth,
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Image.asset(
+                      "assets/images/paula/paulaMao.jpg",
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                  const Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "TITLE TITLE\nSUB SUB",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(
