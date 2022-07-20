@@ -140,8 +140,7 @@ class ServicesPageState extends State<ServicesPage> {
   Widget build(BuildContext context) {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
-
-    bool smallScreen = SiteConfig.screenHeight > SiteConfig.screenWidth;
+    SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
 
     List<Widget> children = [
       SizedBox(

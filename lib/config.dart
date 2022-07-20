@@ -19,6 +19,7 @@ class SiteConfig {
   //Screen size
   static double screenWidth = 0;
   static double screenHeight = 0;
+  static bool smallScreen = false;
 
   // theme colors
   static ColorScheme lightColors = const ColorScheme(
@@ -62,6 +63,11 @@ class SiteConfig {
         autofocus: title == "Home",
       ),
       AppBarButton(
+        text: "Services",
+        page: const ServicesPage(),
+        autofocus: title == "Services",
+      ),
+      AppBarButton(
         text: "Blog",
         page: const BlogPage(),
         autofocus: title == "Blog",
@@ -70,11 +76,6 @@ class SiteConfig {
         text: "Contato",
         page: const ContactPage(),
         autofocus: title == "Contato",
-      ),
-      AppBarButton(
-        text: "Services",
-        page: const ServicesPage(),
-        autofocus: title == "Services",
       ),
     ];
     return AppBar(
@@ -262,7 +263,6 @@ class SiteConfig {
 
   static Widget getFooter() {
     final double sizeI = 20 + screenWidth / 100;
-    final bool smallScreen = screenWidth < screenHeight;
     List<Widget> children = [
       Expanded(
         flex: smallScreen ? 1 : 1,
@@ -278,6 +278,7 @@ class SiteConfig {
       ),
       Expanded(
         child: IconButton(
+          padding: EdgeInsets.zero,
           onPressed: () {
             Uri uri = Uri.parse("https://www.instagram.com/drapaulabrasil/");
             tryLaunchUri(uri);
@@ -291,6 +292,7 @@ class SiteConfig {
       ),
       Expanded(
         child: IconButton(
+          padding: EdgeInsets.zero,
           onPressed: () {
             Uri uri = Uri.parse("https://www.twitter.com");
             tryLaunchUri(uri);
@@ -304,6 +306,7 @@ class SiteConfig {
       ),
       Expanded(
         child: IconButton(
+          padding: EdgeInsets.zero,
           onPressed: () {
             Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
             tryLaunchUri(uri);
@@ -314,7 +317,11 @@ class SiteConfig {
             size: sizeI,
           ),
         ),
-      )
+      ),
+      const Expanded(
+        flex: 2,
+        child: SizedBox(),
+      ),
     ];
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -335,9 +342,11 @@ class SiteConfig {
     }
   }
 
-  static void showSnackBar(BuildContext context, String text) {
+  static void showSnackBar(BuildContext context, String text, bool good) {
     final snackBar = SnackBar(
       content: Text(text),
+      backgroundColor:
+          good ? SiteConfig.lightColors.primary : SiteConfig.lightColors.error,
     );
     ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()

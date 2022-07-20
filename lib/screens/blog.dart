@@ -43,7 +43,7 @@ class _BlogPageState extends State<BlogPage> {
   Widget build(BuildContext context) {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
-    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+    SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
     postItems = [];
     for (Post post in Blog.posts) {
       if (post.contains(searchController.text) || searchController.text == "") {
@@ -57,7 +57,7 @@ class _BlogPageState extends State<BlogPage> {
         children: [
           Container(
             height: 70,
-            width: smallScreen
+            width: SiteConfig.smallScreen
                 ? SiteConfig.screenWidth * 0.70
                 : SiteConfig.screenWidth * 0.60,
             margin: const EdgeInsets.all(10),
@@ -73,7 +73,8 @@ class _BlogPageState extends State<BlogPage> {
             height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 50,
             width: SiteConfig.screenWidth,
             child: ListView(
-              scrollDirection: smallScreen ? Axis.vertical : Axis.horizontal,
+              scrollDirection:
+                  SiteConfig.smallScreen ? Axis.vertical : Axis.horizontal,
               children: postItems,
             ),
           ),
