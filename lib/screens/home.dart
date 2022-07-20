@@ -121,49 +121,52 @@ class HomePage extends StatelessWidget {
                 fit: BoxFit.fitWidth,
               ),
             ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: SiteConfig.smallScreen
-                    ? SiteConfig.screenWidth * 0.8
-                    : SiteConfig.screenWidth / 4,
-                enableInfiniteScroll: true,
-                autoPlay: false,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: SiteConfig.smallScreen
+                      ? SiteConfig.screenWidth * 0.8
+                      : SiteConfig.screenWidth * 0.2,
+                  enableInfiniteScroll: true,
+                  autoPlay: false,
+                ),
+                items: [
+                  const CarouselItem(
+                    items: [
+                      "assets/images/serviços/bichectomia.jpg",
+                      "assets/images/serviços/bioestimuladores.jpg",
+                      "assets/images/serviços/botox.png",
+                      "assets/images/serviços/microagulhamento.jpg",
+                    ],
+                    titles: [
+                      "bichectomia",
+                      "bioestimuladores",
+                      "botox",
+                      "microagulhamento",
+                    ],
+                    indeces: [8, 2, 6, 5],
+                  ),
+                  const CarouselItem(
+                    items: [
+                      "assets/images/serviços/pdo.jpg",
+                      "assets/images/serviços/peeling.jpg",
+                      "assets/images/serviços/Preenchimento.jpg",
+                      "assets/images/paula/logoMarca.jpeg"
+                    ],
+                    titles: ["pdo", "peeling", "preenchimento", "logoMarca"],
+                    indeces: [1, 4, 7, 3],
+                  ),
+                ].map(
+                  (i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return i;
+                      },
+                    );
+                  },
+                ).toList(),
               ),
-              items: [
-                const CarouselItem(
-                  items: [
-                    "assets/images/serviços/bichectomia.jpg",
-                    "assets/images/serviços/bioestimuladores.jpg",
-                    "assets/images/serviços/botox.png",
-                    "assets/images/serviços/microagulhamento.jpg",
-                  ],
-                  titles: [
-                    "bichectomia",
-                    "bioestimuladores",
-                    "botox",
-                    "microagulhamento",
-                  ],
-                  indeces: [8, 2, 6, 5],
-                ),
-                const CarouselItem(
-                  items: [
-                    "assets/images/serviços/pdo.jpg",
-                    "assets/images/serviços/peeling.jpg",
-                    "assets/images/serviços/Preenchimento.jpg",
-                    "assets/images/paula/logoMarca.jpeg"
-                  ],
-                  titles: ["pdo", "peeling", "preenchimento", "logoMarca"],
-                  indeces: [1, 4, 7, 3],
-                ),
-              ].map(
-                (i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return i;
-                    },
-                  );
-                },
-              ).toList(),
             ),
             Container(
               color: SiteConfig.lightColors.primary.withAlpha(25),
