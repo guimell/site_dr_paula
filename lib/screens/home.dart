@@ -73,6 +73,7 @@ class HomePage extends StatelessWidget {
     List<Widget> innerRectangle = [
       Expanded(
         child: Container(
+          width: SiteConfig.screenWidth,
           color: SiteConfig.lightColors.primary.withAlpha(25),
           child: smallScreen
               ? Column(
