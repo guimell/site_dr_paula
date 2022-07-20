@@ -493,7 +493,16 @@ class CarouselItemState extends State<CarouselItem> {
             padding:
                 item0 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => const ServicesPage(index: 1),
+                    settings: const RouteSettings(name: "/Services"),
+                    reverseTransitionDuration: Duration.zero,
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              },
               onHover: (hovering) {
                 setState(() {
                   item0 = hovering;
@@ -510,7 +519,16 @@ class CarouselItemState extends State<CarouselItem> {
             padding:
                 item1 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => const ServicesPage(index: 2),
+                    settings: const RouteSettings(name: "/Services"),
+                    reverseTransitionDuration: Duration.zero,
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              },
               onHover: (hovering) {
                 setState(() {
                   item1 = hovering;
@@ -527,7 +545,16 @@ class CarouselItemState extends State<CarouselItem> {
             padding:
                 item2 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => const ServicesPage(index: 3),
+                    settings: const RouteSettings(name: "/Services"),
+                    reverseTransitionDuration: Duration.zero,
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              },
               onHover: (hovering) {
                 setState(() {
                   item2 = hovering;
@@ -544,7 +571,16 @@ class CarouselItemState extends State<CarouselItem> {
             padding:
                 item3 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => const ServicesPage(index: 4),
+                    settings: const RouteSettings(name: "/Services"),
+                    reverseTransitionDuration: Duration.zero,
+                    transitionDuration: Duration.zero,
+                  ),
+                );
+              },
               onHover: (hovering) {
                 setState(() {
                   item3 = hovering;

@@ -1,3 +1,4 @@
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:flutter/material.dart';
 
 import '../config.dart';
@@ -100,7 +101,8 @@ class ServicesPage extends StatefulWidget {
       "8-Busque por profissionais que saibam valorizar seus traços, sua beleza, seus pontos fortes."
       "Harmonizar é acima de tudo, trazer sintonia para face, com cuidado e delicadeza.\n";
 
-  const ServicesPage({Key? key}) : super(key: key);
+  final int? index;
+  const ServicesPage({Key? key, this.index}) : super(key: key);
 
   @override
   State<ServicesPage> createState() => ServicesPageState();
@@ -108,6 +110,25 @@ class ServicesPage extends StatefulWidget {
 
 class ServicesPageState extends State<ServicesPage> {
   final double containerW = SiteConfig.screenWidth * 0.5;
+
+  // positioned list
+  final ItemScrollController itemScrollController = ItemScrollController();
+  final ItemPositionsListener itemPositionsListener =
+      ItemPositionsListener.create();
+
+  Future<void> scrollCallback() async {
+    await Future.delayed(const Duration(milliseconds: 250));
+    if (widget.index != null) {
+      if (mounted) {
+        itemScrollController.scrollTo(
+          index: widget.index!,
+          curve: Curves.ease,
+          duration: const Duration(milliseconds: 750),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
@@ -132,7 +153,8 @@ class ServicesPageState extends State<ServicesPage> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -156,8 +178,14 @@ class ServicesPageState extends State<ServicesPage> {
           ],
         ),
       ),
-      MyContainerService("FIOS DE PDO ", widget.textService1),
-      MyContainerService("Bioestimuladores ", widget.textService2),
+      MyContainerService(
+        "FIOS DE PDO ",
+        widget.textService1,
+      ),
+      MyContainerService(
+        "Bioestimuladores ",
+        widget.textService2,
+      ),
       MyContainerService(
         "Já ouviu falar sobre a sequência de Fibonacci ?",
         widget.textService3,
@@ -184,31 +212,29 @@ class ServicesPageState extends State<ServicesPage> {
       ),
     ];
 
+    final positionedList = ScrollablePositionedList.builder(
+      itemCount: 9,
+      itemScrollController: itemScrollController,
+      itemPositionsListener: itemPositionsListener,
+      itemBuilder: (BuildContext context, int index) {
+        return children[index];
+      },
+    );
+
+    scrollCallback();
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Services"),
       floatingActionButton: SiteConfig.getFAB(),
-      body: SingleChildScrollView(
-        child: Align(
-          alignment: Alignment.center,
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: true
-                  ? children + [SiteConfig.getFooter()]
-                  : [
-                      SiteConfig.getHeader(context, "Services"),
-                      children[0],
-                      Row(children: [children[1], children[2]]),
-                      Row(children: [children[3], children[4]]),
-                      Row(children: [children[5], children[6]]),
-                      Row(children: [children[7], children[8]]),
-                      SiteConfig.getFooter(),
-                    ],
-            ),
-          ),
-        ),
-      ),
+      // body: SingleChildScrollView(
+      //   child: Align(
+      //     alignment: Alignment.center,
+      //     child: Column(
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         crossAxisAlignment: CrossAxisAlignment.center,
+      //         children: children + [SiteConfig.getFooter()]),
+      //   ),
+      // ),
+      body: positionedList,
     );
   }
 }
