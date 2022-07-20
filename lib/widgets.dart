@@ -294,15 +294,10 @@ class BlogPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool smallScreen = SiteConfig.screenHeight > SiteConfig.screenWidth;
-    final double width = smallScreen
+    final double width = SiteConfig.smallScreen
         ? SiteConfig.screenWidth * 0.8
         : SiteConfig.screenWidth * 0.8 / 3;
     return Container(
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.circular(8),
-      //   color: SiteConfig.lightColors.primary.withAlpha(25),
-      // ),
       margin: const EdgeInsets.all(20.0),
       padding: const EdgeInsets.all(10.0),
       height: SiteConfig.screenHeight,
@@ -461,137 +456,144 @@ class MyContainerService extends StatelessWidget {
   }
 }
 
+class CarouselImage extends StatefulWidget {
+  final String image;
+  final String title;
+  final int index;
+
+  const CarouselImage({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.index,
+  }) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => CarouselImageState();
+}
+
+class CarouselImageState extends State<CarouselImage> {
+  bool animItem = false;
+  final int animTime = 300;
+  final double animSPad = 0;
+  final double animBPad = 12;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushReplacement(
+            PageRouteBuilder(
+              pageBuilder: (_, __, ___) => ServicesPage(index: widget.index),
+              settings: const RouteSettings(name: "/Services"),
+              reverseTransitionDuration: Duration.zero,
+              transitionDuration: Duration.zero,
+            ),
+          );
+        },
+        onHover: (hovering) {
+          setState(() {
+            animItem = hovering;
+          });
+        },
+        child: AnimatedContainer(
+          curve: Curves.easeIn,
+          duration: Duration(milliseconds: animTime),
+          padding: animItem
+              ? EdgeInsets.symmetric(horizontal: animSPad)
+              : EdgeInsets.symmetric(horizontal: animBPad),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 12,
+                child: Image.asset(
+                  widget.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                    width: SiteConfig.screenWidth,
+                    color: SiteConfig.lightColors.primary,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        widget.title,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: SiteConfig.lightColors.background,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    )),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class CarouselItem extends StatefulWidget {
+  final List<int> indeces;
   final List<String> items;
-  const CarouselItem({Key? key, required this.items}) : super(key: key);
+  final List<String> titles;
+  const CarouselItem(
+      {Key? key,
+      required this.items,
+      required this.titles,
+      required this.indeces})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => CarouselItemState();
 }
 
 class CarouselItemState extends State<CarouselItem> {
-  // anim
-  final int animTime = 300;
-  final double animSPad = 0;
-  final double animBPad = 8;
+  // div thickness
+  final double thickness = 5;
 
   // items state
-  bool item0 = false;
-  bool item1 = false;
-  bool item2 = false;
-  bool item3 = false;
+  List<bool> animItem = [false, false, false, false];
+
+  // image size
+  double sizeImg = SiteConfig.screenWidth / 4;
+
+  List<Widget> getChildren() {
+    return [
+      CarouselImage(
+        image: widget.items[0],
+        title: widget.titles[0],
+        index: widget.indeces[0],
+      ),
+      CarouselImage(
+        image: widget.items[1],
+        title: widget.titles[1],
+        index: widget.indeces[1],
+      ),
+      CarouselImage(
+        image: widget.items[2],
+        title: widget.titles[2],
+        index: widget.indeces[2],
+      ),
+      CarouselImage(
+        image: widget.items[3],
+        title: widget.titles[3],
+        index: widget.indeces[3],
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
-    final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
-    return Row(
-      children: [
-        Expanded(
-          child: AnimatedContainer(
-            curve: Curves.easeIn,
-            duration: Duration(milliseconds: animTime),
-            padding:
-                item0 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const ServicesPage(index: 1),
-                    settings: const RouteSettings(name: "/Services"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              onHover: (hovering) {
-                setState(() {
-                  item0 = hovering;
-                });
-              },
-              child: Image.asset(widget.items[0]),
-            ),
-          ),
-        ),
-        Expanded(
-          child: AnimatedContainer(
-            curve: Curves.easeIn,
-            duration: Duration(milliseconds: animTime),
-            padding:
-                item1 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const ServicesPage(index: 2),
-                    settings: const RouteSettings(name: "/Services"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              onHover: (hovering) {
-                setState(() {
-                  item1 = hovering;
-                });
-              },
-              child: Image.asset(widget.items[1]),
-            ),
-          ),
-        ),
-        Expanded(
-          child: AnimatedContainer(
-            curve: Curves.easeIn,
-            duration: Duration(milliseconds: animTime),
-            padding:
-                item2 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const ServicesPage(index: 3),
-                    settings: const RouteSettings(name: "/Services"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              onHover: (hovering) {
-                setState(() {
-                  item2 = hovering;
-                });
-              },
-              child: Image.asset(widget.items[2]),
-            ),
-          ),
-        ),
-        Expanded(
-          child: AnimatedContainer(
-            curve: Curves.easeIn,
-            duration: Duration(milliseconds: animTime),
-            padding:
-                item3 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const ServicesPage(index: 4),
-                    settings: const RouteSettings(name: "/Services"),
-                    reverseTransitionDuration: Duration.zero,
-                    transitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              onHover: (hovering) {
-                setState(() {
-                  item3 = hovering;
-                });
-              },
-              child: Image.asset(widget.items[3]),
-            ),
-          ),
-        ),
-      ],
-      // ),
+    List<Widget> children = getChildren();
+    return GridView.count(
+      crossAxisCount: SiteConfig.smallScreen ? 2 : 4,
+      children: children,
     );
   }
 }
