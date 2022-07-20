@@ -8,6 +8,48 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   final String title = "Home";
+  static final List<Widget> carouselImages = [
+    const CarouselImage(
+      image: "assets/images/serviços/pdo.jpg",
+      title: "pdo",
+      index: 1,
+    ),
+    const CarouselImage(
+      image: "assets/images/serviços/bioestimuladores.jpg",
+      title: "bioestimuladores",
+      index: 2,
+    ),
+    const CarouselImage(
+      image: "assets/images/paula/logoMarca.jpeg",
+      title: "logoMarca",
+      index: 3,
+    ),
+    const CarouselImage(
+      image: "assets/images/serviços/peeling.jpg",
+      title: "peeling",
+      index: 4,
+    ),
+    const CarouselImage(
+      image: "assets/images/serviços/microagulhamento.jpg",
+      title: "microagulhamento",
+      index: 5,
+    ),
+    const CarouselImage(
+      image: "assets/images/serviços/botox.png",
+      title: "botox",
+      index: 6,
+    ),
+    const CarouselImage(
+      image: "assets/images/serviços/Preenchimento.jpg",
+      title: "preenchimento",
+      index: 7,
+    ),
+    const CarouselImage(
+      image: "assets/images/serviços/bichectomia.jpg",
+      title: "bichectomia",
+      index: 8,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +182,7 @@ class HomePage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: CarouselSlider(
+              child: CarouselSlider.builder(
                 options: CarouselOptions(
                   height: SiteConfig.smallScreen
                       ? SiteConfig.screenWidth * 0.8
@@ -148,41 +190,28 @@ class HomePage extends StatelessWidget {
                   enableInfiniteScroll: true,
                   autoPlay: false,
                 ),
-                items: [
-                  const CarouselItem(
-                    items: [
-                      "assets/images/serviços/bichectomia.jpg",
-                      "assets/images/serviços/bioestimuladores.jpg",
-                      "assets/images/serviços/botox.png",
-                      "assets/images/serviços/microagulhamento.jpg",
-                    ],
-                    titles: [
-                      "bichectomia",
-                      "bioestimuladores",
-                      "botox",
-                      "microagulhamento",
-                    ],
-                    indeces: [8, 2, 6, 5],
-                  ),
-                  const CarouselItem(
-                    items: [
-                      "assets/images/serviços/pdo.jpg",
-                      "assets/images/serviços/peeling.jpg",
-                      "assets/images/serviços/Preenchimento.jpg",
-                      "assets/images/paula/logoMarca.jpeg"
-                    ],
-                    titles: ["pdo", "peeling", "preenchimento", "logoMarca"],
-                    indeces: [1, 4, 7, 3],
-                  ),
-                ].map(
-                  (i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return i;
-                      },
-                    );
-                  },
-                ).toList(),
+                itemBuilder: (BuildContext context, int index, int realIndex) {
+                  return SiteConfig.smallScreen
+                      ? carouselImages[index]
+                      : index == 0
+                          ? Row(
+                              children: [
+                                carouselImages[0],
+                                carouselImages[1],
+                                carouselImages[2],
+                                carouselImages[3],
+                              ],
+                            )
+                          : Row(
+                              children: [
+                                carouselImages[4],
+                                carouselImages[5],
+                                carouselImages[6],
+                                carouselImages[7],
+                              ],
+                            );
+                },
+                itemCount: SiteConfig.smallScreen ? 8 : 2,
               ),
             ),
             Container(
