@@ -152,23 +152,10 @@ class ServicesPageState extends State<ServicesPage> {
               alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.all(10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset:
-                            const Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Image.asset(
-                    "assets/images/paula/paulaMesa.jpg",
-                    opacity: const AlwaysStoppedAnimation<double>(100),
-                    fit: BoxFit.fitWidth,
-                  ),
+                child: Image.asset(
+                  "assets/images/paula/paulaMesa.jpg",
+                  opacity: const AlwaysStoppedAnimation<double>(100),
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
