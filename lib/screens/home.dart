@@ -20,12 +20,9 @@ class HomePage extends StatelessWidget {
       Expanded(
         flex: 1,
         child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              "assets/images/paula/logoMarca.jpeg",
-              fit: BoxFit.fill,
-            ),
+          child: Image.asset(
+            "assets/images/paula/logoMarca.jpeg",
+            fit: BoxFit.fill,
           ),
         ),
       ),
