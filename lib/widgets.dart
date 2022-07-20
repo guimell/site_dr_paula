@@ -465,50 +465,56 @@ class CarouselItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).pushReplacement(
-          PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const ServicesPage(),
-            settings: const RouteSettings(name: "/Services"),
-            reverseTransitionDuration: Duration.zero,
-            transitionDuration: Duration.zero,
-          ),
-        );
-      },
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: smallScreen ? 50 : 200,
-          vertical: 10,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+    return Container(
+      // child: Padding(
+      //   padding: EdgeInsets.symmetric(
+      //     horizontal: smallScreen ? 50 : 200,
+      //     vertical: 10,
+      //   ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {},
+                onHover: (_) {},
                 child: Image.asset(items[0]),
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {},
+                onHover: (_) {},
                 child: Image.asset(items[1]),
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {},
+                onHover: (_) {},
                 child: Image.asset(items[2]),
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {},
+                onHover: (_) {},
                 child: Image.asset(items[3]),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+        // ),
       ),
     );
   }
