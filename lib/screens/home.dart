@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Text(
-            "Dra.Paula Brasil\nHarmonização Orofacial\nEspecialista",
+            "Dra.Paula Brasil\nEspecialista\nHarmonização Orofacial",
             style: TextStyle(
               fontSize: SiteConfig.screenWidth / 75 + 15,
               color: const Color.fromARGB(255, 175, 127, 75),
@@ -130,43 +130,46 @@ class HomePage extends StatelessWidget {
               width: SiteConfig.screenWidth,
               child: Container(
                 child: Image.asset(
-                  "assets/images/paula/paulaDedo.jpg",
+                  "assets/images/paula/paulaMao.jpg",
                   fit: BoxFit.fitWidth,
                 ),
               ),
             ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 400.0,
-                enableInfiniteScroll: true,
-                autoPlay: true,
-              ),
-              items: [
-                const CarouselItem(
-                  items: [
-                    "assets/images/serviços/bichectomia.jpg",
-                    "assets/images/serviços/bioestimuladores.jpg",
-                    "assets/images/serviços/botox.png",
-                    "assets/images/serviços/microagulhamento.jpg",
-                  ],
+            Container(
+              color: SiteConfig.lightColors.primary.withAlpha(100),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 400.0,
+                  enableInfiniteScroll: true,
+                  autoPlay: true,
                 ),
-                const CarouselItem(
-                  items: [
-                    "assets/images/serviços/pdo.jpg",
-                    "assets/images/serviços/peeling.jpg",
-                    "assets/images/serviços/Preenchimento.jpg",
-                    "assets/images/paula/logoMarca.jpeg"
-                  ],
-                )
-              ].map(
-                (i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return i;
-                    },
-                  );
-                },
-              ).toList(),
+                items: [
+                  const CarouselItem(
+                    items: [
+                      "assets/images/serviços/bichectomia.jpg",
+                      "assets/images/serviços/bioestimuladores.jpg",
+                      "assets/images/serviços/botox.png",
+                      "assets/images/serviços/microagulhamento.jpg",
+                    ],
+                  ),
+                  const CarouselItem(
+                    items: [
+                      "assets/images/serviços/pdo.jpg",
+                      "assets/images/serviços/peeling.jpg",
+                      "assets/images/serviços/Preenchimento.jpg",
+                      "assets/images/paula/logoMarca.jpeg"
+                    ],
+                  )
+                ].map(
+                  (i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return i;
+                      },
+                    );
+                  },
+                ).toList(),
+              ),
             ),
             SizedBox(
               height: smallScreen
@@ -181,10 +184,7 @@ class HomePage extends StatelessWidget {
                       children: outerRectangle,
                     ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: SiteConfig.getFooter(),
-            ),
+            SiteConfig.getFooter(),
           ],
         ),
       ),
