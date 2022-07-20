@@ -461,64 +461,101 @@ class MyContainerService extends StatelessWidget {
   }
 }
 
-class CarouselItem extends StatelessWidget {
+class CarouselItem extends StatefulWidget {
   final List<String> items;
   const CarouselItem({Key? key, required this.items}) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() => CarouselItemState();
+}
+
+class CarouselItemState extends State<CarouselItem> {
+  // anim
+  final int animTime = 300;
+  final double animSPad = 0;
+  final double animBPad = 8;
+
+  // items state
+  bool item0 = false;
+  bool item1 = false;
+  bool item2 = false;
+  bool item3 = false;
+
+  @override
   Widget build(BuildContext context) {
     final bool smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
-    return Container(
-      // child: Padding(
-      //   padding: EdgeInsets.symmetric(
-      //     horizontal: smallScreen ? 50 : 200,
-      //     vertical: 10,
-      //   ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {},
-                onHover: (_) {},
-                child: Image.asset(items[0]),
-              ),
+    return Row(
+      children: [
+        Expanded(
+          child: AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: Duration(milliseconds: animTime),
+            padding:
+                item0 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
+            child: InkWell(
+              onTap: () {},
+              onHover: (hovering) {
+                setState(() {
+                  item0 = hovering;
+                });
+              },
+              child: Image.asset(widget.items[0]),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {},
-                onHover: (_) {},
-                child: Image.asset(items[1]),
-              ),
+        ),
+        Expanded(
+          child: AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: Duration(milliseconds: animTime),
+            padding:
+                item1 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
+            child: InkWell(
+              onTap: () {},
+              onHover: (hovering) {
+                setState(() {
+                  item1 = hovering;
+                });
+              },
+              child: Image.asset(widget.items[1]),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {},
-                onHover: (_) {},
-                child: Image.asset(items[2]),
-              ),
+        ),
+        Expanded(
+          child: AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: Duration(milliseconds: animTime),
+            padding:
+                item2 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
+            child: InkWell(
+              onTap: () {},
+              onHover: (hovering) {
+                setState(() {
+                  item2 = hovering;
+                });
+              },
+              child: Image.asset(widget.items[2]),
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {},
-                onHover: (_) {},
-                child: Image.asset(items[3]),
-              ),
+        ),
+        Expanded(
+          child: AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: Duration(milliseconds: animTime),
+            padding:
+                item3 ? EdgeInsets.all(animSPad) : EdgeInsets.all(animBPad),
+            child: InkWell(
+              onTap: () {},
+              onHover: (hovering) {
+                setState(() {
+                  item3 = hovering;
+                });
+              },
+              child: Image.asset(widget.items[3]),
             ),
           ),
-        ],
-        // ),
-      ),
+        ),
+      ],
+      // ),
     );
   }
 }
