@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
         flex: 1,
         child: Image.asset(
           "assets/images/paula/paulaVacina.jpg",
-          fit: BoxFit.fill,
+          fit: BoxFit.contain,
         ),
       ),
     ];
@@ -137,7 +137,7 @@ class HomePage extends StatelessWidget {
         flex: 1,
         child: Image.asset(
           "assets/images/paula/paulaPerfil.jpg",
-          fit: BoxFit.fill,
+          fit: BoxFit.contain,
         ),
       ),
       Expanded(
