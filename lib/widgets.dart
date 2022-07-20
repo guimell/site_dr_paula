@@ -463,9 +463,6 @@ class CarouselImage extends StatefulWidget {
 
 class CarouselImageState extends State<CarouselImage> {
   bool animItem = false;
-  final int animTime = 300;
-  final double animSPad = 0;
-  final double animBPad = 12;
 
   @override
   Widget build(BuildContext context) {
@@ -488,10 +485,10 @@ class CarouselImageState extends State<CarouselImage> {
         },
         child: AnimatedContainer(
           curve: Curves.easeIn,
-          duration: Duration(milliseconds: animTime),
+          duration: const Duration(milliseconds: 250),
           padding: animItem
-              ? EdgeInsets.symmetric(horizontal: animSPad)
-              : EdgeInsets.symmetric(horizontal: animBPad),
+              ? const EdgeInsets.symmetric(horizontal: 0)
+              : const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
             children: [
               Expanded(
