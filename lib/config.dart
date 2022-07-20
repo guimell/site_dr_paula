@@ -93,7 +93,7 @@ class SiteConfig {
               fit: BoxFit.contain,
             ),
           ),
-          const Text('Dr. Paula'),
+          const Text('Dra. Paula Brasil'),
         ],
       ),
       leading: screenWidth < navButtonsWidth
@@ -132,8 +132,8 @@ class SiteConfig {
 
   static Widget getFAB() {
     return SizedBox(
-      height: 250.0,
-      width: 250.0,
+      height: 100.0,
+      width: 100.0,
       child: FittedBox(
         child: FloatingActionButton(
           foregroundColor: lightColors.background,
@@ -265,7 +265,7 @@ class SiteConfig {
     final bool smallScreen = screenWidth < screenHeight;
     List<Widget> children = [
       Expanded(
-        flex: smallScreen ? 1 : 5,
+        flex: smallScreen ? 1 : 1,
         child: Align(
           alignment: Alignment.centerLeft,
           child: Image.asset(
@@ -317,7 +317,6 @@ class SiteConfig {
       )
     ];
     return Container(
-      // color: Colors.black,
       margin: const EdgeInsets.symmetric(horizontal: 20),
       height: sizeI * 4,
       width: screenWidth,
