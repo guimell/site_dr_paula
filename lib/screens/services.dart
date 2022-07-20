@@ -117,9 +117,16 @@ class ServicesPageState extends State<ServicesPage> {
       ItemPositionsListener.create();
 
   Future<void> scrollCallback() async {
-    await Future.delayed(const Duration(milliseconds: 250));
     if (widget.index != null) {
-      if (mounted) {
+      int ct = 0;
+      while (!itemScrollController.isAttached) {
+        ct++;
+        if (ct > 50) {
+          break;
+        }
+        await Future.delayed(const Duration(milliseconds: 10));
+      }
+      if (ct <= 50) {
         itemScrollController.scrollTo(
           index: widget.index!,
           curve: Curves.ease,
