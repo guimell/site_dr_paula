@@ -192,7 +192,9 @@ class HomePage extends StatelessWidget {
                 ),
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   return SiteConfig.smallScreen
-                      ? carouselImages[index]
+                      ? Row(
+                          children: [carouselImages[index]],
+                        )
                       : index == 0
                           ? Row(
                               children: [
