@@ -426,7 +426,10 @@ class MyContainerService extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 30),
               child: Text(
                 text,
-                style: const TextStyle(fontSize: 18),
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+                textAlign: TextAlign.start,
               ),
             ),
             CarouselSlider(

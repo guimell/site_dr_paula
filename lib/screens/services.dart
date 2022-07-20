@@ -47,17 +47,17 @@ class ServicesPage extends StatefulWidget {
       "além de promover o rejuvenescimento facial e previnir o envelhecimento precoce, "
       "pois aumenta a atividade dos fibroblastos e consequentemente, a produção de colágeno.";
   final String textService5 =
-      "Por que indicar microagulhamento para nossos pacientes?"
-      "Primeiramente porque ele favorece à renovação celular, com estímulo à produção de colágeno. Traduzindo isso em resultados, observamos:"
-      "1- Redução de poros dilatados;"
-      "2- Resultados maravilhosos para cicatrizes de acne;"
-      "3- Rejuvenescimento facial com diminuição das linhas de expressão;"
-      "3- Melhora na textura e viço da pele;"
-      "4- Clareamento da pele;"
-      "5- Crescimento capilar (em regiões como a sobrancelhas, é observado o aumento de fios, melhorando a possibilidade de favorecer seu desing )."
-      "Por que prefiro a caneta elétrica (derma Pen) em vez do rolo(derma roller)? "
+      "Por que indicar microagulhamento para nossos pacientes? "
+      "Primeiramente porque ele favorece à renovação celular, com estímulo à produção de colágeno. Traduzindo isso em resultados, observamos:\n"
+      "1-Redução de poros dilatados;\n"
+      "2-Resultados maravilhosos para cicatrizes de acne;\n"
+      "3-Rejuvenescimento facial com diminuição das linhas de expressão;\n"
+      "4-Melhora na textura e viço da pele;\n"
+      "5-Clareamento da pele;\n"
+      "6-Crescimento capilar (em regiões como a sobrancelhas, é observado o aumento de fios, melhorando a possibilidade de favorecer seu desing ).\n"
+      "Por que prefiro a caneta elétrica (derma Pen) em vez do rolo(derma roller)?"
       "Porque ao trabalhar com a dermapen é possível realizar uma profundidade de microagulhamento específico para cada área da pele,"
-      " com a  calibração na própria caneta e assim, obter resultados de forma mais direcionada.";
+      "com a  calibração na própria caneta e assim, obter resultados de forma mais direcionada.";
   final String textService6 =
       "Você sabia que existe dois tipos de rugas? Rugas estáticas e rugas dinâmicas. "
       " RUGAS ESTÁTICAS: elas são consequência da movimentação muscular aos longo dos anos. "
@@ -84,21 +84,21 @@ class ServicesPage extends StatefulWidget {
       "sendo elas na forma líquida ou  em diferentes densidades. Sua aplicação pode ser voltada para nutrição, sustenção,"
       " lifting e também para melhor aparência dos tecidos. Cada indicação clínica é específica e deve ser orientada e aplicada por profissional habilitado.";
   final String textService8 =
-      "A bichectomia tem sido um assunto muito polêmico nos últimos tempos, por isso, "
-      "resolvi criar essa sequência de tópicos para trazer clareza e objetividade sobre o assunto.\n "
-      "1- Na bichectomia retiramos as bolas de bichat\n "
+      "A bichectomia tem sido um assunto muito polêmico nos últimos tempos, por isso,"
+      "resolvi criar essa sequência de tópicos para trazer clareza e objetividade sobre o assunto.\n"
+      "1-Na bichectomia retiramos as bolas de bichat\n"
       "2-Para que serve a bola de bichat? Ela é muito útil para as crianças,"
-      " nos primeiros anos de vida, auxiliando na sucção.\n"
-      "3- Qual a sua função na vida adulta? Nenhuma.\n"
-      "4- Com o passar dos anos, os tecidos tendem a despencar, seguindo a lei da gravidade."
-      " Nesta mesma lei, as bolas de bichat despencam tb, favorecendo para uma aparência de buldogue.\n"
-      "5- Nem todo formato de rosto fica bem após realizar este procedimento,"
-      "por isso é preciso uma avaliação criteriosa com um profissional qualificado. \n "
-      "6- O rosto fica lindo, mais magrinho… Muitas celebridades já realizaram e seus resultados ficaram muito bom.\n "
-      "7- Porém, caso o seu perfil facial não tenha indicação para tal procedimento,"
-      " não o realize mesmo que seja algo que desperte grandemente seu interesse.\n "
-      "8- Busque por profissionais que saibam valorizar seus traços, sua beleza, seus pontos fortes."
-      " Harmonizar é acima de tudo, trazer sintonia para face, com cuidado e delicadeza.\n";
+      "nos primeiros anos de vida, auxiliando na sucção.\n"
+      "3-Qual a sua função na vida adulta? Nenhuma.\n"
+      "4-Com o passar dos anos, os tecidos tendem a despencar, seguindo a lei da gravidade."
+      "Nesta mesma lei, as bolas de bichat despencam tb, favorecendo para uma aparência de buldogue.\n"
+      "5-Nem todo formato de rosto fica bem após realizar este procedimento,"
+      "por isso é preciso uma avaliação criteriosa com um profissional qualificado.\n"
+      "6-O rosto fica lindo, mais magrinho… Muitas celebridades já realizaram e seus resultados ficaram muito bom.\n"
+      "7-Porém, caso o seu perfil facial não tenha indicação para tal procedimento,"
+      "não o realize mesmo que seja algo que desperte grandemente seu interesse.\n"
+      "8-Busque por profissionais que saibam valorizar seus traços, sua beleza, seus pontos fortes."
+      "Harmonizar é acima de tudo, trazer sintonia para face, com cuidado e delicadeza.\n";
 
   const ServicesPage({Key? key}) : super(key: key);
 
