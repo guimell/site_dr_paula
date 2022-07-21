@@ -71,7 +71,7 @@ class HomePageState extends State<HomePage> {
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
-    List<Widget> topInnerRectangle = [
+    final List<Widget> topInnerRectangle = [
       Expanded(
         flex: 1,
         child: Image.asset(
@@ -93,7 +93,8 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     ];
-    List<Widget> botInnerRectangle = [
+
+    final List<Widget> botInnerRectangle = [
       Expanded(
         flex: SiteConfig.smallScreen ? 2 : 2,
         child: Padding(
@@ -121,7 +122,7 @@ class HomePageState extends State<HomePage> {
       ),
     ];
 
-    List<Widget> innerRectangle = [
+    final List<Widget> innerRectangle = [
       Expanded(
         child: Container(
           child: SiteConfig.smallScreen
@@ -146,7 +147,7 @@ class HomePageState extends State<HomePage> {
       ),
     ];
 
-    List<Widget> outerRectangle = [
+    final List<Widget> outerRectangle = [
       Expanded(
         flex: 1,
         child: Image.asset(
