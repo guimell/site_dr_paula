@@ -460,7 +460,6 @@ class Blog {
   static Future<void> getBlog() async {
     http.Response response = await http.get(uri);
     var jsonData = jsonDecode(response.body);
-    // print(jsonData);
 
     if (jsonData != null) {
       posts = [];
