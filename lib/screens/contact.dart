@@ -68,9 +68,9 @@ class ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    SiteConfig.screenHeight = MediaQuery.of(context).size.height;
-    SiteConfig.screenWidth = MediaQuery.of(context).size.width;
-    SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+    SiteConfig.screenSize = MediaQuery.of(context).size;
+    SiteConfig.smallScreen =
+        SiteConfig.screenSize.width < SiteConfig.screenSize.height;
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Contato"),
       floatingActionButton: SiteConfig.getFAB(),
@@ -79,7 +79,7 @@ class ContactPageState extends State<ContactPage> {
           child: Column(
             children: [
               SizedBox(
-                width: SiteConfig.screenHeight * 0.8,
+                width: SiteConfig.screenSize.height * 0.8,
                 child: Column(
                   children: [
                     const Padding(

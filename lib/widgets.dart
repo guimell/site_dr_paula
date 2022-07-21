@@ -74,7 +74,7 @@ class PageHeader extends StatelessWidget {
           'Our Courses',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 30 + SiteConfig.screenWidth * 0.01,
+            fontSize: 30 + SiteConfig.screenSize.width * 0.01,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -209,11 +209,11 @@ class InteractiveContentState extends State<InteractiveContent> {
       );
     }
 
-    double width = SiteConfig.screenWidth;
+    double width = SiteConfig.screenSize.width;
     if (widget.rowCol) {
-      width = SiteConfig.screenHeight > SiteConfig.screenWidth
-          ? SiteConfig.screenWidth
-          : SiteConfig.screenWidth * .4;
+      width = SiteConfig.screenSize.height > SiteConfig.screenSize.width
+          ? SiteConfig.screenSize.width
+          : SiteConfig.screenSize.width * .4;
     }
 
     return MouseRegion(
@@ -295,16 +295,16 @@ class BlogPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double width =
-        SiteConfig.smallScreen ? SiteConfig.screenWidth * 0.8 : 400;
+        SiteConfig.smallScreen ? SiteConfig.screenSize.width * 0.8 : 400;
     return Container(
       margin: const EdgeInsets.all(20.0),
       padding: const EdgeInsets.all(10.0),
-      height: SiteConfig.screenHeight,
+      height: SiteConfig.screenSize.height,
       width: width,
       child: Column(
         children: [
           // image section
-          SiteConfig.screenHeight < 400
+          SiteConfig.screenSize.height < 400
               ? const SizedBox()
               : Expanded(
                   flex: 8,
@@ -339,7 +339,7 @@ class BlogPost extends StatelessWidget {
             ),
           ),
           // text section
-          SiteConfig.screenHeight < 600
+          SiteConfig.screenSize.height < 600
               ? const SizedBox()
               : Expanded(
                   flex: 8,
@@ -392,7 +392,7 @@ class MyContainerService extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       child: Container(
         padding: const EdgeInsets.all(12),
-        width: SiteConfig.screenWidth * 0.7,
+        width: SiteConfig.screenSize.width * 0.7,
         child: Column(
           children: [
             Padding(
@@ -500,7 +500,7 @@ class CarouselImageState extends State<CarouselImage> {
               Expanded(
                 flex: 2,
                 child: Container(
-                  width: SiteConfig.screenWidth,
+                  width: SiteConfig.screenSize.width,
                   color: SiteConfig.lightColors.primary.withAlpha(200),
                   child: Align(
                     alignment: Alignment.center,
@@ -510,7 +510,7 @@ class CarouselImageState extends State<CarouselImage> {
                       style: TextStyle(
                         color: SiteConfig.lightColors.background,
                         fontWeight: FontWeight.bold,
-                        fontSize: SiteConfig.screenWidth / 100 +
+                        fontSize: SiteConfig.screenSize.width / 100 +
                             (SiteConfig.smallScreen ? 10 : 5),
                       ),
                     ),

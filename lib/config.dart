@@ -17,8 +17,7 @@ import 'screens/services.dart';
 
 class SiteConfig {
   //Screen size
-  static double screenWidth = 0;
-  static double screenHeight = 0;
+  static Size screenSize = const Size(0, 0);
   static bool smallScreen = false;
 
   // theme colors
@@ -99,7 +98,7 @@ class SiteConfig {
           const Text('Dra. Paula Brasil'),
         ],
       ),
-      leading: screenWidth < navButtonsWidth
+      leading: screenSize.width < navButtonsWidth
           ? IconButton(
               onPressed: () {
                 showDialog(
@@ -122,7 +121,7 @@ class SiteConfig {
             )
           : null,
       actions: [
-        screenWidth < navButtonsWidth
+        screenSize.width < navButtonsWidth
             ? const SizedBox()
             : Row(children: navigationButtons),
         IconButton(
@@ -221,13 +220,13 @@ class SiteConfig {
     ];
 
     return Container(
-      height: screenHeight * 0.05 + 20,
-      width: screenWidth,
+      height: screenSize.height * 0.05 + 20,
+      width: screenSize.width,
       color: const Color.fromARGB(255, 175, 127, 75).withAlpha(25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          screenHeight > screenWidth
+          screenSize.height > screenSize.width
               ? IconButton(
                   onPressed: () {
                     showDialog(
@@ -263,7 +262,7 @@ class SiteConfig {
   }
 
   static Widget getFooter() {
-    final double sizeI = 20 + screenWidth / 100;
+    final double sizeI = 20 + screenSize.width / 100;
     List<Widget> children = [
       Expanded(
         flex: smallScreen ? 1 : 1,
@@ -327,7 +326,7 @@ class SiteConfig {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       height: sizeI * 4,
-      width: screenWidth,
+      width: screenSize.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: children,

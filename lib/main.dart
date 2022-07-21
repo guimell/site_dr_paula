@@ -5,6 +5,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'config.dart';
 import 'screens/home.dart';
 
+// https://docs.flutter.dev/perf/rendering-performance
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

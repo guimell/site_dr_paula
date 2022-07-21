@@ -109,7 +109,7 @@ class ServicesPage extends StatefulWidget {
 }
 
 class ServicesPageState extends State<ServicesPage> {
-  final double containerW = SiteConfig.screenWidth * 0.5;
+  final double containerW = SiteConfig.screenSize.width * 0.5;
 
   // positioned list
   final ItemScrollController itemScrollController = ItemScrollController();
@@ -138,14 +138,14 @@ class ServicesPageState extends State<ServicesPage> {
 
   @override
   Widget build(BuildContext context) {
-    SiteConfig.screenHeight = MediaQuery.of(context).size.height;
-    SiteConfig.screenWidth = MediaQuery.of(context).size.width;
-    SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+    SiteConfig.screenSize = MediaQuery.of(context).size;
+    SiteConfig.smallScreen =
+        SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
     List<Widget> children = [
       SizedBox(
-        height: SiteConfig.screenHeight / 2,
-        width: SiteConfig.screenWidth,
+        height: SiteConfig.screenSize.height / 2,
+        width: SiteConfig.screenSize.width,
         child: Stack(
           children: [
             Align(

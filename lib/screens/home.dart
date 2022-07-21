@@ -16,9 +16,9 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    SiteConfig.screenHeight = MediaQuery.of(context).size.height;
-    SiteConfig.screenWidth = MediaQuery.of(context).size.width;
-    SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+    SiteConfig.screenSize = MediaQuery.of(context).size;
+    SiteConfig.smallScreen =
+        SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
     final List<Widget> carouselImages = [
       // ignore: prefer_const_constructors
@@ -86,7 +86,7 @@ class HomePageState extends State<HomePage> {
           child: Text(
             "Dra.Paula Brasil\nEspecialista\nHarmonização Orofacial",
             style: TextStyle(
-              fontSize: SiteConfig.screenWidth / 75 + 15,
+              fontSize: SiteConfig.screenSize.width / 75 + 15,
               color: const Color.fromARGB(255, 175, 127, 75),
             ),
           ),
@@ -171,8 +171,8 @@ class HomePageState extends State<HomePage> {
           children: [
             Container(
               color: SiteConfig.lightColors.primary.withAlpha(25),
-              height: SiteConfig.screenHeight * 0.9,
-              width: SiteConfig.screenWidth,
+              height: SiteConfig.screenSize.height * 0.9,
+              width: SiteConfig.screenSize.width,
               child: Stack(
                 children: [
                   Image.asset(
@@ -218,8 +218,8 @@ class HomePageState extends State<HomePage> {
               child: CarouselSlider.builder(
                 options: CarouselOptions(
                   height: SiteConfig.smallScreen
-                      ? SiteConfig.screenWidth * 0.8
-                      : SiteConfig.screenWidth * 0.2,
+                      ? SiteConfig.screenSize.width * 0.8
+                      : SiteConfig.screenSize.width * 0.2,
                   enableInfiniteScroll: true,
                   autoPlay: false,
                 ),
@@ -252,9 +252,9 @@ class HomePageState extends State<HomePage> {
             Container(
               color: SiteConfig.lightColors.primary.withAlpha(25),
               height: SiteConfig.smallScreen
-                  ? SiteConfig.screenHeight * 2.0
-                  : SiteConfig.screenHeight * 0.8,
-              width: SiteConfig.screenWidth,
+                  ? SiteConfig.screenSize.height * 2.0
+                  : SiteConfig.screenSize.height * 0.8,
+              width: SiteConfig.screenSize.width,
               child: SiteConfig.smallScreen
                   ? Column(
                       children: outerRectangle,

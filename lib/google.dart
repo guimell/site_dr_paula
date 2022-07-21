@@ -39,7 +39,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
       child: showmaps
           ? SizedBox(
               height: 500,
-              width: SiteConfig.screenWidth,
+              width: SiteConfig.screenSize.width,
               child: GoogleMap(
                 onMapCreated: (controller) {
                   setState(

@@ -36,9 +36,9 @@ class _BlogPageState extends State<BlogPage> {
 
   @override
   Widget build(BuildContext context) {
-    SiteConfig.screenHeight = MediaQuery.of(context).size.height;
-    SiteConfig.screenWidth = MediaQuery.of(context).size.width;
-    SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+    SiteConfig.screenSize = MediaQuery.of(context).size;
+    SiteConfig.smallScreen =
+        SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Blog"),
@@ -48,8 +48,8 @@ class _BlogPageState extends State<BlogPage> {
           Container(
             height: 70,
             width: SiteConfig.smallScreen
-                ? SiteConfig.screenWidth * 0.70
-                : SiteConfig.screenWidth * 0.60,
+                ? SiteConfig.screenSize.width * 0.70
+                : SiteConfig.screenSize.width * 0.60,
             margin: const EdgeInsets.all(10),
             child: MyTextField(
               labelText: 'Search topics and key words',
@@ -60,8 +60,8 @@ class _BlogPageState extends State<BlogPage> {
             ),
           ),
           SizedBox(
-            height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 50,
-            width: SiteConfig.screenWidth,
+            height: SiteConfig.screenSize.height - 80 - 10 - 10 - 10 - 10 - 50,
+            width: SiteConfig.screenSize.width,
             child: ListView.builder(
               itemCount: Blog.posts.length,
               scrollDirection:
