@@ -330,14 +330,21 @@ class BlogPost extends StatelessWidget {
           // title section
           Expanded(
             flex: 4,
-            child: Text(
-              post.title,
-              textAlign: TextAlign.left,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+              const double textSize = 24;
+              final double lines = constraints.maxHeight / textSize - 1;
+              print(lines);
+              return Text(
+                post.title,
+                maxLines: lines.round() <= 0 ? 1 : lines.round(),
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: textSize,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            }),
           ),
           // text section
           SiteConfig.screenSize.height < 600
@@ -347,10 +354,10 @@ class BlogPost extends StatelessWidget {
                   child: LayoutBuilder(builder:
                       (BuildContext context, BoxConstraints constraints) {
                     const double textSize = 14;
-                    final double lines = constraints.maxHeight / textSize - 3;
+                    final double lines = constraints.maxHeight / textSize - 2;
                     return Text(
                       post.content,
-                      maxLines: lines.round(),
+                      maxLines: lines.round() <= 0 ? 1 : lines.round(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: textSize,
@@ -430,7 +437,7 @@ class MyContainerService extends StatelessWidget {
               items: [
                 Image.asset("assets/images/serviços/pdo.jpg"),
                 Image.asset(
-                  "assets/images/serviços/pdo1.webp",
+                  "assets/images/serviços/pdo1.png",
                   fit: BoxFit.fitWidth,
                 ),
                 Image.asset("assets/images/serviços/pdo2.jpg"),
