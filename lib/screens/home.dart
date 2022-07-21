@@ -14,62 +14,62 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  final List<Widget> carouselImages = [
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/pdo.jpg",
+      title: "pdo",
+      index: 1,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/bioestimuladores.jpg",
+      title: "bioestimuladores",
+      index: 2,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/paula/logoMarca.jpeg",
+      title: "logoMarca",
+      index: 3,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/peeling.jpg",
+      title: "peeling",
+      index: 4,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/microagulhamento.jpg",
+      title: "microagulhamento",
+      index: 5,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/botox.png",
+      title: "botox",
+      index: 6,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/Preenchimento.jpg",
+      title: "preenchimento",
+      index: 7,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/bichectomia.jpg",
+      title: "bichectomia",
+      index: 8,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
-
-    final List<Widget> carouselImages = [
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/pdo.jpg",
-        title: "pdo",
-        index: 1,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/bioestimuladores.jpg",
-        title: "bioestimuladores",
-        index: 2,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/paula/logoMarca.jpeg",
-        title: "logoMarca",
-        index: 3,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/peeling.jpg",
-        title: "peeling",
-        index: 4,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/microagulhamento.jpg",
-        title: "microagulhamento",
-        index: 5,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/botox.png",
-        title: "botox",
-        index: 6,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/Preenchimento.jpg",
-        title: "preenchimento",
-        index: 7,
-      ),
-      // ignore: prefer_const_constructors
-      CarouselImage(
-        image: "assets/images/serviços/bichectomia.jpg",
-        title: "bichectomia",
-        index: 8,
-      ),
-    ];
 
     List<Widget> topInnerRectangle = [
       Expanded(
