@@ -502,7 +502,7 @@ class CarouselImageState extends State<CarouselImage> {
                 flex: 2,
                 child: Container(
                   width: SiteConfig.screenWidth,
-                  color: SiteConfig.lightColors.primary,
+                  color: SiteConfig.lightColors.primary.withAlpha(200),
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
