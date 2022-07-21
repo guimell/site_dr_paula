@@ -12,18 +12,13 @@ class BlogPage extends StatefulWidget {
 
 class _BlogPageState extends State<BlogPage> {
   final searchController = TextEditingController();
-  List<BlogPost> postItems = [];
 
   Future<void> getBlogPosts() async {
     if (Blog.posts.isEmpty) {
       await Blog.getBlog();
     }
     if (mounted) {
-      setState(() {
-        for (Post post in Blog.posts) {
-          postItems.add(BlogPost(post: post));
-        }
-      });
+      setState(() {});
     }
   }
 
@@ -44,12 +39,7 @@ class _BlogPageState extends State<BlogPage> {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
-    postItems = [];
-    for (Post post in Blog.posts) {
-      if (post.contains(searchController.text) || searchController.text == "") {
-        postItems.add(BlogPost(post: post));
-      }
-    }
+
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Blog"),
       floatingActionButton: SiteConfig.getFAB(),
@@ -72,12 +62,12 @@ class _BlogPageState extends State<BlogPage> {
           SizedBox(
             height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 50,
             width: SiteConfig.screenWidth,
-            // child: ListView(
             child: ListView.builder(
+              itemCount: Blog.posts.length,
               scrollDirection:
                   SiteConfig.smallScreen ? Axis.vertical : Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return postItems[index];
+                return BlogPost(post: Blog.posts[index]);
               },
               // children: postItems,
             ),
