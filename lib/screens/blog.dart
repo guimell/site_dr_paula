@@ -69,7 +69,6 @@ class _BlogPageState extends State<BlogPage> {
               itemBuilder: (BuildContext context, int index) {
                 return BlogPost(post: Blog.posts[index]);
               },
-              // children: postItems,
             ),
           ),
         ],
