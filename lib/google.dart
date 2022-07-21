@@ -19,7 +19,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
     super.initState();
     _markers.add(
       Marker(
-        markerId: MarkerId("mylocation"),
+        markerId: const MarkerId("mylocation"),
         position: LatLng(widget.locale[0], widget.locale[1]),
       ),
     );
@@ -37,7 +37,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: showmaps
-          ? Container(
+          ? SizedBox(
               height: 500,
               width: SiteConfig.screenWidth,
               child: GoogleMap(

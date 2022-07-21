@@ -142,7 +142,6 @@ class SiteConfig {
           foregroundColor: lightColors.background,
           backgroundColor: lightColors.primary,
           onPressed: (() async {
-            print("object");
             String phone = "557188078855";
             String text = Uri.encodeFull("Ola Dr. Paula!");
             Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
@@ -384,7 +383,6 @@ class SiteConfig {
         },
       }),
     );
-    print(response.body);
     if (response.body == "OK") {
       return true;
     }
@@ -480,17 +478,6 @@ class Blog {
           ),
         );
       }
-    } else {
-      print("NULL JSONDATA");
-    }
-
-    // for (Post post in posts) {
-    //   print(post.id);
-    //   print(post.published);
-    //   print(post.url);
-    //   print(post.title);
-    //   print(post.content);
-    //   print(post.authorName);
-    // }
+    } else {}
   }
 }

@@ -71,7 +71,6 @@ class ContactPageState extends State<ContactPage> {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
-    GoogleMaps clinica = local ? widget.clinica1 : widget.clinica2;
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Contato"),
       floatingActionButton: SiteConfig.getFAB(),
@@ -136,17 +135,17 @@ class ContactPageState extends State<ContactPage> {
               Row(
                 children: [
                   Expanded(
-                    flex: 1,
                     child: Container(
-                      width: SiteConfig.screenWidth / 2,
+                      margin: const EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.all(8),
                       color: SiteConfig.lightColors.primary.withAlpha(25),
                       child: widget.clinica1,
                     ),
                   ),
                   Expanded(
-                    flex: 1,
                     child: Container(
-                      width: SiteConfig.screenWidth / 2,
+                      margin: const EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.all(8),
                       color: SiteConfig.lightColors.primary.withAlpha(25),
                       child: widget.clinica2,
                     ),
