@@ -501,20 +501,22 @@ class CarouselImageState extends State<CarouselImage> {
               Expanded(
                 flex: 2,
                 child: Container(
-                    width: SiteConfig.screenWidth,
-                    color: SiteConfig.lightColors.primary,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        widget.title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: SiteConfig.lightColors.background,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                  width: SiteConfig.screenWidth,
+                  color: SiteConfig.lightColors.primary,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      widget.title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: SiteConfig.lightColors.background,
+                        fontWeight: FontWeight.bold,
+                        fontSize: SiteConfig.screenWidth / 100 +
+                            (SiteConfig.smallScreen ? 10 : 5),
                       ),
-                    )),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

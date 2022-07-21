@@ -4,58 +4,72 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../config.dart';
 import '../widgets.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   final String title = "Home";
-  static final List<Widget> carouselImages = [
-    const CarouselImage(
-      image: "assets/images/serviços/pdo.jpg",
-      title: "pdo",
-      index: 1,
-    ),
-    const CarouselImage(
-      image: "assets/images/serviços/bioestimuladores.jpg",
-      title: "bioestimuladores",
-      index: 2,
-    ),
-    const CarouselImage(
-      image: "assets/images/paula/logoMarca.jpeg",
-      title: "logoMarca",
-      index: 3,
-    ),
-    const CarouselImage(
-      image: "assets/images/serviços/peeling.jpg",
-      title: "peeling",
-      index: 4,
-    ),
-    const CarouselImage(
-      image: "assets/images/serviços/microagulhamento.jpg",
-      title: "microagulhamento",
-      index: 5,
-    ),
-    const CarouselImage(
-      image: "assets/images/serviços/botox.png",
-      title: "botox",
-      index: 6,
-    ),
-    const CarouselImage(
-      image: "assets/images/serviços/Preenchimento.jpg",
-      title: "preenchimento",
-      index: 7,
-    ),
-    const CarouselImage(
-      image: "assets/images/serviços/bichectomia.jpg",
-      title: "bichectomia",
-      index: 8,
-    ),
-  ];
 
+  @override
+  State<StatefulWidget> createState() => HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+
+    final List<Widget> carouselImages = [
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/pdo.jpg",
+        title: "pdo",
+        index: 1,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/bioestimuladores.jpg",
+        title: "bioestimuladores",
+        index: 2,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/paula/logoMarca.jpeg",
+        title: "logoMarca",
+        index: 3,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/peeling.jpg",
+        title: "peeling",
+        index: 4,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/microagulhamento.jpg",
+        title: "microagulhamento",
+        index: 5,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/botox.png",
+        title: "botox",
+        index: 6,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/Preenchimento.jpg",
+        title: "preenchimento",
+        index: 7,
+      ),
+      // ignore: prefer_const_constructors
+      CarouselImage(
+        image: "assets/images/serviços/bichectomia.jpg",
+        title: "bichectomia",
+        index: 8,
+      ),
+    ];
 
     List<Widget> topInnerRectangle = [
       Expanded(
@@ -150,7 +164,7 @@ class HomePage extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: SiteConfig.getAppBar(context, title),
+      appBar: SiteConfig.getAppBar(context, widget.title),
       floatingActionButton: SiteConfig.getFAB(),
       body: SingleChildScrollView(
         child: Column(
