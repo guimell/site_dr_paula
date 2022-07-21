@@ -3,7 +3,8 @@ import 'package:site_dr_paula/config.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GoogleMaps extends StatefulWidget {
-  const GoogleMaps({Key? key}) : super(key: key);
+  final List<double> locale;
+  const GoogleMaps(this.locale, {Key? key}) : super(key: key);
 
   @override
   State<GoogleMaps> createState() => _GoogleMapsState();
@@ -17,9 +18,9 @@ class _GoogleMapsState extends State<GoogleMaps> {
   void initState() {
     super.initState();
     _markers.add(
-      const Marker(
+      Marker(
         markerId: MarkerId("mylocation"),
-        position: LatLng(-12.974347285704514, -38.513044658283896),
+        position: LatLng(widget.locale[0], widget.locale[1]),
       ),
     );
     if (_markers.isEmpty) {
@@ -51,8 +52,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
                 zoomGesturesEnabled: false,
                 markers: Set<Marker>.of(_markers),
                 mapType: MapType.normal,
-                initialCameraPosition: const CameraPosition(
-                    target: LatLng(-12.974347285704514, -38.513044658283896),
+                initialCameraPosition: CameraPosition(
+                    target: LatLng(widget.locale[0], widget.locale[1]),
                     zoom: 17),
               ),
             )

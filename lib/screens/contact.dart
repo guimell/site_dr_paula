@@ -5,6 +5,12 @@ import '../google.dart';
 import '../widgets.dart';
 
 class ContactPage extends StatefulWidget {
+  final GoogleMaps clinica1 = const GoogleMaps(
+    [-12.97906405448506, -38.46079686531542],
+  );
+  final GoogleMaps clinica2 = const GoogleMaps(
+    [-13.002766607398238, -38.50198503547772],
+  );
   const ContactPage({Key? key}) : super(key: key);
 
   @override
@@ -16,6 +22,7 @@ class ContactPageState extends State<ContactPage> {
   final myControllerSobreName = TextEditingController();
   final myControllerEmail = TextEditingController();
   final myControllerMensagem = TextEditingController();
+  bool local = false;
 
   @override
   void dispose() {
@@ -64,6 +71,7 @@ class ContactPageState extends State<ContactPage> {
     SiteConfig.screenHeight = MediaQuery.of(context).size.height;
     SiteConfig.screenWidth = MediaQuery.of(context).size.width;
     SiteConfig.smallScreen = SiteConfig.screenWidth < SiteConfig.screenHeight;
+    GoogleMaps clinica = local ? widget.clinica1 : widget.clinica2;
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Contato"),
       floatingActionButton: SiteConfig.getFAB(),
@@ -125,9 +133,25 @@ class ContactPageState extends State<ContactPage> {
                   ],
                 ),
               ),
-              Container(
-                color: SiteConfig.lightColors.primary.withAlpha(25),
-                child: const GoogleMaps(),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: SiteConfig.screenWidth / 2,
+                      color: SiteConfig.lightColors.primary.withAlpha(25),
+                      child: widget.clinica1,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: SiteConfig.screenWidth / 2,
+                      color: SiteConfig.lightColors.primary.withAlpha(25),
+                      child: widget.clinica2,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 50),
               SiteConfig.getFooter(),

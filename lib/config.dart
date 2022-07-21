@@ -54,6 +54,8 @@ class SiteConfig {
     maximumSize: MaterialStateProperty.all(const Size(150, 100)),
   );
 
+  static bool local = true;
+
   static AppBar getAppBar(BuildContext context, String title) {
     const int navButtonsWidth = 775;
     final List<Widget> navigationButtons = [
