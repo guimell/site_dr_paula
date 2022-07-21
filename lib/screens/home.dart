@@ -115,7 +115,7 @@ class HomePageState extends State<HomePage> {
       Expanded(
         flex: 1,
         child: Image.asset(
-          "assets/images/paula/paulaVacina.jpg",
+          "assets/images/paula/vacina.jpg",
           fit: BoxFit.contain,
         ),
       ),
@@ -150,7 +150,7 @@ class HomePageState extends State<HomePage> {
       Expanded(
         flex: 1,
         child: Image.asset(
-          "assets/images/paula/paulaPerfil.jpg",
+          "assets/images/paula/perfil.jpg",
           fit: BoxFit.contain,
         ),
       ),
@@ -176,7 +176,7 @@ class HomePageState extends State<HomePage> {
               child: Stack(
                 children: [
                   Image.asset(
-                    "assets/images/paula/paulaMao.jpg",
+                    "assets/images/paula/mao.jpg",
                     fit: BoxFit.fitHeight,
                   ),
                   Align(
