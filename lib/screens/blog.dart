@@ -16,9 +16,9 @@ class _BlogPageState extends State<BlogPage> {
   Future<void> getBlogPosts() async {
     if (Blog.posts.isEmpty) {
       await Blog.getBlog();
-    }
-    if (mounted) {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     }
   }
 
