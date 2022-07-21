@@ -1,3 +1,8 @@
+
+# https://github.com/bluefireteam/flutter-gh-pages
+# https://docs.flutter.dev/development/platform-integration/web/renderers
+# https://stackoverflow.com/questions/65653801/flutter-web-cant-load-network-image-from-another-domain
+
 name: Gh-Pages
 
 on:
