@@ -72,10 +72,14 @@ class _BlogPageState extends State<BlogPage> {
           SizedBox(
             height: SiteConfig.screenHeight - 80 - 10 - 10 - 10 - 10 - 50,
             width: SiteConfig.screenWidth,
-            child: ListView(
+            // child: ListView(
+            child: ListView.builder(
               scrollDirection:
                   SiteConfig.smallScreen ? Axis.vertical : Axis.horizontal,
-              children: postItems,
+              itemBuilder: (BuildContext context, int index) {
+                return postItems[index];
+              },
+              // children: postItems,
             ),
           ),
         ],
