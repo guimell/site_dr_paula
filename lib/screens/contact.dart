@@ -132,26 +132,43 @@ class ContactPageState extends State<ContactPage> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      padding: const EdgeInsets.all(8),
-                      color: SiteConfig.lightColors.primary.withAlpha(25),
-                      child: widget.clinica1,
+              SiteConfig.smallScreen
+                  ? Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.all(8),
+                          color: SiteConfig.lightColors.primary.withAlpha(25),
+                          child: widget.clinica1,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.all(8),
+                          color: SiteConfig.lightColors.primary.withAlpha(25),
+                          child: widget.clinica2,
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.all(8),
+                            color: SiteConfig.lightColors.primary.withAlpha(25),
+                            child: widget.clinica1,
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.all(8),
+                            color: SiteConfig.lightColors.primary.withAlpha(25),
+                            child: widget.clinica2,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      padding: const EdgeInsets.all(8),
-                      color: SiteConfig.lightColors.primary.withAlpha(25),
-                      child: widget.clinica2,
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 50),
               SiteConfig.getFooter(),
             ],
