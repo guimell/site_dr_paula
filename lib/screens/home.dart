@@ -169,25 +169,44 @@ class HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: SiteConfig.screenHeight * 0.6,
+            Container(
+              color: SiteConfig.lightColors.primary.withAlpha(25),
+              height: SiteConfig.screenHeight * 0.9,
               width: SiteConfig.screenWidth,
               child: Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Image.asset(
-                      "assets/images/paula/paulaMao.jpg",
-                      fit: BoxFit.fitWidth,
-                    ),
+                  Image.asset(
+                    "assets/images/paula/paulaMao.jpg",
+                    fit: BoxFit.fitHeight,
                   ),
-                  const Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "TITLE TITLE\nSUB SUB",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                  Align(
+                    alignment: SiteConfig.smallScreen
+                        ? Alignment.bottomCenter
+                        : Alignment.bottomRight,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 100,
+                        horizontal: 50,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 12,
+                      ),
+                      decoration: BoxDecoration(boxShadow: [
+                        BoxShadow(
+                          color:
+                              SiteConfig.lightColors.background.withAlpha(50),
+                          blurRadius: 50,
+                          spreadRadius: 20,
+                        )
+                      ]),
+                      child: Text(
+                        "TITLE TITLE\nSUB SUB",
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: SiteConfig.lightColors.primary,
+                        ),
                       ),
                     ),
                   ),
