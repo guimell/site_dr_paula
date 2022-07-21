@@ -344,12 +344,20 @@ class BlogPost extends StatelessWidget {
               ? const SizedBox()
               : Expanded(
                   flex: 8,
-                  child: Text(
-                    post.content,
-                    style: TextStyle(
-                      color: Colors.grey.withAlpha(200),
-                    ),
-                  ),
+                  child: LayoutBuilder(builder:
+                      (BuildContext context, BoxConstraints constraints) {
+                    const double textSize = 14;
+                    final double lines = constraints.maxHeight / textSize - 3;
+                    return Text(
+                      post.content,
+                      maxLines: lines.round(),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: textSize,
+                        color: Colors.grey.withAlpha(200),
+                      ),
+                    );
+                  }),
                 ),
           // info section
           Container(
