@@ -28,7 +28,6 @@ class ServicesPage extends StatefulWidget {
       "sulcos e marcas de expressão facial, "
       "perda de volume na face; perda de espessura dérmica, como também a perda de contorno da face."
       " Para maiores informações, é importante agendar uma consulta.";
-
   final String textService3 = "Você conhece a sequência de Fibonacci? "
       "É uma sucessão de números que aparece codificada em muitos fenômenos da natureza. "
       "Descrita no final do século 12 pelo matemático italiano Leonardo Fibonacci, ela é infinita e começa com 0 e 1."
@@ -49,13 +48,13 @@ class ServicesPage extends StatefulWidget {
       "pois aumenta a atividade dos fibroblastos e consequentemente, a produção de colágeno.";
   final String textService5 =
       "Por que indicar microagulhamento para nossos pacientes? "
-      "Primeiramente porque ele favorece à renovação celular, com estímulo à produção de colágeno. Traduzindo isso em resultados, observamos:\n"
-      "1-Redução de poros dilatados;\n"
-      "2-Resultados maravilhosos para cicatrizes de acne;\n"
-      "3-Rejuvenescimento facial com diminuição das linhas de expressão;\n"
-      "4-Melhora na textura e viço da pele;\n"
-      "5-Clareamento da pele;\n"
-      "6-Crescimento capilar (em regiões como a sobrancelhas, é observado o aumento de fios, melhorando a possibilidade de favorecer seu desing ).\n"
+      "Primeiramente porque ele favorece à renovação celular, com estímulo à produção de colágeno. Traduzindo isso em resultados, observamos:\n\n"
+      "1. Redução de poros dilatados;\n"
+      "2. Resultados maravilhosos para cicatrizes de acne;\n"
+      "3. Rejuvenescimento facial com diminuição das linhas de expressão;\n"
+      "4. Melhora na textura e viço da pele;\n"
+      "5. Clareamento da pele;\n"
+      "6. Crescimento capilar (em regiões como a sobrancelhas, é observado o aumento de fios, melhorando a possibilidade de favorecer seu desing ).\n\n"
       "Por que prefiro a caneta elétrica (derma Pen) em vez do rolo(derma roller)?"
       "Porque ao trabalhar com a dermapen é possível realizar uma profundidade de microagulhamento específico para cada área da pele,"
       "com a  calibração na própria caneta e assim, obter resultados de forma mais direcionada.";
@@ -86,19 +85,19 @@ class ServicesPage extends StatefulWidget {
       " lifting e também para melhor aparência dos tecidos. Cada indicação clínica é específica e deve ser orientada e aplicada por profissional habilitado.";
   final String textService8 =
       "A bichectomia tem sido um assunto muito polêmico nos últimos tempos, por isso,"
-      "resolvi criar essa sequência de tópicos para trazer clareza e objetividade sobre o assunto.\n"
-      "1-Na bichectomia retiramos as bolas de bichat\n"
-      "2-Para que serve a bola de bichat? Ela é muito útil para as crianças,"
+      "resolvi criar essa sequência de tópicos para trazer clareza e objetividade sobre o assunto.\n\n"
+      "1. Na bichectomia retiramos as bolas de bichat\n"
+      "2. Para que serve a bola de bichat? Ela é muito útil para as crianças,"
       "nos primeiros anos de vida, auxiliando na sucção.\n"
-      "3-Qual a sua função na vida adulta? Nenhuma.\n"
-      "4-Com o passar dos anos, os tecidos tendem a despencar, seguindo a lei da gravidade."
+      "3. Qual a sua função na vida adulta? Nenhuma.\n"
+      "4. Com o passar dos anos, os tecidos tendem a despencar, seguindo a lei da gravidade."
       "Nesta mesma lei, as bolas de bichat despencam tb, favorecendo para uma aparência de buldogue.\n"
-      "5-Nem todo formato de rosto fica bem após realizar este procedimento,"
+      "5. Nem todo formato de rosto fica bem após realizar este procedimento,"
       "por isso é preciso uma avaliação criteriosa com um profissional qualificado.\n"
-      "6-O rosto fica lindo, mais magrinho… Muitas celebridades já realizaram e seus resultados ficaram muito bom.\n"
-      "7-Porém, caso o seu perfil facial não tenha indicação para tal procedimento,"
+      "6. O rosto fica lindo, mais magrinho… Muitas celebridades já realizaram e seus resultados ficaram muito bom.\n"
+      "7. Porém, caso o seu perfil facial não tenha indicação para tal procedimento,"
       "não o realize mesmo que seja algo que desperte grandemente seu interesse.\n"
-      "8-Busque por profissionais que saibam valorizar seus traços, sua beleza, seus pontos fortes."
+      "8. Busque por profissionais que saibam valorizar seus traços, sua beleza, seus pontos fortes."
       "Harmonizar é acima de tudo, trazer sintonia para face, com cuidado e delicadeza.\n";
 
   final int? index;
@@ -143,9 +142,10 @@ class ServicesPageState extends State<ServicesPage> {
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
     List<Widget> children = [
-      SizedBox(
+      Container(
         height: SiteConfig.screenSize.height / 2,
-        width: SiteConfig.screenSize.width,
+        // width: SiteConfig.screenSize.width,
+        // color: Colors.white,
         child: Stack(
           children: [
             Align(
@@ -171,42 +171,59 @@ class ServicesPageState extends State<ServicesPage> {
           ],
         ),
       ),
-      MyContainerService(
-        "FIOS DE PDO ",
-        widget.textService1,
+      ServiceContainer(
+        title: "FIOS DE PDO ",
+        text: widget.textService1,
+        img: Image.asset("assets/images/serviços/pdo.jpg"),
+        imgLeft: true,
       ),
-      MyContainerService(
-        "Bioestimuladores ",
-        widget.textService2,
+      ServiceContainer(
+        title: "Bioestimuladores ",
+        text: widget.textService2,
+        img: Image.asset("assets/images/serviços/pdo1.png"),
+        imgLeft: false,
       ),
-      MyContainerService(
-        "Já ouviu falar sobre a sequência de Fibonacci ?",
-        widget.textService3,
+      ServiceContainer(
+        title: "Já ouviu falar sobre a sequência de Fibonacci ?",
+        text: widget.textService3,
+        img: Image.asset("assets/images/serviços/pdo2.jpg"),
+        imgLeft: true,
       ),
-      MyContainerService(
-        "Peeling ",
-        widget.textService4,
+      ServiceContainer(
+        title: "Peeling ",
+        text: widget.textService4,
+        img: Image.asset("assets/images/serviços/pdo2.jpg"),
+        imgLeft: false,
       ),
-      MyContainerService(
-        "Microagulhamento",
-        widget.textService5,
+      ServiceContainer(
+        title: "Microagulhamento",
+        text: widget.textService5,
+        img: Image.asset("assets/images/serviços/pdo3.png"),
+        imgLeft: true,
       ),
-      MyContainerService(
-        "O Botox e sua ação nas rugas",
-        widget.textService6,
+      ServiceContainer(
+        title: "O Botox e sua ação nas rugas",
+        text: widget.textService6,
+        img: Image.asset("assets/images/serviços/pdo.jpg"),
+        imgLeft: false,
       ),
-      MyContainerService(
-        "Preenchimento com ácido hialurônico ",
-        widget.textService7,
+      ServiceContainer(
+        title: "Preenchimento com ácido hialurônico ",
+        text: widget.textService7,
+        img: Image.asset("assets/images/serviços/pdo1.png"),
+        imgLeft: true,
       ),
-      MyContainerService(
-        "Bichectomia ",
-        widget.textService8,
+      ServiceContainer(
+        title: "Bichectomia ",
+        text: widget.textService8,
+        img: Image.asset("assets/images/serviços/pdo2.jpg"),
+        imgLeft: false,
       ),
+      SiteConfig.getFooter(),
     ];
 
     final positionedList = ScrollablePositionedList.builder(
-      itemCount: 9,
+      itemCount: 10, // 8 services + heading + footer
       itemScrollController: itemScrollController,
       itemPositionsListener: itemPositionsListener,
       itemBuilder: (BuildContext context, int index) {
@@ -218,15 +235,6 @@ class ServicesPageState extends State<ServicesPage> {
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Services"),
       floatingActionButton: SiteConfig.getFAB(),
-      // body: SingleChildScrollView(
-      //   child: Align(
-      //     alignment: Alignment.center,
-      //     child: Column(
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         crossAxisAlignment: CrossAxisAlignment.center,
-      //         children: children + [SiteConfig.getFooter()]),
-      //   ),
-      // ),
       body: positionedList,
     );
   }

@@ -334,7 +334,6 @@ class BlogPost extends StatelessWidget {
                 builder: (BuildContext context, BoxConstraints constraints) {
               const double textSize = 24;
               final double lines = constraints.maxHeight / textSize - 1;
-              print(lines);
               return Text(
                 post.title,
                 maxLines: lines.round() <= 0 ? 1 : lines.round(),
@@ -393,69 +392,97 @@ class BlogPost extends StatelessWidget {
   }
 }
 
-class MyContainerService extends StatelessWidget {
+class ServiceContainer extends StatelessWidget {
+  final Image img;
   final String text;
   final String title;
-  const MyContainerService(
-    this.title,
-    this.text, {
+  final bool imgLeft;
+  const ServiceContainer({
+    required this.text,
+    required this.title,
+    required this.img,
+    required this.imgLeft,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(22),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        width: SiteConfig.screenSize.width * 0.7,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 40,
-                  color: Color.fromARGB(255, 175, 127, 75),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
-                textAlign: TextAlign.start,
-              ),
-            ),
-            CarouselSlider(
-              options: CarouselOptions(
-                  height: 400.0, enableInfiniteScroll: true, autoPlay: true),
-              items: [
-                Image.asset("assets/images/serviços/pdo.jpg"),
-                Image.asset(
-                  "assets/images/serviços/pdo1.png",
-                  fit: BoxFit.fitWidth,
-                ),
-                Image.asset("assets/images/serviços/pdo2.jpg"),
-                Image.asset("assets/images/serviços/pdo3.png")
-              ].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 1),
-                        child: i);
-                  },
-                );
-              }).toList(),
-            ),
-          ],
-        ),
+    return Container(
+      margin: const EdgeInsets.all(48),
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white.withAlpha(150),
+        borderRadius: BorderRadius.circular(6),
       ),
+      width: SiteConfig.screenSize.width * 0.7,
+      child: SiteConfig.smallScreen
+          ? Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 40,
+                      color: Color.fromARGB(255, 175, 127, 75),
+                    ),
+                  ),
+                ),
+                img,
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                imgLeft
+                    ? Expanded(
+                        flex: 4,
+                        child: img,
+                      )
+                    : const SizedBox(),
+                Expanded(
+                  flex: 6,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          title,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 40,
+                            color: Color.fromARGB(255, 175, 127, 75),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(30),
+                        child: Text(
+                          text,
+                          // style: const TextStyle(
+                          //   fontSize: 18,
+                          // ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                imgLeft
+                    ? const SizedBox()
+                    : Expanded(
+                        flex: 4,
+                        child: img,
+                      ),
+              ],
+            ),
     );
   }
 }
