@@ -314,7 +314,7 @@ class BlogPost extends StatelessWidget {
                       Center(
                         child: post.image == ""
                             ? Image.asset(
-                                "assets/images/nope/service_temp.png",
+                                "assets/images/paula/logoMarca.jpeg",
                                 fit: BoxFit.cover,
                               )
                             : FadeInImage.memoryNetwork(
