@@ -294,9 +294,8 @@ class BlogPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double width = SiteConfig.smallScreen
-        ? SiteConfig.screenWidth * 0.8
-        : SiteConfig.screenWidth * 0.8 / 3;
+    final double width =
+        SiteConfig.smallScreen ? SiteConfig.screenWidth * 0.8 : 400;
     return Container(
       margin: const EdgeInsets.all(20.0),
       padding: const EdgeInsets.all(10.0),
