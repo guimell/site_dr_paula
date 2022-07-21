@@ -321,6 +321,7 @@ class BlogPost extends StatelessWidget {
                                 placeholder: kTransparentImage,
                                 image: post.image,
                                 fit: BoxFit.cover,
+                                width: width,
                               ),
                       ),
                     ],
