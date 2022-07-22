@@ -152,13 +152,31 @@ class ContactPageState extends State<ContactPage> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            Expanded(child: Text("Informações de contato")),
-            Expanded(child: Text("Subtitle")),
-            Expanded(child: Text("719999-9999")),
-            Expanded(child: Text("exemplo@gmail.com")),
-            Expanded(child: Text("Rua praia de .....")),
-            Expanded(child: Text("Footer icons here")),
+          children: [
+            Text(
+              "Informações de contato",
+              style: TextStyle(color: SiteConfig.lightColors.background),
+            ),
+            Text(
+              "Subtitle",
+              style: TextStyle(color: SiteConfig.lightColors.background),
+            ),
+            Text(
+              "719999-9999",
+              style: TextStyle(color: SiteConfig.lightColors.background),
+            ),
+            Text(
+              "exemplo@gmail.com",
+              style: TextStyle(color: SiteConfig.lightColors.background),
+            ),
+            Text(
+              "Rua praia de .....",
+              style: TextStyle(color: SiteConfig.lightColors.background),
+            ),
+            Text(
+              "Footer icons here",
+              style: TextStyle(color: SiteConfig.lightColors.background),
+            ),
           ],
         ),
       ),
