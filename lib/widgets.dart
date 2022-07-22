@@ -353,7 +353,7 @@ class BlogPost extends StatelessWidget {
                   child: LayoutBuilder(builder:
                       (BuildContext context, BoxConstraints constraints) {
                     const double textSize = 14;
-                    final double lines = constraints.maxHeight / textSize - 2;
+                    final double lines = constraints.maxHeight / textSize - 3;
                     return Text(
                       post.content,
                       maxLines: lines.round() <= 0 ? 1 : lines.round(),
