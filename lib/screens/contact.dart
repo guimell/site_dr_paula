@@ -72,9 +72,11 @@ class ContactPageState extends State<ContactPage> {
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
-    Widget containerField = Expanded(
+    Widget rightContact = Expanded(
+      flex: 2,
       child: Container(
-        width: SiteConfig.screenSize.width / 2,
+        padding: const EdgeInsets.all(30.0),
+        width: SiteConfig.screenSize.width,
         child: Column(
           children: [
             const Padding(
@@ -86,28 +88,40 @@ class ContactPageState extends State<ContactPage> {
                 ),
               ),
             ),
-            MyTextField(
-              labelText: 'Nome :',
-              myController: myControllerName,
+            Expanded(
+              flex: 1,
+              child: MyTextField(
+                labelText: 'Nome :',
+                myController: myControllerName,
+              ),
             ),
-            MyTextField(
-              labelText: 'Sobrenome :',
-              myController: myControllerSobreName,
+            Expanded(
+              flex: 1,
+              child: MyTextField(
+                labelText: 'Sobrenome :',
+                myController: myControllerSobreName,
+              ),
             ),
-            MyTextField(
-              labelText: 'E-mail :',
-              myController: myControllerEmail,
+            Expanded(
+              flex: 1,
+              child: MyTextField(
+                labelText: 'E-mail :',
+                myController: myControllerEmail,
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                maxLines: 10,
-                controller: myControllerMensagem,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  maxLines: 10,
+                  controller: myControllerMensagem,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    labelText: 'Mensagem :',
                   ),
-                  labelText: 'Mensagem :',
                 ),
               ),
             ),
@@ -129,20 +143,22 @@ class ContactPageState extends State<ContactPage> {
       ),
     );
     Widget leftContact = Expanded(
+      flex: 1,
       child: Container(
+        width: SiteConfig.screenSize.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: SiteConfig.lightColors.primary.withAlpha(25),
+          color: SiteConfig.lightColors.primary,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: const [
-            Text("Informações de contato"),
-            Text("Subtitle"),
-            Text("719999-9999"),
-            Text("exemplo@gmail.com"),
-            Text("Rua praia de ...."),
-            Text("Footer icons here")
+            Expanded(child: Text("Informações de contato")),
+            Expanded(child: Text("Subtitle")),
+            Expanded(child: Text("719999-9999")),
+            Expanded(child: Text("exemplo@gmail.com")),
+            Expanded(child: Text("Rua praia de .....")),
+            Expanded(child: Text("Footer icons here")),
           ],
         ),
       ),
@@ -157,10 +173,7 @@ class ContactPageState extends State<ContactPage> {
               Column(
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    margin: EdgeInsets.all(30),
+                    margin: const EdgeInsets.all(30),
                     height: SiteConfig.smallScreen
                         ? SiteConfig.screenSize.height * 0.8 * 2
                         : SiteConfig.screenSize.height * 0.8,
@@ -170,58 +183,56 @@ class ContactPageState extends State<ContactPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               leftContact,
-                              containerField,
+                              rightContact,
                             ],
                           )
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               leftContact,
-                              containerField,
+                              rightContact,
                             ],
                           ),
                   ),
                 ],
               ),
-              SiteConfig.smallScreen
-                  ? Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          padding: const EdgeInsets.all(8),
-                          color: SiteConfig.lightColors.primary.withAlpha(25),
-                          child: widget.clinica1,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          padding: const EdgeInsets.all(8),
-                          color: SiteConfig.lightColors.primary.withAlpha(25),
-                          child: widget.clinica2,
-                        ),
-                      ],
-                    )
-                  : Row(
-                      children: [
-                        Expanded(
-                          child: Container(
+              Container(
+                color: SiteConfig.lightColors.primary.withAlpha(25),
+                child: SiteConfig.smallScreen
+                    ? Column(
+                        children: [
+                          Container(
                             margin: const EdgeInsets.only(top: 20),
                             padding: const EdgeInsets.all(8),
-                            color: SiteConfig.lightColors.primary.withAlpha(25),
                             child: widget.clinica1,
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
+                          Container(
                             margin: const EdgeInsets.only(top: 20),
                             padding: const EdgeInsets.all(8),
-                            color: SiteConfig.lightColors.primary.withAlpha(25),
                             child: widget.clinica2,
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              padding: const EdgeInsets.all(8),
+                              child: widget.clinica1,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              padding: const EdgeInsets.all(8),
+                              child: widget.clinica2,
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
               const SizedBox(height: 50),
-              SiteConfig.getFooter(),
             ],
           ),
         ),
