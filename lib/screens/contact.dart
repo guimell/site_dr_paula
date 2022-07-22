@@ -22,6 +22,7 @@ class ContactPageState extends State<ContactPage> {
   final myControllerSobreName = TextEditingController();
   final myControllerEmail = TextEditingController();
   final myControllerMensagem = TextEditingController();
+
   bool local = false;
 
   @override
@@ -71,6 +72,81 @@ class ContactPageState extends State<ContactPage> {
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
+    Widget containerField = Expanded(
+      child: Container(
+        width: SiteConfig.screenSize.width / 2,
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Text(
+                "Contato",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            MyTextField(
+              labelText: 'Nome :',
+              myController: myControllerName,
+            ),
+            MyTextField(
+              labelText: 'Sobrenome :',
+              myController: myControllerSobreName,
+            ),
+            MyTextField(
+              labelText: 'E-mail :',
+              myController: myControllerEmail,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                maxLines: 10,
+                controller: myControllerMensagem,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  labelText: 'Mensagem :',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () async {
+                        trySendEmail();
+                      },
+                      child: const Text("Enviar"))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    Widget leftContact = Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: SiteConfig.lightColors.primary.withAlpha(25),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: const [
+            Text("Informações de contato"),
+            Text("Subtitle"),
+            Text("719999-9999"),
+            Text("exemplo@gmail.com"),
+            Text("Rua praia de ...."),
+            Text("Footer icons here")
+          ],
+        ),
+      ),
+    );
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Contato"),
       floatingActionButton: SiteConfig.getFAB(),
@@ -78,59 +154,34 @@ class ContactPageState extends State<ContactPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                width: SiteConfig.screenSize.height * 0.8,
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(30.0),
-                      child: Text(
-                        "Contato",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
+              Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    MyTextField(
-                      labelText: 'Nome :',
-                      myController: myControllerName,
-                    ),
-                    MyTextField(
-                      labelText: 'Sobrenome :',
-                      myController: myControllerSobreName,
-                    ),
-                    MyTextField(
-                      labelText: 'E-mail :',
-                      myController: myControllerEmail,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: TextFormField(
-                        maxLines: 10,
-                        controller: myControllerMensagem,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
+                    margin: EdgeInsets.all(30),
+                    height: SiteConfig.smallScreen
+                        ? SiteConfig.screenSize.height * 0.8 * 2
+                        : SiteConfig.screenSize.height * 0.8,
+                    width: SiteConfig.screenSize.width,
+                    child: SiteConfig.smallScreen
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              leftContact,
+                              containerField,
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              leftContact,
+                              containerField,
+                            ],
                           ),
-                          labelText: 'Mensagem :',
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () async {
-                                trySendEmail();
-                              },
-                              child: const Text("Enviar"))
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               SiteConfig.smallScreen
                   ? Column(
