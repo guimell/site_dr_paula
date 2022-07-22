@@ -67,7 +67,7 @@ class _BlogPageState extends State<BlogPage> {
               scrollDirection:
                   SiteConfig.smallScreen ? Axis.vertical : Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                return BlogPost(post: Blog.posts[index]);
+                return Blog.posts[index];
               },
             ),
           ),
