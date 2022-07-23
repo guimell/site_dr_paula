@@ -1,11 +1,11 @@
 {
-    "name": "site_dr_paula",
-    "short_name": "site_dr_paula",
+    "name": "dentista_paula_brasil",
+    "short_name": "dentista_paula_brasil",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Website para a dentista Dra. Paula Brasil.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

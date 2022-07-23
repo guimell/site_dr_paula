@@ -84,36 +84,46 @@ class ContactPageState extends State<ContactPage> {
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
-    Widget containerField = Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Container(
-          width: SiteConfig.screenSize.width / 2,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(30.0),
-                child: Text(
-                  "Contato",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
+    Widget rightContact = Expanded(
+      flex: 2,
+      child: Container(
+        padding: const EdgeInsets.all(30.0),
+        width: SiteConfig.screenSize.width,
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Text(
+                "Contato",
+                style: TextStyle(
+                  fontSize: 20,
                 ),
               ),
-              MyTextField(
+            ),
+            Expanded(
+              flex: 1,
+              child: MyTextField(
                 labelText: 'Nome :',
                 myController: myControllerName,
               ),
-              MyTextField(
+            ),
+            Expanded(
+              flex: 1,
+              child: MyTextField(
                 labelText: 'Sobrenome :',
                 myController: myControllerSobreName,
               ),
-              MyTextField(
+            ),
+            Expanded(
+              flex: 1,
+              child: MyTextField(
                 labelText: 'E-mail :',
                 myController: myControllerEmail,
               ),
-              Padding(
+            ),
+            Expanded(
+              flex: 2,
+              child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: TextFormField(
                   maxLines: 10,
@@ -126,26 +136,29 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () async {
-                          trySendEmail();
-                        },
-                        child: const Text("Enviar"))
-                  ],
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () async {
+                        trySendEmail();
+                      },
+                      child: const Text("Enviar"))
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
+
     Widget leftContact = Expanded(
+      flex: 1,
       child: Container(
+        width: SiteConfig.screenSize.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: SiteConfig.lightColors.primary,
@@ -244,11 +257,7 @@ class ContactPageState extends State<ContactPage> {
               Column(
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    margin: EdgeInsets.all(30),
-                    padding: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(30),
                     height: SiteConfig.smallScreen
                         ? SiteConfig.screenSize.height * 0.7 * 2
                         : SiteConfig.screenSize.height * 0.7,
@@ -258,71 +267,56 @@ class ContactPageState extends State<ContactPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               leftContact,
-                              containerField,
+                              rightContact,
                             ],
                           )
                         : Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               leftContact,
-                              containerField,
+                              rightContact,
                             ],
                           ),
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    "Clinica 1",
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    "Clinica 2",
-                    style: TextStyle(fontSize: 30),
-                  )
-                ],
-              ),
-              SiteConfig.smallScreen
-                  ? Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          padding: const EdgeInsets.all(8),
-                          color: SiteConfig.lightColors.primary.withAlpha(25),
-                          child: widget.clinica1,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          padding: const EdgeInsets.all(8),
-                          color: SiteConfig.lightColors.primary.withAlpha(25),
-                          child: widget.clinica2,
-                        ),
-                      ],
-                    )
-                  : Row(
-                      children: [
-                        Expanded(
-                          child: Container(
+              Container(
+                color: SiteConfig.lightColors.primary.withAlpha(25),
+                child: SiteConfig.smallScreen
+                    ? Column(
+                        children: [
+                          Container(
                             margin: const EdgeInsets.only(top: 20),
                             padding: const EdgeInsets.all(8),
-                            color: SiteConfig.lightColors.primary.withAlpha(25),
                             child: widget.clinica1,
                           ),
-                        ),
-                        Expanded(
-                          child: Container(
+                          Container(
                             margin: const EdgeInsets.only(top: 20),
                             padding: const EdgeInsets.all(8),
-                            color: SiteConfig.lightColors.primary.withAlpha(25),
                             child: widget.clinica2,
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              padding: const EdgeInsets.all(8),
+                              child: widget.clinica1,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              padding: const EdgeInsets.all(8),
+                              child: widget.clinica2,
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
               const SizedBox(height: 50),
-              SiteConfig.getFooter(),
             ],
           ),
         ),

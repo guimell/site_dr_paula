@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:site_dr_paula/config.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'config.dart';
 
 class GoogleMaps extends StatefulWidget {
   final List<double> locale;

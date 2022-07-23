@@ -455,7 +455,7 @@ class Blog {
   );
 
   static int id = 0;
-  static List<Post> posts = [];
+  static List<BlogPost> posts = [];
 
   static Future<void> getBlog() async {
     http.Response response = await http.get(uri);
@@ -465,14 +465,16 @@ class Blog {
       posts = [];
       for (var post in jsonData["items"]) {
         posts.add(
-          Post(
-            id: post["id"] ??= "",
-            published: post["published"] ??= "",
-            updated: post["updated"] ??= "",
-            url: post["url"] ??= "",
-            title: post["title"] ??= "",
-            content: post["content"] ??= "",
-            authorName: post["author"]["displayName"] ??= "",
+          BlogPost(
+            post: Post(
+              id: post["id"] ??= "",
+              published: post["published"] ??= "",
+              updated: post["updated"] ??= "",
+              url: post["url"] ??= "",
+              title: post["title"] ??= "",
+              content: post["content"] ??= "",
+              authorName: post["author"]["displayName"] ??= "",
+            ),
           ),
         );
       }
