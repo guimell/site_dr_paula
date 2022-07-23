@@ -1,4 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../config.dart';
 import '../google.dart';
@@ -67,64 +71,76 @@ class ContactPageState extends State<ContactPage> {
     }
   }
 
+  static Future<void> tryLaunchUri(Uri uri) async {
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $uri';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
     Widget containerField = Expanded(
-      child: Container(
-        width: SiteConfig.screenSize.width / 2,
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(30.0),
-              child: Text(
-                "Contato",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            MyTextField(
-              labelText: 'Nome :',
-              myController: myControllerName,
-            ),
-            MyTextField(
-              labelText: 'Sobrenome :',
-              myController: myControllerSobreName,
-            ),
-            MyTextField(
-              labelText: 'E-mail :',
-              myController: myControllerEmail,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                maxLines: 10,
-                controller: myControllerMensagem,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Container(
+          width: SiteConfig.screenSize.width / 2,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Text(
+                  "Contato",
+                  style: TextStyle(
+                    fontSize: 20,
                   ),
-                  labelText: 'Mensagem :',
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                      onPressed: () async {
-                        trySendEmail();
-                      },
-                      child: const Text("Enviar"))
-                ],
+              MyTextField(
+                labelText: 'Nome :',
+                myController: myControllerName,
               ),
-            ),
-          ],
+              MyTextField(
+                labelText: 'Sobrenome :',
+                myController: myControllerSobreName,
+              ),
+              MyTextField(
+                labelText: 'E-mail :',
+                myController: myControllerEmail,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  maxLines: 10,
+                  controller: myControllerMensagem,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    labelText: 'Mensagem :',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () async {
+                          trySendEmail();
+                        },
+                        child: const Text("Enviar"))
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -132,17 +148,88 @@ class ContactPageState extends State<ContactPage> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: SiteConfig.lightColors.primary.withAlpha(25),
+          color: SiteConfig.lightColors.primary,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            Text("Informações de contato"),
-            Text("Subtitle"),
-            Text("719999-9999"),
-            Text("exemplo@gmail.com"),
-            Text("Rua praia de ...."),
-            Text("Footer icons here")
+          children: [
+            const Text(
+              "Informações de contato",
+              style: TextStyle(fontSize: 60),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.phone),
+                Text(" 719999-9999"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.email),
+                Text("exemplo@gmail.com"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.location_on),
+                Text("Rua praia de ...."),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.location_on),
+                Text("Rua praia de ...."),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Uri uri = Uri.parse(
+                          "https://www.instagram.com/drapaulabrasil/");
+                      tryLaunchUri(uri);
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.instagram,
+                      size: 40,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
+                      tryLaunchUri(uri);
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.facebook,
+                      size: 40,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Uri uri = Uri.parse("https://www.twitter.com");
+                      tryLaunchUri(uri);
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.twitter,
+                      size: 40,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -158,13 +245,14 @@ class ContactPageState extends State<ContactPage> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white),
                     margin: EdgeInsets.all(30),
+                    padding: EdgeInsets.all(10),
                     height: SiteConfig.smallScreen
-                        ? SiteConfig.screenSize.height * 0.8 * 2
-                        : SiteConfig.screenSize.height * 0.8,
-                    width: SiteConfig.screenSize.width,
+                        ? SiteConfig.screenSize.height * 0.7 * 2
+                        : SiteConfig.screenSize.height * 0.7,
+                    width: SiteConfig.screenSize.width * 0.8,
                     child: SiteConfig.smallScreen
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -181,6 +269,19 @@ class ContactPageState extends State<ContactPage> {
                             ],
                           ),
                   ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Clinica 1",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  Text(
+                    "Clinica 2",
+                    style: TextStyle(fontSize: 30),
+                  )
                 ],
               ),
               SiteConfig.smallScreen
