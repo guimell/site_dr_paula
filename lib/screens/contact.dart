@@ -166,36 +166,71 @@ class ContactPageState extends State<ContactPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text(
+            Text(
               "Informações de contato",
-              style: TextStyle(fontSize: 60),
+              style: TextStyle(
+                fontSize: 30,
+                color: SiteConfig.lightColors.background,
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.phone),
-                Text(" 719999-9999"),
+              children: [
+                Icon(
+                  Icons.phone,
+                  color: SiteConfig.lightColors.background,
+                ),
+                Text(
+                  " 719999-9999",
+                  style: TextStyle(
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.email),
-                Text("exemplo@gmail.com"),
+              children: [
+                Icon(
+                  Icons.email,
+                  color: SiteConfig.lightColors.background,
+                ),
+                Text(
+                  "exemplo@gmail.com",
+                  style: TextStyle(
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.location_on),
-                Text("Rua praia de ...."),
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: SiteConfig.lightColors.background,
+                ),
+                Text(
+                  "Rua praia de ....",
+                  style: TextStyle(
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.location_on),
-                Text("Rua praia de ...."),
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: SiteConfig.lightColors.background,
+                ),
+                Text(
+                  "Rua praia de ....",
+                  style: TextStyle(
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
               ],
             ),
             Row(
@@ -203,6 +238,7 @@ class ContactPageState extends State<ContactPage> {
               children: [
                 Expanded(
                   child: IconButton(
+                    color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
                     onPressed: () {
                       Uri uri = Uri.parse(
@@ -217,6 +253,7 @@ class ContactPageState extends State<ContactPage> {
                 ),
                 Expanded(
                   child: IconButton(
+                    color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
                     onPressed: () {
                       Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
@@ -230,6 +267,7 @@ class ContactPageState extends State<ContactPage> {
                 ),
                 Expanded(
                   child: IconButton(
+                    color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
                     onPressed: () {
                       Uri uri = Uri.parse("https://www.twitter.com");
@@ -279,6 +317,10 @@ class ContactPageState extends State<ContactPage> {
                           ),
                   ),
                 ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [Text("data"), Text("data")],
               ),
               Container(
                 color: SiteConfig.lightColors.primary.withAlpha(25),
