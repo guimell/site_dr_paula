@@ -81,6 +81,8 @@ class ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
+    double contactSize = 20;
+    double iconSize = 30;
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
@@ -167,71 +169,99 @@ class ContactPageState extends State<ContactPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              "Informações de contato",
+              "Informações de contato :",
               style: TextStyle(
                 fontSize: 30,
                 color: SiteConfig.lightColors.background,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.phone,
-                  color: SiteConfig.lightColors.background,
-                ),
-                Text(
-                  " 719999-9999",
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.phone,
+                    size: iconSize,
                     color: SiteConfig.lightColors.background,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Text(
+                      " +55 71 98807-8855",
+                      style: TextStyle(
+                        fontSize: contactSize,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.email,
-                  color: SiteConfig.lightColors.background,
-                ),
-                Text(
-                  "exemplo@gmail.com",
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.email,
+                    size: iconSize,
                     color: SiteConfig.lightColors.background,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Text(
+                      " prcbrasil@gmail.com",
+                      style: TextStyle(
+                        fontSize: contactSize,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.location_on,
-                  color: SiteConfig.lightColors.background,
-                ),
-                Text(
-                  "Rua praia de ....",
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.location_on,
+                    size: iconSize,
                     color: SiteConfig.lightColors.background,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Text(
+                      "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
+                      style: TextStyle(
+                        fontSize: contactSize,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.location_on,
-                  color: SiteConfig.lightColors.background,
-                ),
-                Text(
-                  "Rua praia de ....",
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.location_on,
+                    size: iconSize,
                     color: SiteConfig.lightColors.background,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: Text(
+                      "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
+                      style: TextStyle(
+                        fontSize: contactSize,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -318,19 +348,29 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [Text("data"), Text("data")],
-              ),
               Container(
                 color: SiteConfig.lightColors.primary.withAlpha(25),
                 child: SiteConfig.smallScreen
                     ? Column(
                         children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                           Container(
                             margin: const EdgeInsets.only(top: 20),
                             padding: const EdgeInsets.all(8),
                             child: widget.clinica1,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ',
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(top: 20),
@@ -343,16 +383,42 @@ class ContactPageState extends State<ContactPage> {
                         children: [
                           Expanded(
                             child: Container(
-                              margin: const EdgeInsets.only(top: 20),
-                              padding: const EdgeInsets.all(8),
-                              child: widget.clinica1,
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.all(8),
+                                    child: widget.clinica1,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Expanded(
                             child: Container(
-                              margin: const EdgeInsets.only(top: 20),
-                              padding: const EdgeInsets.all(8),
-                              child: widget.clinica2,
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.all(8),
+                                    child: widget.clinica2,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

@@ -202,7 +202,7 @@ class HomePageState extends State<HomePage> {
                         )
                       ]),
                       child: Text(
-                        "TITLE TITLE\nSUB SUB",
+                        "Especialista em\nHarmonização orofacial",
                         style: TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
