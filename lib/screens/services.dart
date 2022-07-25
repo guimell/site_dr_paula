@@ -146,30 +146,45 @@ class ServicesPageState extends State<ServicesPage> {
         height: SiteConfig.screenSize.height / 2,
         // width: SiteConfig.screenSize.width,
         // color: Colors.white,
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Image.asset(
-                  "assets/images/paula/paulaMesa.jpg",
-                  opacity: const AlwaysStoppedAnimation<double>(100),
-                  fit: BoxFit.fitWidth,
-                ),
+
+        child: SiteConfig.smallScreen
+            ? Column(
+                children: [
+                  Text(
+                    "SERVIÇOS",
+                    style: TextStyle(
+                        fontSize: 60, color: SiteConfig.lightColors.primary),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        "assets/images/paula/paulaMesa.jpg",
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "SERVIÇOS",
+                    style: TextStyle(
+                        fontSize: 60, color: SiteConfig.lightColors.primary),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Expanded(
+                      child: Image.asset(
+                        "assets/images/paula/paulaMesa.jpg",
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const Align(
-              alignment: Alignment.center,
-              child: Text(
-                "serviços:",
-                style: TextStyle(
-                  fontSize: 60,
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
       ServiceContainer(
         title: "FIOS DE PDO ",
@@ -178,43 +193,43 @@ class ServicesPageState extends State<ServicesPage> {
         imgLeft: true,
       ),
       ServiceContainer(
-        title: "Bioestimuladores ",
+        title: "BIOESTIMULADORES ",
         text: widget.textService2,
         img: Image.asset("assets/images/serviços/pdo1.png"),
         imgLeft: false,
       ),
       ServiceContainer(
-        title: "Já ouviu falar sobre a sequência de Fibonacci ?",
+        title: "JÁ OUVIU FALAR SOBRE A SEQUÊNCIA DE FIBONACCI ? ",
         text: widget.textService3,
         img: Image.asset("assets/images/serviços/pdo2.jpg"),
         imgLeft: true,
       ),
       ServiceContainer(
-        title: "Peeling ",
+        title: "PEELING ",
         text: widget.textService4,
         img: Image.asset("assets/images/serviços/pdo2.jpg"),
         imgLeft: false,
       ),
       ServiceContainer(
-        title: "Microagulhamento",
+        title: "MICROAGULHAMENTO",
         text: widget.textService5,
         img: Image.asset("assets/images/serviços/pdo3.png"),
         imgLeft: true,
       ),
       ServiceContainer(
-        title: "O Botox e sua ação nas rugas",
+        title: "O BOTOX E SUA AÇÃO NAS RUGAS ",
         text: widget.textService6,
         img: Image.asset("assets/images/serviços/pdo.jpg"),
         imgLeft: false,
       ),
       ServiceContainer(
-        title: "Preenchimento com ácido hialurônico ",
+        title: "PREENCHIMENTO COM ÁCIDO HIALURÔNICO ",
         text: widget.textService7,
         img: Image.asset("assets/images/serviços/pdo1.png"),
         imgLeft: true,
       ),
       ServiceContainer(
-        title: "Bichectomia ",
+        title: "BICHECTOMIA ",
         text: widget.textService8,
         img: Image.asset("assets/images/serviços/pdo2.jpg"),
         imgLeft: false,

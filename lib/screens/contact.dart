@@ -389,6 +389,7 @@ class ContactPageState extends State<ContactPage> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
                                       "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
+                                      style: TextStyle(fontSize: 15),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -409,6 +410,7 @@ class ContactPageState extends State<ContactPage> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
                                       "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
+                                      style: TextStyle(fontSize: 15),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -424,7 +426,7 @@ class ContactPageState extends State<ContactPage> {
                         ],
                       ),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 100),
             ],
           ),
         ),
