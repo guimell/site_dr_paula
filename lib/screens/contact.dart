@@ -93,13 +93,14 @@ class ContactPageState extends State<ContactPage> {
         width: SiteConfig.screenSize.width,
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(30.0),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
               child: Text(
                 "Contato",
                 style: TextStyle(
-                  fontSize: 20,
-                ),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: SiteConfig.lightColors.primary),
               ),
             ),
             Expanded(
@@ -172,6 +173,7 @@ class ContactPageState extends State<ContactPage> {
               "Informações de contato :",
               style: TextStyle(
                 fontSize: 30,
+                fontWeight: FontWeight.bold,
                 color: SiteConfig.lightColors.background,
               ),
             ),
@@ -190,6 +192,7 @@ class ContactPageState extends State<ContactPage> {
                       " +55 71 98807-8855",
                       style: TextStyle(
                         fontSize: contactSize,
+                        fontWeight: FontWeight.bold,
                         color: SiteConfig.lightColors.background,
                       ),
                     ),
@@ -212,6 +215,7 @@ class ContactPageState extends State<ContactPage> {
                       " prcbrasil@gmail.com",
                       style: TextStyle(
                         fontSize: contactSize,
+                        fontWeight: FontWeight.bold,
                         color: SiteConfig.lightColors.background,
                       ),
                     ),
@@ -234,6 +238,7 @@ class ContactPageState extends State<ContactPage> {
                       "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
                       style: TextStyle(
                         fontSize: contactSize,
+                        fontWeight: FontWeight.bold,
                         color: SiteConfig.lightColors.background,
                       ),
                     ),
@@ -256,6 +261,7 @@ class ContactPageState extends State<ContactPage> {
                       "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
                       style: TextStyle(
                         fontSize: contactSize,
+                        fontWeight: FontWeight.bold,
                         color: SiteConfig.lightColors.background,
                       ),
                     ),
@@ -389,7 +395,10 @@ class ContactPageState extends State<ContactPage> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
                                       "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
-                                      style: TextStyle(fontSize: 15),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -410,7 +419,9 @@ class ContactPageState extends State<ContactPage> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
                                       "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
-                                      style: TextStyle(fontSize: 15),
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),

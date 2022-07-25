@@ -424,6 +424,7 @@ class ServiceContainer extends StatelessWidget {
                     title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
+                      fontWeight: FontWeight.bold,
                       fontSize: 40,
                       color: Color.fromARGB(255, 175, 127, 75),
                     ),

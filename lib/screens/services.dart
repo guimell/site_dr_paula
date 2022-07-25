@@ -173,7 +173,9 @@ class ServicesPageState extends State<ServicesPage> {
                   Text(
                     "SERVIÇOS",
                     style: TextStyle(
-                        fontSize: 60, color: SiteConfig.lightColors.primary),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 60,
+                        color: SiteConfig.lightColors.primary),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),
