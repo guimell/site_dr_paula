@@ -50,7 +50,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
                   );
                 },
                 zoomControlsEnabled: true,
-                zoomGesturesEnabled: false,
+                zoomGesturesEnabled: true,
+                scrollGesturesEnabled: true,
                 markers: Set<Marker>.of(_markers),
                 mapType: MapType.normal,
                 initialCameraPosition: CameraPosition(
