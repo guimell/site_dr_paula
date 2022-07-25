@@ -49,8 +49,8 @@ class _GoogleMapsState extends State<GoogleMaps> {
                     },
                   );
                 },
-                zoomControlsEnabled: false,
-                zoomGesturesEnabled: true,
+                zoomControlsEnabled: true,
+                zoomGesturesEnabled: false,
                 scrollGesturesEnabled: true,
                 markers: Set<Marker>.of(_markers),
                 mapType: MapType.normal,
