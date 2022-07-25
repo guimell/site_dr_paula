@@ -49,7 +49,7 @@ class _GoogleMapsState extends State<GoogleMaps> {
                     },
                   );
                 },
-                zoomControlsEnabled: true,
+                zoomControlsEnabled: false,
                 zoomGesturesEnabled: true,
                 scrollGesturesEnabled: true,
                 markers: Set<Marker>.of(_markers),
