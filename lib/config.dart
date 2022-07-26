@@ -141,7 +141,7 @@ class SiteConfig {
           foregroundColor: lightColors.background,
           backgroundColor: lightColors.primary,
           onPressed: (() async {
-            String phone = "557188078855";
+            String phone = "5571997042642";
             String text = Uri.encodeFull("Ola Dr. Paula!");
             Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
             tryLaunchUri(uri);

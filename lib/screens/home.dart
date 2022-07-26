@@ -84,7 +84,7 @@ class HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Text(
-            "Dra.Paula Brasil\nEspecialista\nHarmonização Orofacial",
+            "Dra.Paula Brasil\nHarmonização Orofacial",
             style: TextStyle(
               fontSize: SiteConfig.screenSize.width / 75 + 15,
               color: const Color.fromARGB(255, 175, 127, 75),
@@ -202,7 +202,7 @@ class HomePageState extends State<HomePage> {
                         )
                       ]),
                       child: Text(
-                        "Especialista em\nHarmonização orofacial",
+                        "Harmonização orofacial",
                         style: TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
