@@ -28,17 +28,7 @@ class ServicesPage extends StatefulWidget {
       "sulcos e marcas de expressão facial, "
       "perda de volume na face; perda de espessura dérmica, como também a perda de contorno da face."
       " Para maiores informações, é importante agendar uma consulta.";
-  final String textService3 = "Você conhece a sequência de Fibonacci? "
-      "É uma sucessão de números que aparece codificada em muitos fenômenos da natureza. "
-      "Descrita no final do século 12 pelo matemático italiano Leonardo Fibonacci, ela é infinita e começa com 0 e 1."
-      " Os números seguintes são sempre a soma dos dois números anteriores."
-      "São exemplos de imagens que trazem essa sequência: o casco do caracol,"
-      " o miolo do girassol, as pirâmides do Egito, entre outros."
-      " Reparou que são imagens que atraem sua visão e interesse? "
-      "As imagens mais atraentes e harmoniosas, tem por base a sequência de Fibonacci."
-      " Por isso, a harmonização orofacial também se baseiam nos fundamentos dessa sequência. "
-      "Quando avaliamos a face de um paciente, todo processo é planejado e calculado. "
-      "As formas não são dadas de forma aleatória.";
+
   final String textService4 =
       "Uma pele bem preparada recebe e responde melhor a qualquer tipo de procedimento de harmonização orofacial."
       " Por isso, indico para os meus pacientes a realização peeling como elemento importante no planejamento do tratamento que iremos realizar."
@@ -144,7 +134,7 @@ class ServicesPageState extends State<ServicesPage> {
     List<Widget> children = [
       Container(
         height: SiteConfig.screenSize.height / 2,
-        // width: SiteConfig.screenSize.width,
+        width: SiteConfig.screenSize.width,
         // color: Colors.white,
 
         child: SiteConfig.smallScreen
@@ -201,12 +191,6 @@ class ServicesPageState extends State<ServicesPage> {
         imgLeft: false,
       ),
       ServiceContainer(
-        title: "JÁ OUVIU FALAR SOBRE A SEQUÊNCIA DE FIBONACCI ? ",
-        text: widget.textService3,
-        img: Image.asset("assets/images/serviços/pdo2.jpg"),
-        imgLeft: true,
-      ),
-      ServiceContainer(
         title: "PEELING ",
         text: widget.textService4,
         img: Image.asset("assets/images/serviços/pdo2.jpg"),
@@ -240,7 +224,7 @@ class ServicesPageState extends State<ServicesPage> {
     ];
 
     final positionedList = ScrollablePositionedList.builder(
-      itemCount: 10, // 8 services + heading + footer
+      itemCount: children.length, // 8 services + heading + footer
       itemScrollController: itemScrollController,
       itemPositionsListener: itemPositionsListener,
       itemBuilder: (BuildContext context, int index) {

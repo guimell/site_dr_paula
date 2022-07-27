@@ -18,50 +18,46 @@ class HomePageState extends State<HomePage> {
     // ignore: prefer_const_constructors
     CarouselImage(
       image: "assets/images/serviços/pdo.jpg",
-      title: "pdo",
+      title: "PDO",
       index: 1,
     ),
     // ignore: prefer_const_constructors
     CarouselImage(
       image: "assets/images/serviços/bioestimuladores.jpg",
-      title: "bioestimuladores",
+      title: "BIOESTIMULADORES",
       index: 2,
     ),
     // ignore: prefer_const_constructors
+
+    // ignore: prefer_const_constructors
     CarouselImage(
-      image: "assets/images/paula/logoMarca.jpeg",
-      title: "logoMarca",
+      image: "assets/images/serviços/peeling.jpg",
+      title: "PEELING",
       index: 3,
     ),
     // ignore: prefer_const_constructors
     CarouselImage(
-      image: "assets/images/serviços/peeling.jpg",
-      title: "peeling",
+      image: "assets/images/serviços/microagulhamento.jpg",
+      title: "MICROAGULHAMENTO",
       index: 4,
     ),
     // ignore: prefer_const_constructors
     CarouselImage(
-      image: "assets/images/serviços/microagulhamento.jpg",
-      title: "microagulhamento",
+      image: "assets/images/serviços/botox.png",
+      title: "BOTOX",
       index: 5,
     ),
     // ignore: prefer_const_constructors
     CarouselImage(
-      image: "assets/images/serviços/botox.png",
-      title: "botox",
+      image: "assets/images/serviços/Preenchimento.jpg",
+      title: "PREENCHIMENTO",
       index: 6,
     ),
     // ignore: prefer_const_constructors
     CarouselImage(
-      image: "assets/images/serviços/Preenchimento.jpg",
-      title: "preenchimento",
-      index: 7,
-    ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
       image: "assets/images/serviços/bichectomia.jpg",
-      title: "bichectomia",
-      index: 8,
+      title: "BICHECTOMIA",
+      index: 7,
     ),
   ];
 
@@ -73,25 +69,38 @@ class HomePageState extends State<HomePage> {
 
     final List<Widget> topInnerRectangle = [
       Expanded(
-        flex: 1,
-        child: Image.asset(
-          "assets/images/paula/logoMarcaT.png",
-          fit: BoxFit.contain,
+        child: Text(
+          "Conheça Dra.Paula Brasil",
+          style: TextStyle(fontSize: 60, color: SiteConfig.lightColors.primary),
+          textAlign: TextAlign.center,
         ),
       ),
-      Expanded(
-        flex: SiteConfig.smallScreen ? 1 : 2,
-        child: Padding(
-          padding: const EdgeInsets.all(50),
-          child: Text(
-            "Dra.Paula Brasil\nHarmonização Orofacial",
-            style: TextStyle(
-              fontSize: SiteConfig.screenSize.width / 75 + 15,
-              color: const Color.fromARGB(255, 175, 127, 75),
-            ),
-          ),
-        ),
-      ),
+      // Expanded(
+      //   flex: 1,
+      //   child: Image.asset(
+      //     "assets/images/paula/vacina.jpg",
+      //     fit: BoxFit.contain,
+      //   ),
+      // ),
+      // Expanded(
+      //   flex: SiteConfig.smallScreen ? 1 : 2,
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(50),
+      //     child: Text(
+      //       "Sou Dra Paula Roberta Brasil, graduada em Odontologia desde 2006 e no decorrer desse tempo,"
+      //       " venho realizando diversos cursos de atualização,"
+      //       " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
+      //       " ou seja, você que está visitando minha página! \n\n"
+      //       "Sou apaixonada pela estética desde minha infância,"
+      //       " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
+      //       " através da HARMONIZAÇÃO OROFACIAL.",
+      //       style: TextStyle(
+      //         fontSize: SiteConfig.screenSize.width / 75 + 15,
+      //         color: const Color.fromARGB(255, 175, 127, 75),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     ];
 
     final List<Widget> botInnerRectangle = [
@@ -100,23 +109,22 @@ class HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Text(
-            "Sou Dra Paula Roberta Brasil, graduada em Odontologia há 16 anos e no decorrer desse tempo,"
+            "Sou Dra Paula Roberta Brasil, graduada em Odontologia desde 2006 e no decorrer desse tempo,"
             " venho realizando diversos cursos de atualização,"
             " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
             " ou seja, você que está visitando minha página! \n\n"
             "Sou apaixonada pela estética desde minha infância,"
             " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
             " através da HARMONIZAÇÃO OROFACIAL.",
-            style: TextStyle(
-              color: SiteConfig.lightColors.primary,
-            ),
+            style:
+                TextStyle(color: SiteConfig.lightColors.primary, fontSize: 30),
           ),
         ),
       ),
       Expanded(
         flex: 1,
         child: Image.asset(
-          "assets/images/paula/vacina.jpg",
+          "assets/images/paula/logoMarcaT.png",
           fit: BoxFit.contain,
         ),
       ),
@@ -235,15 +243,14 @@ class HomePageState extends State<HomePage> {
                                 carouselImages[0],
                                 carouselImages[1],
                                 carouselImages[2],
-                                carouselImages[3],
                               ],
                             )
                           : Row(
                               children: [
+                                carouselImages[3],
                                 carouselImages[4],
                                 carouselImages[5],
                                 carouselImages[6],
-                                carouselImages[7],
                               ],
                             );
                 },
