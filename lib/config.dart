@@ -105,8 +105,8 @@ class SiteConfig {
                   context: context,
                   builder: (BuildContext context) => BackdropFilter(
                     filter: ui.ImageFilter.blur(
-                      sigmaX: 8.0,
-                      sigmaY: 8.0,
+                      sigmaX: 50.0,
+                      sigmaY: 50.0,
                     ),
                     child: Center(
                       child: Column(
@@ -124,10 +124,6 @@ class SiteConfig {
         screenSize.width < navButtonsWidth
             ? const SizedBox()
             : Row(children: navigationButtons),
-        IconButton(
-          icon: const Icon(Icons.mark_email_unread_rounded),
-          onPressed: () {},
-        ),
       ],
     );
   }
@@ -285,20 +281,6 @@ class SiteConfig {
           },
           icon: FaIcon(
             FontAwesomeIcons.instagram,
-            color: SiteConfig.lightColors.primary,
-            size: sizeI,
-          ),
-        ),
-      ),
-      Expanded(
-        child: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {
-            Uri uri = Uri.parse("https://www.twitter.com");
-            tryLaunchUri(uri);
-          },
-          icon: FaIcon(
-            FontAwesomeIcons.twitter,
             color: SiteConfig.lightColors.primary,
             size: sizeI,
           ),

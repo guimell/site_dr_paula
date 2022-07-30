@@ -33,7 +33,10 @@ class AppBarButton extends StatelessWidget {
             ),
           );
         },
-        child: Text(text),
+        child: Text(
+          text,
+          style: TextStyle(fontSize: SiteConfig.getHeadingSize()),
+        ),
       ),
     );
   }
