@@ -375,6 +375,11 @@ class ContactPageState extends State<ContactPage> {
                 child: SiteConfig.smallScreen
                     ? Column(
                         children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.all(8),
+                            child: widget.clinica1,
+                          ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: TextButton(
@@ -396,7 +401,7 @@ class ContactPageState extends State<ContactPage> {
                           Container(
                             margin: const EdgeInsets.only(top: 20),
                             padding: const EdgeInsets.all(8),
-                            child: widget.clinica1,
+                            child: widget.clinica2,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -416,11 +421,6 @@ class ContactPageState extends State<ContactPage> {
                               ),
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 20),
-                            padding: const EdgeInsets.all(8),
-                            child: widget.clinica2,
-                          ),
                         ],
                       )
                     : Row(
@@ -429,6 +429,11 @@ class ContactPageState extends State<ContactPage> {
                             child: Container(
                               child: Column(
                                 children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.all(8),
+                                    child: widget.clinica1,
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextButton(
@@ -447,11 +452,6 @@ class ContactPageState extends State<ContactPage> {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    margin: const EdgeInsets.only(top: 20),
-                                    padding: const EdgeInsets.all(8),
-                                    child: widget.clinica1,
-                                  ),
                                 ],
                               ),
                             ),
@@ -460,6 +460,11 @@ class ContactPageState extends State<ContactPage> {
                             child: Container(
                               child: Column(
                                 children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.all(8),
+                                    child: widget.clinica2,
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextButton(
@@ -476,11 +481,6 @@ class ContactPageState extends State<ContactPage> {
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(top: 20),
-                                    padding: const EdgeInsets.all(8),
-                                    child: widget.clinica2,
                                   ),
                                 ],
                               ),
