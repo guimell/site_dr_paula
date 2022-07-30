@@ -387,6 +387,30 @@ class SiteConfig {
     }
     return false;
   }
+
+  static double getTextSize() {
+    double size = SiteConfig.screenSize.width / 100 + 10;
+    if (size > 20) {
+      size = 20;
+    }
+    return size;
+  }
+
+  static double getHeadingSize() {
+    double size = SiteConfig.screenSize.width / 100 + 25;
+    if (size > 30) {
+      size = 30;
+    }
+    return size;
+  }
+
+  static double getTitleSize() {
+    double size = SiteConfig.screenSize.width / 100 + 25;
+    if (size > 60) {
+      size = 60;
+    }
+    return size;
+  }
 }
 
 class Post {

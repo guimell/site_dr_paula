@@ -143,7 +143,8 @@ class ServicesPageState extends State<ServicesPage> {
                   Text(
                     "SERVIÇOS",
                     style: TextStyle(
-                        fontSize: 60, color: SiteConfig.lightColors.primary),
+                        fontSize: SiteConfig.getTitleSize(),
+                        color: SiteConfig.lightColors.primary),
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -164,7 +165,7 @@ class ServicesPageState extends State<ServicesPage> {
                     "SERVIÇOS",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 60,
+                        fontSize: SiteConfig.getTitleSize(),
                         color: SiteConfig.lightColors.primary),
                   ),
                   Padding(

@@ -338,8 +338,8 @@ class BlogPost extends StatelessWidget {
                 post.title,
                 maxLines: lines.round() <= 0 ? 1 : lines.round(),
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: textSize,
+                style: TextStyle(
+                  fontSize: SiteConfig.getTextSize(),
                   fontWeight: FontWeight.bold,
                 ),
               );
@@ -359,7 +359,7 @@ class BlogPost extends StatelessWidget {
                       maxLines: lines.round() <= 0 ? 1 : lines.round(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: textSize,
+                        fontSize: SiteConfig.getTextSize(),
                         color: Colors.grey.withAlpha(200),
                       ),
                     );
@@ -423,9 +423,9 @@ class ServiceContainer extends StatelessWidget {
                   child: Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 40,
+                      fontSize: SiteConfig.getHeadingSize(),
                       color: Color.fromARGB(255, 175, 127, 75),
                     ),
                   ),
@@ -457,9 +457,9 @@ class ServiceContainer extends StatelessWidget {
                         child: Text(
                           title,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 40,
-                            color: Color.fromARGB(255, 175, 127, 75),
+                          style: TextStyle(
+                            fontSize: SiteConfig.getHeadingSize(),
+                            color: const Color.fromARGB(255, 175, 127, 75),
                           ),
                         ),
                       ),
@@ -552,11 +552,9 @@ class CarouselImageState extends State<CarouselImage> {
                       widget.title,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: SiteConfig.lightColors.background,
-                        fontWeight: FontWeight.bold,
-                        fontSize: SiteConfig.screenSize.width / 100 +
-                            (SiteConfig.smallScreen ? 10 : 5),
-                      ),
+                          color: SiteConfig.lightColors.background,
+                          fontWeight: FontWeight.bold,
+                          fontSize: SiteConfig.getTextSize()),
                     ),
                   ),
                 ),

@@ -81,7 +81,8 @@ class ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    double contactSize = 20;
+    double contactSize = SiteConfig.smallScreen ? 15 : 30;
+
     double iconSize = 30;
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
@@ -98,7 +99,7 @@ class ContactPageState extends State<ContactPage> {
               child: Text(
                 "Contato",
                 style: TextStyle(
-                    fontSize: 40,
+                    fontSize: SiteConfig.getHeadingSize(),
                     fontWeight: FontWeight.bold,
                     color: SiteConfig.lightColors.primary),
               ),
@@ -161,7 +162,6 @@ class ContactPageState extends State<ContactPage> {
     Widget leftContact = Expanded(
       flex: 1,
       child: Container(
-        width: SiteConfig.screenSize.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: SiteConfig.lightColors.primary,
@@ -172,107 +172,121 @@ class ContactPageState extends State<ContactPage> {
             Text(
               "Informações de contato :",
               style: TextStyle(
-                fontSize: 30,
+                fontSize: SiteConfig.getHeadingSize(),
                 fontWeight: FontWeight.bold,
                 color: SiteConfig.lightColors.background,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.phone,
-                    size: iconSize,
-                    color: SiteConfig.lightColors.background,
-                  ),
-                  Expanded(
-                    child: Text(
-                      " +55 71 98807-8855",
-                      style: TextStyle(
-                        fontSize: contactSize,
-                        fontWeight: FontWeight.bold,
-                        color: SiteConfig.lightColors.background,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.email,
-                    size: iconSize,
-                    color: SiteConfig.lightColors.background,
-                  ),
-                  Expanded(
-                    child: Text(
-                      " prcbrasil@gmail.com",
-                      style: TextStyle(
-                        fontSize: contactSize,
-                        fontWeight: FontWeight.bold,
-                        color: SiteConfig.lightColors.background,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.location_on,
-                    size: iconSize,
-                    color: SiteConfig.lightColors.background,
-                  ),
-                  Expanded(
-                    child: Text(
-                      "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
-                      style: TextStyle(
-                        fontSize: contactSize,
-                        fontWeight: FontWeight.bold,
-                        color: SiteConfig.lightColors.background,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.location_on,
-                    size: iconSize,
-                    color: SiteConfig.lightColors.background,
-                  ),
-                  Expanded(
-                    child: Text(
-                      "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
-                      style: TextStyle(
-                        fontSize: contactSize,
-                        fontWeight: FontWeight.bold,
-                        color: SiteConfig.lightColors.background,
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.phone,
+                    size: iconSize,
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
                 Expanded(
+                  child: Text(
+                    " +55 71 98807-8855",
+                    style: TextStyle(
+                      fontSize: SiteConfig.getTextSize(),
+                      fontWeight: FontWeight.bold,
+                      color: SiteConfig.lightColors.background,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.email,
+                    size: iconSize,
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    " drapaularcbrasil@gmail.com",
+                    style: TextStyle(
+                      fontSize: SiteConfig.getTextSize(),
+                      fontWeight: FontWeight.bold,
+                      color: SiteConfig.lightColors.background,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.location_on,
+                    size: iconSize,
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Uri uri = Uri.parse(
+                          "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998");
+                      tryLaunchUri(uri);
+                    },
+                    child: Text(
+                      "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
+                      style: TextStyle(
+                        fontSize: SiteConfig.getTextSize(),
+                        fontWeight: FontWeight.bold,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.location_on,
+                    size: iconSize,
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      Uri uri = Uri.parse(
+                          "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj");
+                      tryLaunchUri(uri);
+                    },
+                    child: Text(
+                      "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
+                      style: TextStyle(
+                        fontSize: SiteConfig.getTextSize(),
+                        fontWeight: FontWeight.bold,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
                   child: IconButton(
                     color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
@@ -288,6 +302,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 1,
                   child: IconButton(
                     color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
@@ -302,6 +317,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 1,
                   child: IconButton(
                     color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
@@ -340,8 +356,8 @@ class ContactPageState extends State<ContactPage> {
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              leftContact,
                               rightContact,
+                              leftContact,
                             ],
                           )
                         : Row(
@@ -359,15 +375,22 @@ class ContactPageState extends State<ContactPage> {
                 child: SiteConfig.smallScreen
                     ? Column(
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              'Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextButton(
+                              onPressed: () {
+                                Uri uri = Uri.parse(
+                                    "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998");
+                                tryLaunchUri(uri);
+                              },
+                              child: Text(
+                                'Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA',
+                                style: TextStyle(
+                                  fontSize: SiteConfig.getTextSize(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
                             ),
                           ),
                           Container(
@@ -375,15 +398,22 @@ class ContactPageState extends State<ContactPage> {
                             padding: const EdgeInsets.all(8),
                             child: widget.clinica1,
                           ),
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              'CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ',
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextButton(
+                              onPressed: () {
+                                Uri uri = Uri.parse(
+                                    "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj");
+                                tryLaunchUri(uri);
+                              },
+                              child: Text(
+                                'CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ',
+                                style: TextStyle(
+                                  fontSize: SiteConfig.getTextSize(),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
                             ),
                           ),
                           Container(
@@ -399,15 +429,22 @@ class ContactPageState extends State<ContactPage> {
                             child: Container(
                               child: Column(
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Uri uri = Uri.parse(
+                                            "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998");
+                                        tryLaunchUri(uri);
+                                      },
+                                      child: Text(
+                                        "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
+                                        style: TextStyle(
+                                          fontSize: SiteConfig.getTextSize(),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        textAlign: TextAlign.center,
                                       ),
-                                      textAlign: TextAlign.center,
                                     ),
                                   ),
                                   Container(
@@ -423,14 +460,21 @@ class ContactPageState extends State<ContactPage> {
                             child: Container(
                               child: Column(
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold),
-                                      textAlign: TextAlign.center,
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Uri uri = Uri.parse(
+                                            "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj");
+                                        tryLaunchUri(uri);
+                                      },
+                                      child: Text(
+                                        "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA ",
+                                        style: TextStyle(
+                                            fontSize: SiteConfig.getTextSize(),
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
                                   ),
                                   Container(
