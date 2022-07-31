@@ -72,8 +72,9 @@ class HomePageState extends State<HomePage> {
         child: Text(
           "Conheça Dra.Paula Brasil",
           style: TextStyle(
-              fontSize: SiteConfig.getHeadingSize(),
-              color: SiteConfig.lightColors.primary),
+            fontSize: SiteConfig.getHeadingSize(),
+            color: SiteConfig.lightColors.primary,
+          ),
           textAlign: TextAlign.center,
         ),
       ),
@@ -93,8 +94,9 @@ class HomePageState extends State<HomePage> {
             " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
             " através da HARMONIZAÇÃO OROFACIAL.",
             style: TextStyle(
-                color: SiteConfig.lightColors.primary,
-                fontSize: SiteConfig.getTextSize()),
+              color: SiteConfig.lightColors.primary,
+              fontSize: SiteConfig.getTextSize(),
+            ),
           ),
         ),
       ),

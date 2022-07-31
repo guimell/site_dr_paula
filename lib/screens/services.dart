@@ -140,6 +140,7 @@ class ServicesPageState extends State<ServicesPage> {
             textAlign: TextAlign.end,
             style: TextStyle(
               fontSize: SiteConfig.getTitleSize(),
+              fontWeight: FontWeight.bold,
               color: SiteConfig.lightColors.primary,
             ),
           ),

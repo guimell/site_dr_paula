@@ -98,7 +98,7 @@ class ContactPageState extends State<ContactPage> {
               child: Text(
                 "Contato",
                 style: TextStyle(
-                  fontSize: SiteConfig.getHeadingSize(),
+                  fontSize: SiteConfig.getTitleSize(),
                   fontWeight: FontWeight.bold,
                   color: SiteConfig.lightColors.primary,
                 ),

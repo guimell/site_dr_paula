@@ -38,8 +38,9 @@ class AppBarButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              fontSize:
-                  SiteConfig.smallScreen ? SiteConfig.getHeadingSize() : null),
+            fontSize:
+                SiteConfig.smallScreen ? SiteConfig.getHeadingSize() : null,
+          ),
         ),
       ),
     );
@@ -319,15 +320,15 @@ class BlogPost extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(post.authorName),
-                Text(post.published),
-                // Text(post.updated),
+                // Text(post.authorName),
+                // Text(post.published),
+                Text(post.updated),
                 ElevatedButton(
                   onPressed: () {
                     Uri uri = Uri.parse(post.url);
                     SiteConfig.tryLaunchUri(uri);
                   },
-                  child: const Text("Read More!"),
+                  child: const Text("Leer mas!"),
                 ),
               ],
             ),
@@ -431,7 +432,7 @@ class ServiceContainer extends StatelessWidget {
                         child: Text(
                           text,
                           // style: const TextStyle(
-                          //   fontSize: SiteConfig.getTextSize(),,
+                          //   fontSize: SiteConfig.getTextSize(),
                           // ),
                           textAlign: TextAlign.start,
                         ),
