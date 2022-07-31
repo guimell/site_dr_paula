@@ -12,13 +12,19 @@ class BlogPage extends StatefulWidget {
 
 class _BlogPageState extends State<BlogPage> {
   final searchController = TextEditingController();
+  List<BlogPost> postsOnDisplay = [];
 
   Future<void> getBlogPosts() async {
     if (Blog.posts.isEmpty) {
       await Blog.getBlog();
-      if (mounted) {
-        setState(() {});
-      }
+    }
+    if (mounted) {
+      setState(() {
+        postsOnDisplay = [];
+        for (Post post in Blog.posts) {
+          postsOnDisplay.add(BlogPost(post: post));
+        }
+      });
     }
   }
 
@@ -54,8 +60,37 @@ class _BlogPageState extends State<BlogPage> {
             child: MyTextField(
               labelText: 'Search topics and key words',
               myController: searchController,
-              onChanged: (_) {
-                setState(() {});
+              onChanged: (text) {
+                // no searched text
+                if (text == "") {
+                  setState(() {
+                    postsOnDisplay = [];
+                    for (Post post in Blog.posts) {
+                      postsOnDisplay.add(BlogPost(post: post));
+                    }
+                  });
+                }
+                // match searched text
+                else {
+                  List<BlogPost> matchedPosts = [];
+                  for (Post post in Blog.posts) {
+                    // match content
+                    if (post.content
+                        .toLowerCase()
+                        .contains(searchController.text.toLowerCase())) {
+                      matchedPosts.add(BlogPost(post: post));
+                    }
+                    // match title
+                    else if (post.title
+                        .toLowerCase()
+                        .contains(searchController.text.toLowerCase())) {
+                      matchedPosts.add(BlogPost(post: post));
+                    }
+                  }
+                  setState(() {
+                    postsOnDisplay = matchedPosts;
+                  });
+                }
               },
             ),
           ),
@@ -64,7 +99,7 @@ class _BlogPageState extends State<BlogPage> {
             width: SiteConfig.screenSize.width,
             child: GridView.count(
               crossAxisCount: SiteConfig.smallScreen ? 1 : 3,
-              children: Blog.posts,
+              children: postsOnDisplay,
             ),
           ),
         ],
