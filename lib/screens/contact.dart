@@ -190,6 +190,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 2,
                   child: TextButton(
                     onPressed: () {
                       String phone = "5571997042642";
@@ -221,6 +222,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 2,
                   child: TextButton(
                     onPressed: () {
                       scrollController.animateTo(
@@ -229,9 +231,6 @@ class ContactPageState extends State<ContactPage> {
                         curve: Curves.ease,
                       );
                     },
-                    // onHover: () {
-
-                    // },
                     child: Text(
                       "drapaularcbrasil@gmail.com",
                       style: TextStyle(
@@ -256,6 +255,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 3,
                   child: TextButton(
                     onPressed: () {
                       Uri uri = Uri.parse(
@@ -287,6 +287,7 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
+                  flex: 3,
                   child: TextButton(
                     onPressed: () {
                       Uri uri = Uri.parse(
@@ -307,6 +308,7 @@ class ContactPageState extends State<ContactPage> {
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   flex: 1,
