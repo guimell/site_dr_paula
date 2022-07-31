@@ -28,8 +28,6 @@ class HomePageState extends State<HomePage> {
       index: 2,
     ),
     // ignore: prefer_const_constructors
-
-    // ignore: prefer_const_constructors
     CarouselImage(
       image: "assets/images/serviços/peeling.jpg",
       title: "PEELING",
@@ -251,7 +249,7 @@ class HomePageState extends State<HomePage> {
             Container(
               color: SiteConfig.lightColors.primary.withAlpha(25),
               height: SiteConfig.smallScreen
-                  ? SiteConfig.screenSize.height * 2.0
+                  ? SiteConfig.screenSize.height * 1.75
                   : SiteConfig.screenSize.height * 0.8,
               width: SiteConfig.screenSize.width,
               child: SiteConfig.smallScreen
