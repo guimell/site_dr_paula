@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'config.dart';
 import 'screens/services.dart';
@@ -34,7 +37,9 @@ class AppBarButton extends StatelessWidget {
         },
         child: Text(
           text,
-          style: TextStyle(fontSize: SiteConfig.getHeadingSize()),
+          style: TextStyle(
+              fontSize:
+                  SiteConfig.smallScreen ? SiteConfig.getHeadingSize() : null),
         ),
       ),
     );
@@ -333,6 +338,14 @@ class BlogPost extends StatelessWidget {
   }
 }
 
+Future<void> tryLaunchUri(Uri uri) async {
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    throw 'Could not launch $uri';
+  }
+}
+
 class ServiceContainer extends StatelessWidget {
   final Image img;
   final String text;
@@ -379,6 +392,15 @@ class ServiceContainer extends StatelessWidget {
                     textAlign: TextAlign.start,
                   ),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    String phone = "5571997042642";
+                    String text = Uri.encodeFull("Ola Dr. Paula!");
+                    Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
+                    tryLaunchUri(uri);
+                  },
+                  child: const Text("AGENDE JÁ A SUA CONSULTA"),
+                )
               ],
             )
           : Row(
@@ -414,6 +436,16 @@ class ServiceContainer extends StatelessWidget {
                           textAlign: TextAlign.start,
                         ),
                       ),
+                      ElevatedButton(
+                        onPressed: () {
+                          String phone = "5571997042642";
+                          String text = Uri.encodeFull("Ola Dr. Paula!");
+                          Uri uri =
+                              Uri.parse("https://wa.me/$phone?text=$text");
+                          tryLaunchUri(uri);
+                        },
+                        child: const Text("AGENDE JÁ A SUA CONSULA"),
+                      )
                     ],
                   ),
                 ),
