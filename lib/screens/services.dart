@@ -225,7 +225,7 @@ class ServicesPageState extends State<ServicesPage> {
 
     scrollCallback();
     return Scaffold(
-      appBar: SiteConfig.getAppBar(context, "Services"),
+      appBar: SiteConfig.getAppBar(context, "Serviços"),
       floatingActionButton: SiteConfig.getFAB(),
       body: positionedList,
     );

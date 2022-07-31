@@ -64,9 +64,9 @@ class SiteConfig {
         autofocus: title == "Home",
       ),
       AppBarButton(
-        text: "Services",
+        text: "Serviços",
         page: const ServicesPage(),
-        autofocus: title == "Services",
+        autofocus: title == "Serviços",
       ),
       AppBarButton(
         text: "Blog",
@@ -199,19 +199,19 @@ class SiteConfig {
         child: const Text("Contato"),
       ),
       TextButton(
-        autofocus: title == "Services",
+        autofocus: title == "Serviços",
         // style: buttonStyle,
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
               pageBuilder: (_, __, ___) => const ServicesPage(),
-              settings: const RouteSettings(name: "/Services"),
+              settings: const RouteSettings(name: "/Serviços"),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
             ),
           );
         },
-        child: const Text("Services"),
+        child: const Text("Serviços"),
       ),
     ];
 
