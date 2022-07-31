@@ -257,7 +257,7 @@ class HomePageState extends State<HomePage> {
                               ],
                             );
                 },
-                itemCount: SiteConfig.smallScreen ? 8 : 2,
+                itemCount: SiteConfig.smallScreen ? 7 : 2,
               ),
             ),
             Container(
