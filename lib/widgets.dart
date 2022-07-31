@@ -279,11 +279,11 @@ class BlogPost extends StatelessWidget {
             flex: 4,
             child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
-              final int textSize = SiteConfig.getTextSize().round();
-              final int lines = (constraints.maxHeight / textSize).round() - 1;
+              final int textSize = SiteConfig.getHeadingSize().round();
+              final int lines = (constraints.maxHeight / textSize).round() - 2;
               return Text(
                 post.title,
-                maxLines: lines.round() <= 0 ? 1 : lines.round(),
+                maxLines: lines <= 0 ? 1 : lines,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: textSize * 1.0,
@@ -299,11 +299,12 @@ class BlogPost extends StatelessWidget {
                   flex: 8,
                   child: LayoutBuilder(builder:
                       (BuildContext context, BoxConstraints constraints) {
-                    const double textSize = 14;
-                    final double lines = constraints.maxHeight / textSize - 3;
+                    final int textSize = SiteConfig.getTextSize().round();
+                    final int lines =
+                        (constraints.maxHeight / textSize).round() - 2;
                     return Text(
                       post.content,
-                      maxLines: lines.round() <= 0 ? 1 : lines.round(),
+                      maxLines: lines <= 0 ? 1 : lines,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: SiteConfig.getTextSize(),
