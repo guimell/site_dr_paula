@@ -279,14 +279,14 @@ class BlogPost extends StatelessWidget {
             flex: 4,
             child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
-              const double textSize = 24;
-              final double lines = constraints.maxHeight / textSize - 1;
+              final int textSize = SiteConfig.getTextSize().round();
+              final int lines = (constraints.maxHeight / textSize).round() - 1;
               return Text(
                 post.title,
                 maxLines: lines.round() <= 0 ? 1 : lines.round(),
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: SiteConfig.getTextSize(),
+                  fontSize: textSize * 1.0,
                   fontWeight: FontWeight.bold,
                 ),
               );
