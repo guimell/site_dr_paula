@@ -27,16 +27,7 @@ class ContactPageState extends State<ContactPage> {
 
   bool local = false;
 
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myControllerName.dispose();
-    myControllerSobreName.dispose();
-    myControllerEmail.dispose();
-    myControllerMensagem.dispose();
-
-    super.dispose();
-  }
+  final scrollController = ScrollController();
 
   void trySendEmail() {
     try {
@@ -69,7 +60,7 @@ class ContactPageState extends State<ContactPage> {
     }
   }
 
-  static Future<void> tryLaunchUri(Uri uri) async {
+  Future<void> tryLaunchUri(Uri uri) async {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else {
@@ -78,11 +69,23 @@ class ContactPageState extends State<ContactPage> {
   }
 
   @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myControllerName.dispose();
+    myControllerSobreName.dispose();
+    myControllerEmail.dispose();
+    myControllerMensagem.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double iconSize = 30;
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
+
     Widget rightContact = Expanded(
       flex: 2,
       child: Container(
@@ -167,7 +170,8 @@ class ContactPageState extends State<ContactPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              "Informações de contato :",
+              "Informações de Contato",
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: SiteConfig.getHeadingSize(),
                 fontWeight: FontWeight.bold,
@@ -186,12 +190,20 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
-                  child: Text(
-                    " +55 71 98807-8855",
-                    style: TextStyle(
-                      fontSize: SiteConfig.getTextSize(),
-                      fontWeight: FontWeight.bold,
-                      color: SiteConfig.lightColors.background,
+                  child: TextButton(
+                    onPressed: () {
+                      String phone = "5571997042642";
+                      String text = Uri.encodeFull("Ola Dr. Paula!");
+                      Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
+                      tryLaunchUri(uri);
+                    },
+                    child: Text(
+                      "+55 71 98807-8855",
+                      style: TextStyle(
+                        fontSize: SiteConfig.getTextSize(),
+                        fontWeight: FontWeight.bold,
+                        color: SiteConfig.lightColors.background,
+                      ),
                     ),
                   ),
                 ),
@@ -209,12 +221,24 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 Expanded(
-                  child: Text(
-                    " drapaularcbrasil@gmail.com",
-                    style: TextStyle(
-                      fontSize: SiteConfig.getTextSize(),
-                      fontWeight: FontWeight.bold,
-                      color: SiteConfig.lightColors.background,
+                  child: TextButton(
+                    onPressed: () {
+                      scrollController.animateTo(
+                        0,
+                        duration: const Duration(milliseconds: 250),
+                        curve: Curves.ease,
+                      );
+                    },
+                    // onHover: () {
+
+                    // },
+                    child: Text(
+                      "drapaularcbrasil@gmail.com",
+                      style: TextStyle(
+                        fontSize: SiteConfig.getTextSize(),
+                        fontWeight: FontWeight.bold,
+                        color: SiteConfig.lightColors.background,
+                      ),
                     ),
                   ),
                 ),
@@ -235,7 +259,8 @@ class ContactPageState extends State<ContactPage> {
                   child: TextButton(
                     onPressed: () {
                       Uri uri = Uri.parse(
-                          "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998");
+                        "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998",
+                      );
                       tryLaunchUri(uri);
                     },
                     child: Text(
@@ -265,7 +290,8 @@ class ContactPageState extends State<ContactPage> {
                   child: TextButton(
                     onPressed: () {
                       Uri uri = Uri.parse(
-                          "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj");
+                        "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj",
+                      );
                       tryLaunchUri(uri);
                     },
                     child: Text(
@@ -289,7 +315,8 @@ class ContactPageState extends State<ContactPage> {
                     padding: EdgeInsets.zero,
                     onPressed: () {
                       Uri uri = Uri.parse(
-                          "https://www.instagram.com/drapaulabrasil/");
+                        "https://www.instagram.com/drapaulabrasil/",
+                      );
                       tryLaunchUri(uri);
                     },
                     icon: const FaIcon(
@@ -304,26 +331,13 @@ class ContactPageState extends State<ContactPage> {
                     color: SiteConfig.lightColors.background,
                     padding: EdgeInsets.zero,
                     onPressed: () {
-                      Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
+                      Uri uri = Uri.parse(
+                        "https://www.facebook.com/prbrasil",
+                      );
                       tryLaunchUri(uri);
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.facebook,
-                      size: 40,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: IconButton(
-                    color: SiteConfig.lightColors.background,
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      Uri uri = Uri.parse("https://www.twitter.com");
-                      tryLaunchUri(uri);
-                    },
-                    icon: const FaIcon(
-                      FontAwesomeIcons.twitter,
                       size: 40,
                     ),
                   ),
@@ -334,11 +348,13 @@ class ContactPageState extends State<ContactPage> {
         ),
       ),
     );
+
     return Scaffold(
       appBar: SiteConfig.getAppBar(context, "Contato"),
       floatingActionButton: SiteConfig.getFAB(),
       body: Center(
         child: SingleChildScrollView(
+          controller: scrollController,
           child: Column(
             children: [
               Column(
@@ -382,7 +398,8 @@ class ContactPageState extends State<ContactPage> {
                             child: TextButton(
                               onPressed: () {
                                 Uri uri = Uri.parse(
-                                    "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998");
+                                  "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998",
+                                );
                                 tryLaunchUri(uri);
                               },
                               child: Text(
@@ -405,7 +422,8 @@ class ContactPageState extends State<ContactPage> {
                             child: TextButton(
                               onPressed: () {
                                 Uri uri = Uri.parse(
-                                    "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj");
+                                  "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj",
+                                );
                                 tryLaunchUri(uri);
                               },
                               child: Text(
@@ -435,7 +453,8 @@ class ContactPageState extends State<ContactPage> {
                                   child: TextButton(
                                     onPressed: () {
                                       Uri uri = Uri.parse(
-                                          "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998");
+                                        "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998",
+                                      );
                                       tryLaunchUri(uri);
                                     },
                                     child: Text(
@@ -464,7 +483,8 @@ class ContactPageState extends State<ContactPage> {
                                   child: TextButton(
                                     onPressed: () {
                                       Uri uri = Uri.parse(
-                                          "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj");
+                                        "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj",
+                                      );
                                       tryLaunchUri(uri);
                                     },
                                     child: Text(
