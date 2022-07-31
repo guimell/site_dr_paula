@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import 'config.dart';
@@ -55,67 +54,6 @@ class MenuTextButton extends StatelessWidget {
       ),
       onPressed: () {},
       child: Text(text),
-    );
-  }
-}
-
-class PageHeader extends StatelessWidget {
-  const PageHeader({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        const Image(
-          width: 800,
-          color: Color.fromRGBO(255, 255, 255, 0.5),
-          colorBlendMode: BlendMode.modulate,
-          image: AssetImage('assets/images/header_image.png'),
-        ),
-        Text(
-          'Our Courses',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30 + SiteConfig.screenSize.width * 0.01,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class SubscribeBlock extends StatelessWidget {
-  const SubscribeBlock({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text(
-          'Want to learn more?\nSubscribe to our newsletter!',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 25,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Align(
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 80,
-                vertical: 20,
-              ),
-            ),
-            onPressed: () {},
-            child: const Text('SUBSCRIBE'),
-          ),
-        )
-      ],
     );
   }
 }
@@ -318,12 +256,12 @@ class BlogPost extends StatelessWidget {
                         child: post.image == ""
                             ? Image.asset(
                                 "assets/images/paula/logoMarca.jpeg",
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               )
                             : FadeInImage.memoryNetwork(
                                 placeholder: kTransparentImage,
                                 image: post.image,
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                                 width: width,
                               ),
                       ),
@@ -429,7 +367,7 @@ class ServiceContainer extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: SiteConfig.getHeadingSize(),
-                      color: Color.fromARGB(255, 175, 127, 75),
+                      color: const Color.fromARGB(255, 175, 127, 75),
                     ),
                   ),
                 ),
@@ -471,7 +409,7 @@ class ServiceContainer extends StatelessWidget {
                         child: Text(
                           text,
                           // style: const TextStyle(
-                          //   fontSize: 18,
+                          //   fontSize: SiteConfig.getTextSize(),,
                           // ),
                           textAlign: TextAlign.start,
                         ),
@@ -555,9 +493,10 @@ class CarouselImageState extends State<CarouselImage> {
                       widget.title,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: SiteConfig.lightColors.background,
-                          fontWeight: FontWeight.bold,
-                          fontSize: SiteConfig.getTextSize()),
+                        fontSize: SiteConfig.getTextSize(),
+                        fontWeight: FontWeight.bold,
+                        color: SiteConfig.lightColors.background,
+                      ),
                     ),
                   ),
                 ),

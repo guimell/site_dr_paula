@@ -28,7 +28,6 @@ class ServicesPage extends StatefulWidget {
       "sulcos e marcas de expressão facial, "
       "perda de volume na face; perda de espessura dérmica, como também a perda de contorno da face."
       " Para maiores informações, é importante agendar uma consulta.";
-
   final String textService4 =
       "Uma pele bem preparada recebe e responde melhor a qualquer tipo de procedimento de harmonização orofacial."
       " Por isso, indico para os meus pacientes a realização peeling como elemento importante no planejamento do tratamento que iremos realizar."
@@ -110,10 +109,10 @@ class ServicesPageState extends State<ServicesPage> {
       int ct = 0;
       while (!itemScrollController.isAttached) {
         ct++;
+        await Future.delayed(const Duration(milliseconds: 10));
         if (ct > 50) {
           break;
         }
-        await Future.delayed(const Duration(milliseconds: 10));
       }
       if (ct <= 50) {
         itemScrollController.scrollTo(
@@ -135,16 +134,16 @@ class ServicesPageState extends State<ServicesPage> {
       Container(
         height: SiteConfig.screenSize.height / 2,
         width: SiteConfig.screenSize.width,
-        // color: Colors.white,
-
+        color: Colors.white,
         child: SiteConfig.smallScreen
             ? Column(
                 children: [
                   Text(
                     "SERVIÇOS",
                     style: TextStyle(
-                        fontSize: SiteConfig.getTitleSize(),
-                        color: SiteConfig.lightColors.primary),
+                      fontSize: SiteConfig.getTitleSize(),
+                      color: SiteConfig.lightColors.primary,
+                    ),
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -152,7 +151,7 @@ class ServicesPageState extends State<ServicesPage> {
                       padding: const EdgeInsets.all(10),
                       child: Image.asset(
                         "assets/images/paula/paulaMesa.jpg",
-                        fit: BoxFit.fitWidth,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
@@ -164,15 +163,17 @@ class ServicesPageState extends State<ServicesPage> {
                   Text(
                     "SERVIÇOS",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: SiteConfig.getTitleSize(),
-                        color: SiteConfig.lightColors.primary),
+                      fontWeight: FontWeight.bold,
+                      fontSize: SiteConfig.getTitleSize(),
+                      color: SiteConfig.lightColors.primary,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Expanded(
                       child: Image.asset(
                         "assets/images/paula/paulaMesa.jpg",
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),

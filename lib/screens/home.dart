@@ -77,32 +77,6 @@ class HomePageState extends State<HomePage> {
           textAlign: TextAlign.center,
         ),
       ),
-      // Expanded(
-      //   flex: 1,
-      //   child: Image.asset(
-      //     "assets/images/paula/vacina.jpg",
-      //     fit: BoxFit.contain,
-      //   ),
-      // ),
-      // Expanded(
-      //   flex: SiteConfig.smallScreen ? 1 : 2,
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(50),
-      //     child: Text(
-      //       "Sou Dra Paula Roberta Brasil, graduada em Odontologia desde 2006 e no decorrer desse tempo,"
-      //       " venho realizando diversos cursos de atualização,"
-      //       " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
-      //       " ou seja, você que está visitando minha página! \n\n"
-      //       "Sou apaixonada pela estética desde minha infância,"
-      //       " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
-      //       " através da HARMONIZAÇÃO OROFACIAL.",
-      //       style: TextStyle(
-      //         fontSize: SiteConfig.screenSize.width / 75 + 15,
-      //         color: const Color.fromARGB(255, 175, 127, 75),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     ];
 
     final List<Widget> botInnerRectangle = [
@@ -233,8 +207,10 @@ class HomePageState extends State<HomePage> {
                       ? SiteConfig.screenSize.width * 0.8
                       : SiteConfig.screenSize.width * 0.2,
                   enableInfiniteScroll: true,
-                  autoPlay: false,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 4),
                 ),
+                itemCount: SiteConfig.smallScreen ? 7 : 2,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   return SiteConfig.smallScreen
                       ? Row(
@@ -257,7 +233,6 @@ class HomePageState extends State<HomePage> {
                               ],
                             );
                 },
-                itemCount: SiteConfig.smallScreen ? 8 : 2,
               ),
             ),
             Container(
