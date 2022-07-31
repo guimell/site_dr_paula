@@ -109,6 +109,7 @@ class HomePageState extends State<HomePage> {
 
     final List<Widget> innerRectangle = [
       Expanded(
+        flex: 1,
         child: Container(
           child: SiteConfig.smallScreen
               ? Column(
@@ -120,6 +121,7 @@ class HomePageState extends State<HomePage> {
         ),
       ),
       Expanded(
+        flex: 2,
         child: Container(
           child: SiteConfig.smallScreen
               ? Column(
