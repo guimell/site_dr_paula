@@ -155,10 +155,9 @@ class ServicesPageState extends State<ServicesPage> {
     ];
 
     List<Widget> children = [
-      Container(
+      SizedBox(
         height: 350,
         width: SiteConfig.screenSize.width,
-        color: Colors.white,
         child: SiteConfig.smallScreen
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
