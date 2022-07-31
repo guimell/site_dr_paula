@@ -87,7 +87,7 @@ class ContactPageState extends State<ContactPage> {
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
     Widget rightContact = Expanded(
-      flex: 2,
+      flex: 4,
       child: Container(
         padding: const EdgeInsets.all(30.0),
         width: SiteConfig.screenSize.width,
@@ -160,7 +160,7 @@ class ContactPageState extends State<ContactPage> {
     );
 
     Widget leftContact = Expanded(
-      flex: 1,
+      flex: 3,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -366,7 +366,7 @@ class ContactPageState extends State<ContactPage> {
                     height: SiteConfig.smallScreen
                         ? SiteConfig.screenSize.height * 0.7 * 2
                         : SiteConfig.screenSize.height * 0.7,
-                    width: SiteConfig.screenSize.width * 0.8,
+                    width: SiteConfig.screenSize.width * 0.9,
                     child: SiteConfig.smallScreen
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.center,
