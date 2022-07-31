@@ -329,7 +329,7 @@ class BlogPost extends StatelessWidget {
                     Uri uri = Uri.parse(post.url);
                     SiteConfig.tryLaunchUri(uri);
                   },
-                  child: const Text("Leer mas!"),
+                  child: const Text("Ler mais!"),
                 ),
               ],
             ),
