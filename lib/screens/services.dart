@@ -130,54 +130,43 @@ class ServicesPageState extends State<ServicesPage> {
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
+    List<Widget> titleChildren = [
+      Expanded(
+        flex: 1,
+        child: Padding(
+          padding: const EdgeInsets.all(22.0),
+          child: Text(
+            "SERVIÇOS",
+            textAlign: TextAlign.end,
+            style: TextStyle(
+              fontSize: SiteConfig.getTitleSize(),
+              color: SiteConfig.lightColors.primary,
+            ),
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 2,
+        child: Image.asset(
+          "assets/images/paula/paulaMesa.jpg",
+          fit: BoxFit.contain,
+        ),
+      ),
+    ];
+
     List<Widget> children = [
       Container(
-        height: SiteConfig.screenSize.height / 2,
+        height: 350,
         width: SiteConfig.screenSize.width,
         color: Colors.white,
         child: SiteConfig.smallScreen
             ? Column(
-                children: [
-                  Text(
-                    "SERVIÇOS",
-                    style: TextStyle(
-                      fontSize: SiteConfig.getTitleSize(),
-                      color: SiteConfig.lightColors.primary,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Image.asset(
-                        "assets/images/paula/paulaMesa.jpg",
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: titleChildren,
               )
             : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "SERVIÇOS",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: SiteConfig.getTitleSize(),
-                      color: SiteConfig.lightColors.primary,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Expanded(
-                      child: Image.asset(
-                        "assets/images/paula/paulaMesa.jpg",
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: titleChildren,
               ),
       ),
       ServiceContainer(
