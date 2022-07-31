@@ -187,7 +187,10 @@ class HomePageState extends State<HomePage> {
                         )
                       ]),
                       child: Text(
-                        "Harmonização orofacial",
+                        "Harmonização\nOrofacial",
+                        textAlign: SiteConfig.smallScreen
+                            ? TextAlign.center
+                            : TextAlign.end,
                         style: TextStyle(
                           fontSize: SiteConfig.getTitleSize(),
                           fontWeight: FontWeight.bold,
