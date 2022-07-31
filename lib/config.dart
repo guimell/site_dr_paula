@@ -261,7 +261,7 @@ class SiteConfig {
     final double sizeI = 20 + screenSize.width / 100;
     List<Widget> children = [
       Expanded(
-        flex: smallScreen ? 1 : 1,
+        flex: 1,
         child: Align(
           alignment: Alignment.centerLeft,
           child: Image.asset(
@@ -273,6 +273,7 @@ class SiteConfig {
         ),
       ),
       Expanded(
+        flex: 1,
         child: IconButton(
           padding: EdgeInsets.zero,
           onPressed: () {
@@ -287,6 +288,7 @@ class SiteConfig {
         ),
       ),
       Expanded(
+        flex: 1,
         child: IconButton(
           padding: EdgeInsets.zero,
           onPressed: () {
@@ -300,9 +302,9 @@ class SiteConfig {
           ),
         ),
       ),
-      const Expanded(
-        flex: 2,
-        child: SizedBox(),
+      Expanded(
+        flex: smallScreen ? 1 : 4,
+        child: const SizedBox(),
       ),
     ];
     return Container(
@@ -380,8 +382,8 @@ class SiteConfig {
 
   static double getHeadingSize() {
     double size = SiteConfig.screenSize.width / 100 + 25;
-    if (size > 30) {
-      size = 30;
+    if (size > 35) {
+      size = 35;
     }
     return size;
   }
