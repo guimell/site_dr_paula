@@ -363,8 +363,12 @@ class ServiceContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(48),
-      padding: const EdgeInsets.all(24),
+      margin: SiteConfig.smallScreen
+          ? const EdgeInsets.all(24)
+          : const EdgeInsets.all(48),
+      padding: SiteConfig.smallScreen
+          ? const EdgeInsets.all(12)
+          : const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white.withAlpha(150),
         borderRadius: BorderRadius.circular(6),
