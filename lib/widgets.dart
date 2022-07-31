@@ -526,7 +526,9 @@ class CarouselImageState extends State<CarouselImage> {
                       widget.title,
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: SiteConfig.getTextSize(),
+                        fontSize: SiteConfig.smallScreen
+                            ? SiteConfig.screenSize.width / 75 + 16
+                            : SiteConfig.screenSize.width / 75 + 2,
                         fontWeight: FontWeight.bold,
                         color: SiteConfig.lightColors.background,
                       ),

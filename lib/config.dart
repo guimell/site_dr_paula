@@ -387,7 +387,7 @@ class SiteConfig {
   }
 
   static double getTitleSize() {
-    double size = SiteConfig.screenSize.width / 100 + 25;
+    double size = SiteConfig.screenSize.width / 100 + 35;
     if (size > 60) {
       size = 60;
     }

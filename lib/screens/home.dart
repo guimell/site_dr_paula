@@ -69,22 +69,23 @@ class HomePageState extends State<HomePage> {
 
     final List<Widget> topInnerRectangle = [
       Expanded(
+        flex: 1,
         child: Text(
           "Conheça Dra.Paula Brasil",
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: SiteConfig.getHeadingSize(),
             color: SiteConfig.lightColors.primary,
           ),
-          textAlign: TextAlign.center,
         ),
       ),
     ];
 
     final List<Widget> botInnerRectangle = [
       Expanded(
-        flex: SiteConfig.smallScreen ? 2 : 2,
+        flex: 2,
         child: Padding(
-          padding: const EdgeInsets.all(50),
+          padding: const EdgeInsets.all(25),
           child: Text(
             "Sou Dra Paula Roberta Brasil, graduada em Odontologia desde 2006 e no decorrer desse tempo,"
             " venho realizando diversos cursos de atualização,"
@@ -94,8 +95,8 @@ class HomePageState extends State<HomePage> {
             " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
             " através da HARMONIZAÇÃO OROFACIAL.",
             style: TextStyle(
-              color: SiteConfig.lightColors.primary,
               fontSize: SiteConfig.getTextSize(),
+              color: SiteConfig.lightColors.primary,
             ),
           ),
         ),
@@ -123,7 +124,7 @@ class HomePageState extends State<HomePage> {
         ),
       ),
       Expanded(
-        flex: 2,
+        flex: 4,
         child: Container(
           child: SiteConfig.smallScreen
               ? Column(
@@ -174,10 +175,15 @@ class HomePageState extends State<HomePage> {
                         ? Alignment.bottomCenter
                         : Alignment.bottomRight,
                     child: Container(
-                      margin: const EdgeInsets.symmetric(
-                        vertical: 100,
-                        horizontal: 50,
-                      ),
+                      margin: SiteConfig.smallScreen
+                          ? const EdgeInsets.symmetric(
+                              vertical: 50,
+                              horizontal: 50,
+                            )
+                          : const EdgeInsets.symmetric(
+                              vertical: 100,
+                              horizontal: 50,
+                            ),
                       padding: const EdgeInsets.symmetric(
                         vertical: 12,
                         horizontal: 12,
