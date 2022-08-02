@@ -329,7 +329,7 @@ class BlogPost extends StatelessWidget {
                     Uri uri = Uri.parse(post.url);
                     SiteConfig.tryLaunchUri(uri);
                   },
-                  child: const Text("Leer mas!"),
+                  child: const Text("Ler mais!"),
                 ),
               ],
             ),
@@ -494,7 +494,7 @@ class CarouselImageState extends State<CarouselImage> {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
               pageBuilder: (_, __, ___) => ServicesPage(index: widget.index),
-              settings: const RouteSettings(name: "/Services"),
+              settings: const RouteSettings(name: "/Serviços"),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
             ),
