@@ -94,7 +94,7 @@ class ContactPageState extends State<ContactPage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(20.0),
               child: Text(
                 "Contato",
                 style: TextStyle(
@@ -104,28 +104,28 @@ class ContactPageState extends State<ContactPage> {
                 ),
               ),
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: MyTextField(
                 labelText: 'Nome :',
                 myController: myControllerName,
               ),
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: MyTextField(
                 labelText: 'Sobrenome :',
                 myController: myControllerSobreName,
               ),
             ),
-            Expanded(
+            Flexible(
               flex: 1,
               child: MyTextField(
                 labelText: 'E-mail :',
                 myController: myControllerEmail,
               ),
             ),
-            Expanded(
+            Flexible(
               flex: 2,
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
