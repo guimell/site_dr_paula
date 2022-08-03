@@ -68,12 +68,15 @@ class HomePageState extends State<HomePage> {
     final List<Widget> topInnerRectangle = [
       Expanded(
         flex: 1,
-        child: Text(
-          "Conheça Dra.Paula Brasil",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: SiteConfig.getTitleSize(),
-            color: SiteConfig.lightColors.primary,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Text(
+            "Conheça Dra.Paula Brasil",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: SiteConfig.getHeadingSize(),
+              color: SiteConfig.lightColors.primary,
+            ),
           ),
         ),
       ),
@@ -83,7 +86,7 @@ class HomePageState extends State<HomePage> {
       Expanded(
         flex: 2,
         child: Padding(
-          padding: const EdgeInsets.all(25),
+          padding: const EdgeInsets.all(30),
           child: Text(
             "Sou Dra Paula Roberta Brasil, graduada em Odontologia desde 2006 e no decorrer desse tempo,"
             " venho realizando diversos cursos de atualização,"
@@ -250,7 +253,7 @@ class HomePageState extends State<HomePage> {
             Container(
               color: SiteConfig.lightColors.primary.withAlpha(25),
               height: SiteConfig.smallScreen
-                  ? SiteConfig.screenSize.height * 1.75
+                  ? SiteConfig.screenSize.height * 1.5
                   : SiteConfig.screenSize.height * 0.8,
               width: SiteConfig.screenSize.width,
               child: SiteConfig.smallScreen
