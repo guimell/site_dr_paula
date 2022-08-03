@@ -75,7 +75,7 @@ class SiteConfig {
       ),
       AppBarButton(
         text: "Contato",
-        page: const ContactPage(),
+        page: ContactPage(),
         autofocus: title == "Contato",
       ),
     ];
@@ -189,7 +189,7 @@ class SiteConfig {
         onPressed: () {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const ContactPage(),
+              pageBuilder: (_, __, ___) => ContactPage(),
               settings: const RouteSettings(name: "/Contato"),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
@@ -374,22 +374,22 @@ class SiteConfig {
 
   static double getTextSize() {
     double size = SiteConfig.screenSize.width / 100 + 10;
-    if (size > 20) {
-      size = 20;
+    if (size > 18) {
+      size = 18;
     }
     return size;
   }
 
   static double getHeadingSize() {
-    double size = SiteConfig.screenSize.width / 100 + 25;
-    if (size > 35) {
-      size = 35;
+    double size = SiteConfig.screenSize.width / 100 + 30;
+    if (size > 40) {
+      size = 40;
     }
     return size;
   }
 
   static double getTitleSize() {
-    double size = SiteConfig.screenSize.width / 100 + 35;
+    double size = SiteConfig.screenSize.width / 100 + 40;
     if (size > 60) {
       size = 60;
     }
