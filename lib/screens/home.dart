@@ -72,7 +72,7 @@ class HomePageState extends State<HomePage> {
           "Conheça Dra.Paula Brasil",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: SiteConfig.getHeadingSize(),
+            fontSize: SiteConfig.getTitleSize(),
             color: SiteConfig.lightColors.primary,
           ),
         ),
@@ -96,6 +96,7 @@ class HomePageState extends State<HomePage> {
               fontSize: SiteConfig.getTextSize(),
               color: SiteConfig.lightColors.primary,
             ),
+            textAlign: TextAlign.center,
           ),
         ),
       ),

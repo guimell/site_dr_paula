@@ -385,6 +385,21 @@ class ContactPageState extends State<ContactPage> {
                   ),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Localizações",
+                      style: TextStyle(
+                          color: SiteConfig.lightColors.primary,
+                          fontSize: SiteConfig.getTitleSize(),
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
               Container(
                 color: SiteConfig.lightColors.primary.withAlpha(25),
                 child: SiteConfig.smallScreen
