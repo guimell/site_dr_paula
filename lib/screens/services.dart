@@ -132,9 +132,9 @@ class ServicesPageState extends State<ServicesPage> {
 
     List<Widget> titleChildren = [
       Expanded(
-        flex: 1,
+        flex: 5,
         child: Padding(
-          padding: const EdgeInsets.all(22.0),
+          padding: const EdgeInsets.all(20),
           child: Text(
             "SERVIÇOS",
             textAlign: TextAlign.end,
@@ -147,17 +147,20 @@ class ServicesPageState extends State<ServicesPage> {
         ),
       ),
       Expanded(
-        flex: 2,
-        child: Image.asset(
-          "assets/images/paula/paulaMesa.jpg",
-          fit: BoxFit.contain,
+        flex: SiteConfig.smallScreen ? 10 : 8,
+        child: Padding(
+          padding: EdgeInsets.all(SiteConfig.smallScreen ? 10 : 20),
+          child: Image.asset(
+            "assets/images/paula/paulaMesa.jpg",
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     ];
 
     List<Widget> children = [
       SizedBox(
-        height: 350,
+        height: 450,
         width: SiteConfig.screenSize.width,
         child: SiteConfig.smallScreen
             ? Column(
