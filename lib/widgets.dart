@@ -21,7 +21,7 @@ class AppBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(8),
       child: TextButton(
         style: SiteConfig.buttonStyle,
         autofocus: autofocus,
@@ -38,8 +38,10 @@ class AppBarButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            fontSize:
-                SiteConfig.smallScreen ? SiteConfig.getHeadingSize() : null,
+            fontSize: SiteConfig.smallScreen
+                ? SiteConfig.getHeadingSize() - 2.5 // overflow if not
+                : SiteConfig.getTextSize() - 1,
+            fontWeight: autofocus ? FontWeight.w600 : null,
           ),
         ),
       ),
@@ -279,14 +281,14 @@ class BlogPost extends StatelessWidget {
             flex: 4,
             child: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
-              final int textSize = SiteConfig.getHeadingSize().round();
-              final int lines = (constraints.maxHeight / textSize).round() - 2;
+              const double textSize = 24;
+              final int lines = (constraints.maxHeight / textSize).round() - 1;
               return Text(
                 post.title,
                 maxLines: lines <= 0 ? 1 : lines,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: textSize * 1.0,
+                style: const TextStyle(
+                  fontSize: textSize,
                   fontWeight: FontWeight.bold,
                 ),
               );
@@ -299,15 +301,15 @@ class BlogPost extends StatelessWidget {
                   flex: 8,
                   child: LayoutBuilder(builder:
                       (BuildContext context, BoxConstraints constraints) {
-                    final int textSize = SiteConfig.getTextSize().round();
+                    const double textSize = 15;
                     final int lines =
-                        (constraints.maxHeight / textSize).round() - 2;
+                        (constraints.maxHeight / textSize).round() - 3;
                     return Text(
                       post.content,
                       maxLines: lines <= 0 ? 1 : lines,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: SiteConfig.getTextSize(),
+                        fontSize: textSize,
                         color: Colors.grey.withAlpha(200),
                       ),
                     );
@@ -315,15 +317,15 @@ class BlogPost extends StatelessWidget {
                 ),
           // info section
           Container(
-            padding: const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(bottom: 8),
             width: width - 16,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // Text(post.authorName),
-                // Text(post.published),
-                Text(post.updated),
+                Text(post.published),
+                // Text(post.updated),
                 ElevatedButton(
                   onPressed: () {
                     Uri uri = Uri.parse(post.url);
@@ -371,7 +373,8 @@ class ServiceContainer extends StatelessWidget {
           ? const EdgeInsets.all(12)
           : const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha(150),
+        // color: Colors.white.withAlpha(150),
+        color: SiteConfig.lightColors.primary.withAlpha(25),
         borderRadius: BorderRadius.circular(6),
       ),
       width: SiteConfig.screenSize.width * 0.7,
