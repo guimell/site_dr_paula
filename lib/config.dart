@@ -21,6 +21,7 @@ class SiteConfig {
   static bool smallScreen = false;
 
   // theme colors
+  static Brightness platformBrightness = Brightness.light;
   static ColorScheme lightColors = const ColorScheme(
     brightness: Brightness.light,
     primary: Color.fromARGB(255, 175, 127, 75),

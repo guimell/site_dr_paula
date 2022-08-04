@@ -64,6 +64,7 @@ class HomePageState extends State<HomePage> {
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
+    SiteConfig.platformBrightness = MediaQuery.of(context).platformBrightness;
 
     final List<Widget> topInnerRectangle = [
       Expanded(
@@ -192,10 +193,12 @@ class HomePageState extends State<HomePage> {
                       ),
                       decoration: BoxDecoration(boxShadow: [
                         BoxShadow(
-                          color:
-                              SiteConfig.lightColors.background.withAlpha(50),
+                          color: SiteConfig.platformBrightness ==
+                                  Brightness.light
+                              ? SiteConfig.lightColors.background.withAlpha(100)
+                              : SiteConfig.darkColors.background.withAlpha(200),
                           blurRadius: 50,
-                          spreadRadius: 20,
+                          spreadRadius: 10,
                         )
                       ]),
                       child: Text(
