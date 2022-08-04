@@ -9,11 +9,11 @@ import '../widgets.dart';
 class ContactPage extends StatefulWidget {
   final Widget clinicMap1 = Container(
     margin: const EdgeInsets.only(top: 20),
-    padding: const EdgeInsets.all(8),
+    padding: const EdgeInsets.only(top: 8),
     child: const GoogleMaps([-12.97906405448506, -38.46079686531542]),
   );
   final Widget clinicLink1 = Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.only(bottom: 12),
     child: TextButton(
       onPressed: () {
         Uri uri = Uri.parse(
@@ -33,11 +33,11 @@ class ContactPage extends StatefulWidget {
 
   final Widget clinicMap2 = Container(
     margin: const EdgeInsets.only(top: 20),
-    padding: const EdgeInsets.all(8),
+    padding: const EdgeInsets.only(top: 8),
     child: const GoogleMaps([-13.002766607398238, -38.50198503547772]),
   );
   final Widget clinicLink2 = Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.only(bottom: 12),
     child: TextButton(
       onPressed: () {
         Uri uri = Uri.parse(
