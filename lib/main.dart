@@ -23,7 +23,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Dr. Paula',
       theme: ThemeData.from(colorScheme: SiteConfig.lightColors),
-      // darkTheme: ThemeData.from(colorScheme: SiteConfig.darkColors),
+      darkTheme: ThemeData.from(colorScheme: SiteConfig.darkColors),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
