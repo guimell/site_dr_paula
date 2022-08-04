@@ -56,7 +56,7 @@ class SiteConfig {
   static bool local = true;
 
   static AppBar getAppBar(BuildContext context, String title) {
-    const int navButtonsWidth = 775;
+    const int navButtonsWidth = 750;
     final List<Widget> navigationButtons = [
       AppBarButton(
         text: "Home",
@@ -147,112 +147,6 @@ class SiteConfig {
             size: 40,
           ),
         ),
-      ),
-    );
-  }
-
-  static Widget getHeader(BuildContext context, String title) {
-    List<Widget> navigationButtons = [
-      TextButton(
-        autofocus: title == "Home",
-        // style: buttonStyle,
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const HomePage(),
-              settings: const RouteSettings(name: "/Home"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Home"),
-      ),
-      TextButton(
-        autofocus: title == "Blog",
-        // style: buttonStyle,
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const BlogPage(),
-              settings: const RouteSettings(name: "/Blog"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Blog"),
-      ),
-      TextButton(
-        autofocus: title == "Contato",
-        // style: buttonStyle,
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => ContactPage(),
-              settings: const RouteSettings(name: "/Contato"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Contato"),
-      ),
-      TextButton(
-        autofocus: title == "Serviços",
-        // style: buttonStyle,
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            PageRouteBuilder(
-              pageBuilder: (_, __, ___) => const ServicesPage(),
-              settings: const RouteSettings(name: "/Serviços"),
-              reverseTransitionDuration: Duration.zero,
-              transitionDuration: Duration.zero,
-            ),
-          );
-        },
-        child: const Text("Serviços"),
-      ),
-    ];
-
-    return Container(
-      height: screenSize.height * 0.05 + 20,
-      width: screenSize.width,
-      color: const Color.fromARGB(255, 175, 127, 75).withAlpha(25),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          screenSize.height > screenSize.width
-              ? IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => BackdropFilter(
-                        filter: ui.ImageFilter.blur(
-                          sigmaX: 8.0,
-                          sigmaY: 8.0,
-                        ),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: navigationButtons,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.menu),
-                )
-              : Row(children: navigationButtons),
-          IconButton(
-            icon: const Icon(Icons.mark_email_unread_rounded),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.logout_rounded),
-            onPressed: () {},
-          ),
-        ],
       ),
     );
   }
