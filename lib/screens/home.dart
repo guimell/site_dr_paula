@@ -67,8 +67,9 @@ class HomePageState extends State<HomePage> {
     SiteConfig.platformBrightness = MediaQuery.of(context).platformBrightness;
 
     final List<Widget> topInnerRectangle = [
-      Expanded(
+      Flexible(
         flex: 1,
+        fit: FlexFit.loose,
         child: Padding(
           padding: const EdgeInsets.only(top: 50),
           child: Text(
@@ -84,8 +85,9 @@ class HomePageState extends State<HomePage> {
     ];
 
     final List<Widget> botInnerRectangle = [
-      Expanded(
+      Flexible(
         flex: 2,
+        fit: FlexFit.loose,
         child: Padding(
           padding: const EdgeInsets.all(30),
           child: Text(
@@ -104,8 +106,9 @@ class HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      Expanded(
+      Flexible(
         flex: 1,
+        fit: FlexFit.loose,
         child: Image.asset(
           "assets/images/paula/logoMarcaT.png",
           fit: BoxFit.contain,
@@ -114,26 +117,32 @@ class HomePageState extends State<HomePage> {
     ];
 
     final List<Widget> innerRectangle = [
-      Expanded(
+      Flexible(
         flex: 1,
+        fit: FlexFit.loose,
         child: Container(
           child: SiteConfig.smallScreen
               ? Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: topInnerRectangle,
                 )
               : Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: topInnerRectangle,
                 ),
         ),
       ),
-      Expanded(
+      Flexible(
         flex: 4,
+        fit: FlexFit.loose,
         child: Container(
           child: SiteConfig.smallScreen
               ? Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: botInnerRectangle,
                 )
               : Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: botInnerRectangle,
                 ),
         ),
@@ -141,17 +150,20 @@ class HomePageState extends State<HomePage> {
     ];
 
     final List<Widget> outerRectangle = [
-      Expanded(
+      Flexible(
         flex: 1,
+        fit: FlexFit.loose,
         child: Image.asset(
           "assets/images/paula/perfil.jpg",
           fit: BoxFit.contain,
         ),
       ),
-      Expanded(
+      Flexible(
         flex: SiteConfig.smallScreen ? 1 : 2,
+        fit: FlexFit.loose,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: innerRectangle,
         ),
       ),
@@ -255,15 +267,17 @@ class HomePageState extends State<HomePage> {
             ),
             Container(
               color: SiteConfig.lightColors.primary.withAlpha(25),
-              height: SiteConfig.smallScreen
-                  ? SiteConfig.screenSize.height * 1.5
-                  : SiteConfig.screenSize.height * 0.8,
+              // height: SiteConfig.smallScreen
+              //     ? SiteConfig.screenSize.height * 1.5
+              //     : SiteConfig.screenSize.height * 0.8,
               width: SiteConfig.screenSize.width,
               child: SiteConfig.smallScreen
                   ? Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: outerRectangle,
                     )
                   : Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: outerRectangle,
                     ),
             ),
