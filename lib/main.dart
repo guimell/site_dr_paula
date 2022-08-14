@@ -21,7 +21,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dr. Paula',
+      title: 'P2P Saúde e segurança',
       theme: ThemeData.from(colorScheme: SiteConfig.lightColors),
       // darkTheme: ThemeData.from(colorScheme: SiteConfig.darkColors),
       home: const HomePage(),

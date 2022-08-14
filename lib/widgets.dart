@@ -388,7 +388,7 @@ class ServiceContainer extends StatelessWidget {
           : const EdgeInsets.all(24),
       decoration: BoxDecoration(
         // color: Colors.white.withAlpha(150),
-        color: SiteConfig.lightColors.primary.withAlpha(25),
+        color: SiteConfig.lightColors.secondary,
         borderRadius: BorderRadius.circular(6),
       ),
       width: SiteConfig.screenSize.width * 0.7,
@@ -412,7 +412,7 @@ class ServiceContainer extends StatelessWidget {
                   padding: const EdgeInsets.all(30),
                   child: Text(
                     text,
-                    textAlign: TextAlign.start,
+                    textAlign: TextAlign.justify,
                     style: TextStyle(color: SiteConfig.lightColors.onPrimary),
                   ),
                 ),
@@ -443,7 +443,7 @@ class ServiceContainer extends StatelessWidget {
                           // style: const TextStyle(
                           //   fontSize: SiteConfig.getTextSize(),
                           // ),
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: SiteConfig.getTextSize(),
                             color: SiteConfig.lightColors.onPrimary,

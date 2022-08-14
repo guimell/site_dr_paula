@@ -26,7 +26,7 @@ class SiteConfig {
     brightness: Brightness.light,
     primary: Color.fromARGB(255, 204, 154, 68),
     onPrimary: Colors.white,
-    secondary: Color(0xff03dac6),
+    secondary: Color.fromARGB(255, 32, 86, 99),
     onSecondary: Colors.black,
     error: Color(0xffb00020),
     onError: Colors.white,
@@ -138,8 +138,8 @@ class SiteConfig {
           foregroundColor: lightColors.background,
           backgroundColor: lightColors.primary,
           onPressed: (() async {
-            String phone = "5571997042642";
-            String text = Uri.encodeFull("Ola Dr. Paula!");
+            String phone = "5571981618308";
+            String text = Uri.encodeFull("Ola P2P!");
             Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
             tryLaunchUri(uri);
           }),
@@ -160,7 +160,7 @@ class SiteConfig {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Image.asset(
-            "assets/images/paula/logoMarca.jpeg",
+            "assets/images/paula/p2pLogo.png",
             fit: BoxFit.contain,
             height: sizeI * 10,
             width: sizeI * 10,
@@ -172,26 +172,11 @@ class SiteConfig {
         child: IconButton(
           padding: EdgeInsets.zero,
           onPressed: () {
-            Uri uri = Uri.parse("https://www.instagram.com/drapaulabrasil/");
+            Uri uri = Uri.parse("https://www.instagram.com/p2psaudeeseg/");
             tryLaunchUri(uri);
           },
           icon: FaIcon(
             FontAwesomeIcons.instagram,
-            color: SiteConfig.lightColors.primary,
-            size: sizeI,
-          ),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {
-            Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
-            tryLaunchUri(uri);
-          },
-          icon: FaIcon(
-            FontAwesomeIcons.facebook,
             color: SiteConfig.lightColors.primary,
             size: sizeI,
           ),

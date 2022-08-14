@@ -49,30 +49,6 @@ class HomePageState extends State<HomePage> {
       title: "PEELING",
       index: 3,
     ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/microagulhamento.jpg",
-      title: "MICROAGULHAMENTO",
-      index: 4,
-    ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/botox.png",
-      title: "BOTOX",
-      index: 5,
-    ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/Preenchimento.jpg",
-      title: "PREENCHIMENTO",
-      index: 6,
-    ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/bichectomia.jpg",
-      title: "BICHECTOMIA",
-      index: 7,
-    ),
   ];
 
   @override
@@ -231,7 +207,7 @@ class HomePageState extends State<HomePage> {
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 4),
                 ),
-                itemCount: SiteConfig.smallScreen ? 7 : 2,
+                itemCount: SiteConfig.smallScreen ? 1 : 1,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   return SiteConfig.smallScreen
                       ? Row(
@@ -257,7 +233,7 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-                color: Color.fromARGB(255, 32, 86, 99),
+                color: SiteConfig.lightColors.secondary,
                 // height: SiteConfig.smallScreen
                 //     ? SiteConfig.screenSize.height * 1.5
                 //     : SiteConfig.screenSize.height * 0.8,
