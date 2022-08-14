@@ -24,7 +24,7 @@ class SiteConfig {
   static Brightness platformBrightness = Brightness.light;
   static ColorScheme lightColors = const ColorScheme(
     brightness: Brightness.light,
-    primary: Color.fromARGB(255, 175, 127, 75),
+    primary: Color.fromARGB(255, 204, 154, 68),
     onPrimary: Colors.white,
     secondary: Color(0xff03dac6),
     onSecondary: Colors.black,
@@ -92,11 +92,11 @@ class SiteConfig {
           SizedBox(
             height: 60,
             child: Image.asset(
-              "assets/images/paula/logoMarcaT.png",
+              "assets/images/paula/p2pLogo.png",
               fit: BoxFit.contain,
             ),
           ),
-          const Text('Dra. Paula Brasil'),
+          const Text(''),
         ],
       ),
       leading: screenSize.width < navButtonsWidth

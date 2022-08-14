@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -8,7 +10,21 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   final String title = "Home";
-
+  final String textService1 =
+      "A P2P é uma empresa de consultoria em gestão de saúde ocupacional e segurança do trabalho,"
+      "feita por pessoas para pessoas. Surgimos para trazer soluções de medicina, ergonomia e segurança do trabalho para micro e pequenas empresas,"
+      "auxiliando-as no cumprimento da legislação vigente e agregando valor ao cuidado com os colaboradores,"
+      "através de uma visão integral da saúde."
+      "Acreditamos que a saúde e segurança do trabalho, quando bem feitas, não são um custo para as empresas, mas sim um investimento, "
+      "através da redução das tributações e das ausências do trabalhador por motivo de saúde, melhora da produtividade dos colaboradores.";
+  final String textService3 =
+      "Apoiar os empresários a tornarem suas empresas mais produtivas e eficientes através da saúde e segurança dos trabalhadores.";
+  final String textService4 =
+      " Ser reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes.";
+  final String textService5 =
+      " Ser reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes.";
+  final String textService6 =
+      "+ A vida em 1 lugar\n+Ética é inegociável\n+Eficiência nos processos\n+Qualidade dos serviços\n+Inovação\n+Foco no cliente";
   @override
   State<StatefulWidget> createState() => HomePageState();
 }
@@ -61,111 +77,136 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double iconSize = 30;
     SiteConfig.screenSize = MediaQuery.of(context).size;
     SiteConfig.smallScreen =
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
     SiteConfig.platformBrightness = MediaQuery.of(context).platformBrightness;
 
-    final List<Widget> topInnerRectangle = [
-      Flexible(
-        flex: 1,
-        fit: FlexFit.loose,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 50),
-          child: Text(
-            "Conheça Dra.Paula Brasil",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: SiteConfig.getHeadingSize(),
-              color: SiteConfig.lightColors.primary,
+    final List<Widget> greenRectangle = [
+      ServiceContainer(
+        title: "Quem somos",
+        text: widget.textService1,
+      ),
+      SiteConfig.smallScreen
+          ? Column(
+              children: const [
+                InteractiveContent(
+                    title: "Nossa missão",
+                    icon: Icons.flag_circle,
+                    text:
+                        "\n\nApoiar os empresários a tornarem suas empresas mais produtivas e eficientes através da saúde e segurança dos trabalhadores."),
+                InteractiveContent(
+                    title: "Nossa visão",
+                    icon: Icons.remove_red_eye,
+                    text:
+                        "\n\nSer reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes."),
+                InteractiveContent(
+                    title: "Nossos valores",
+                    icon: Icons.star_rounded,
+                    text:
+                        "\n\n+A vida em 1 lugar\n+Ética é inegociável\n+Eficiência nos processos\n+Qualidade dos serviços\n+Inovação\n+Foco no cliente"),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                InteractiveContent(
+                    title: "Nossa missão",
+                    icon: Icons.flag_circle,
+                    text:
+                        "\n\nApoiar os empresários a tornarem suas empresas mais produtivas e eficientes através da saúde e segurança dos trabalhadores."),
+                InteractiveContent(
+                    title: "Nossa visão",
+                    icon: Icons.remove_red_eye,
+                    text:
+                        "\n\nSer reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes."),
+                InteractiveContent(
+                    title: "Nossos valores",
+                    icon: Icons.star_rounded,
+                    text:
+                        "\n\n+A vida em 1 lugar\n+Ética é inegociável\n+Eficiência nos processos\n+Qualidade dos serviços\n+Inovação\n+Foco no cliente"),
+              ],
             ),
-          ),
+      Container(
+        margin: SiteConfig.smallScreen
+            ? const EdgeInsets.all(24)
+            : const EdgeInsets.all(48),
+        padding: SiteConfig.smallScreen
+            ? const EdgeInsets.all(12)
+            : const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          // color: Colors.white.withAlpha(150),
+          color: SiteConfig.lightColors.primary.withAlpha(25),
+          borderRadius: BorderRadius.circular(6),
         ),
-      ),
-    ];
-
-    final List<Widget> botInnerRectangle = [
-      Flexible(
-        flex: 2,
-        fit: FlexFit.loose,
-        child: Padding(
-          padding: const EdgeInsets.all(30),
-          child: Text(
-            "Sou Dra Paula Roberta Brasil, graduada em Odontologia desde 2006 e no decorrer desse tempo,"
-            " venho realizando diversos cursos de atualização,"
-            " especialização e também mestrado com fins de oferecer o melhor serviço para meus pacientes,"
-            " ou seja, você que está visitando minha página! \n\n"
-            "Sou apaixonada pela estética desde minha infância,"
-            " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
-            " através da HARMONIZAÇÃO OROFACIAL.",
-            style: TextStyle(
-              fontSize: SiteConfig.getTextSize(),
-              color: SiteConfig.lightColors.primary,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-      Flexible(
-        flex: 1,
-        fit: FlexFit.loose,
-        child: Image.asset(
-          "assets/images/paula/logoMarcaT.png",
-          fit: BoxFit.contain,
-        ),
-      ),
-    ];
-
-    final List<Widget> innerRectangle = [
-      Flexible(
-        flex: 1,
-        fit: FlexFit.loose,
-        child: Container(
-          child: SiteConfig.smallScreen
-              ? Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: topInnerRectangle,
-                )
-              : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: topInnerRectangle,
-                ),
-        ),
-      ),
-      Flexible(
-        flex: 4,
-        fit: FlexFit.loose,
-        child: Container(
-          child: SiteConfig.smallScreen
-              ? Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: botInnerRectangle,
-                )
-              : Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: botInnerRectangle,
-                ),
-        ),
-      ),
-    ];
-
-    final List<Widget> outerRectangle = [
-      Flexible(
-        flex: 1,
-        fit: FlexFit.loose,
-        child: Image.asset(
-          "assets/images/paula/perfil.jpg",
-          fit: BoxFit.contain,
-        ),
-      ),
-      Flexible(
-        flex: SiteConfig.smallScreen ? 1 : 2,
-        fit: FlexFit.loose,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: innerRectangle,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Nossa equipe:",
+                  style: TextStyle(
+                      color: SiteConfig.lightColors.primary,
+                      fontSize: SiteConfig.getHeadingSize()),
+                )
+              ],
+            ),
+            SiteConfig.smallScreen
+                ? Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: ServiceContainer(
+                            img: Image.asset("assets/images/paula/pity.jpg"),
+                            text:
+                                "Médica do trabalho, membro da Associação de medicina do trabalho, especialista em Perícias médicas pela Fundação Unimed e MBA em Gestão empresarial pela FGV."
+                                "Com mais de 12 anos de experiencia na área de saúde ocupacional, de empresas nas áreas de Indústria Química e Petroquímica, "
+                                "Construção civil, Bancário, Portuária, Mineração, Varejo e atacado. Atuou em grandes empresas, como: Braskem, Banco do Brasil, Grupo Unigel, Walmart, Grupo Big, Grupo Carrefour, entre outras. Além de atuação como perita judicial."
+                                "",
+                            title: "Dra. Priscila Merces"),
+                      ),
+                      Flexible(
+                        child: ServiceContainer(
+                            img: Image.asset(
+                                "assets/images/paula/engenheiraSeg.jpeg"),
+                            text:
+                                "Engenheira de Produção, especialista em segurança do trabalho e formação em higiene ocupacional."
+                                "Com mais de 12 anos de experiencia nas áreas de Indústria Química e Petroquímica, Construção civil, Indústria de alimentos., Hospitalar, saúde ocupacional, entre outras. Além de atuação como Professor docente no Senai.",
+                            title: "Eng. Rosana Luz"),
+                      ),
+                    ],
+                  )
+                : Row(
+                    children: [
+                      Flexible(
+                        child: ServiceContainer(
+                            img: Image.asset("assets/images/paula/pity.jpg"),
+                            text:
+                                "Médica do trabalho, membro da Associação de medicina do trabalho, especialista em Perícias médicas pela Fundação Unimed e MBA em Gestão empresarial pela FGV."
+                                "Com mais de 12 anos de experiencia na área de saúde ocupacional, de empresas nas áreas de Indústria Química e Petroquímica, "
+                                "Construção civil, Bancário, Portuária, Mineração, Varejo e atacado. Atuou em grandes empresas, como: Braskem, Banco do Brasil, Grupo Unigel, Walmart, Grupo Big, Grupo Carrefour, entre outras. Além de atuação como perita judicial."
+                                "",
+                            title: "Dra. Priscila Merces"),
+                      ),
+                      Flexible(
+                        child: ServiceContainer(
+                            img: Image.asset(
+                                "assets/images/paula/engenheiraSeg.jpeg"),
+                            text:
+                                "Engenheira de Produção, especialista em segurança do trabalho e formação em higiene ocupacional."
+                                "Com mais de 12 anos de experiencia nas áreas de Indústria Química e Petroquímica, Construção civil, Indústria de alimentos., Hospitalar, saúde ocupacional, entre outras. Além de atuação como Professor docente no Senai.",
+                            title: "Eng. Rosana Luz"),
+                      ),
+                    ],
+                  ),
+          ],
         ),
+      ),
+      SizedBox(
+        height: 100,
       ),
     ];
 
@@ -175,59 +216,9 @@ class HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: SiteConfig.lightColors.primary.withAlpha(25),
-              height: SiteConfig.screenSize.height * 0.9,
-              width: SiteConfig.screenSize.width,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    "assets/images/paula/mao.jpg",
-                    fit: BoxFit.fitHeight,
-                  ),
-                  Align(
-                    alignment: SiteConfig.smallScreen
-                        ? Alignment.bottomCenter
-                        : Alignment.bottomRight,
-                    child: Container(
-                      margin: SiteConfig.smallScreen
-                          ? const EdgeInsets.symmetric(
-                              vertical: 50,
-                              horizontal: 50,
-                            )
-                          : const EdgeInsets.symmetric(
-                              vertical: 100,
-                              horizontal: 50,
-                            ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12,
-                        horizontal: 12,
-                      ),
-                      decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                          color: SiteConfig.platformBrightness ==
-                                  Brightness.light
-                              ? SiteConfig.lightColors.background.withAlpha(100)
-                              : SiteConfig.darkColors.background.withAlpha(200),
-                          blurRadius: 50,
-                          spreadRadius: 10,
-                        )
-                      ]),
-                      child: Text(
-                        "Harmonização\nOrofacial",
-                        textAlign: SiteConfig.smallScreen
-                            ? TextAlign.center
-                            : TextAlign.end,
-                        style: TextStyle(
-                          fontSize: SiteConfig.getTitleSize(),
-                          fontWeight: FontWeight.bold,
-                          color: SiteConfig.lightColors.primary,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            Image.asset(
+              "assets/images/paula/p2pLogoEscrito.png",
+              fit: BoxFit.fitWidth,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -266,21 +257,15 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              color: SiteConfig.lightColors.primary.withAlpha(25),
-              // height: SiteConfig.smallScreen
-              //     ? SiteConfig.screenSize.height * 1.5
-              //     : SiteConfig.screenSize.height * 0.8,
-              width: SiteConfig.screenSize.width,
-              child: SiteConfig.smallScreen
-                  ? Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: outerRectangle,
-                    )
-                  : Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: outerRectangle,
-                    ),
-            ),
+                color: Color.fromARGB(255, 32, 86, 99),
+                // height: SiteConfig.smallScreen
+                //     ? SiteConfig.screenSize.height * 1.5
+                //     : SiteConfig.screenSize.height * 0.8,
+                width: SiteConfig.screenSize.width,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: greenRectangle,
+                )),
             SiteConfig.getFooter(),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -129,13 +130,21 @@ class InteractiveContentState extends State<InteractiveContent> {
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [
-      Icon(widget.icon, size: 125),
+      Icon(
+        widget.icon,
+        size: 125,
+        color: SiteConfig.lightColors.onPrimary,
+      ),
       Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: Text(
             widget.title!,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: SiteConfig.getHeadingSize(),
+              fontWeight: FontWeight.bold,
+              color: SiteConfig.lightColors.primary,
+            ),
           ),
         ),
       ),
@@ -144,6 +153,9 @@ class InteractiveContentState extends State<InteractiveContent> {
         child: Center(
           child: Text(
             widget.text,
+            style: TextStyle(
+                color: SiteConfig.lightColors.onPrimary,
+                fontSize: SiteConfig.getTextSize()),
           ),
         ),
       ),
@@ -162,54 +174,57 @@ class InteractiveContentState extends State<InteractiveContent> {
     if (widget.rowCol) {
       width = SiteConfig.screenSize.height > SiteConfig.screenSize.width
           ? SiteConfig.screenSize.width
-          : SiteConfig.screenSize.width * .4;
+          : SiteConfig.screenSize.width * 0.3;
     }
 
-    return MouseRegion(
-      onEnter: (_) => setState(() {
-        mouseOver = true;
-        scrollController.animateTo(
-          scrollController.position.maxScrollExtent, // end
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.ease,
-        );
-      }),
-      onExit: (_) => setState(() {
-        mouseOver = false;
-        scrollController.animateTo(
-          0, // start
-          duration: const Duration(milliseconds: 1000),
-          curve: Curves.ease,
-        );
-      }),
-      child: Container(
-        height: 250,
-        width: width,
-        margin: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: mouseOver
-              ? const Color.fromARGB(255, 175, 127, 75).withAlpha(100)
-              : const Color.fromARGB(255, 175, 127, 75).withAlpha(50),
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: mouseOver
-              ? [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                  ),
-                ]
-              : [],
-        ),
-        child: ScrollConfiguration(
-          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
-          child: SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: scrollController,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: children,
+    return SizedBox(
+      height: 250,
+      width: width,
+      child: MouseRegion(
+        onEnter: (_) => setState(() {
+          mouseOver = true;
+          scrollController.animateTo(
+            scrollController.position.maxScrollExtent, // end
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.ease,
+          );
+        }),
+        onExit: (_) => setState(() {
+          mouseOver = false;
+          scrollController.animateTo(
+            0, // start
+            duration: const Duration(milliseconds: 1000),
+            curve: Curves.ease,
+          );
+        }),
+        child: Container(
+          margin: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            color: mouseOver
+                ? const Color.fromARGB(255, 175, 127, 75).withAlpha(100)
+                : const Color.fromARGB(255, 175, 127, 75).withAlpha(50),
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: mouseOver
+                ? [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                    ),
+                  ]
+                : [],
+          ),
+          child: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: scrollController,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: children,
+              ),
             ),
           ),
         ),
@@ -351,15 +366,14 @@ Future<void> tryLaunchUri(Uri uri) async {
 }
 
 class ServiceContainer extends StatelessWidget {
-  final Image img;
   final String text;
+  final Image? img;
   final String title;
-  final bool imgLeft;
+
   const ServiceContainer({
+    this.img,
     required this.text,
     required this.title,
-    required this.img,
-    required this.imgLeft,
     Key? key,
   }) : super(key: key);
 
@@ -389,37 +403,24 @@ class ServiceContainer extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: SiteConfig.getHeadingSize(),
-                      color: const Color.fromARGB(255, 175, 127, 75),
+                      color: SiteConfig.lightColors.primary,
                     ),
                   ),
                 ),
-                img,
+                null == img ? const SizedBox() : img!,
                 Padding(
                   padding: const EdgeInsets.all(30),
                   child: Text(
                     text,
                     textAlign: TextAlign.start,
+                    style: TextStyle(color: SiteConfig.lightColors.onPrimary),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    String phone = "5571997042642";
-                    String text = Uri.encodeFull("Ola Dr. Paula!");
-                    Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
-                    tryLaunchUri(uri);
-                  },
-                  child: const Text("AGENDE JÁ A SUA CONSULTA"),
-                )
               ],
             )
           : Row(
               children: [
-                imgLeft
-                    ? Expanded(
-                        flex: 4,
-                        child: img,
-                      )
-                    : const SizedBox(),
+                null == img ? const SizedBox() : Expanded(flex: 2, child: img!),
                 Expanded(
                   flex: 6,
                   child: Column(
@@ -431,7 +432,7 @@ class ServiceContainer extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: SiteConfig.getHeadingSize(),
-                            color: const Color.fromARGB(255, 175, 127, 75),
+                            color: SiteConfig.lightColors.primary,
                           ),
                         ),
                       ),
@@ -442,28 +443,16 @@ class ServiceContainer extends StatelessWidget {
                           // style: const TextStyle(
                           //   fontSize: SiteConfig.getTextSize(),
                           // ),
-                          textAlign: TextAlign.start,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: SiteConfig.getTextSize(),
+                            color: SiteConfig.lightColors.onPrimary,
+                          ),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          String phone = "5571997042642";
-                          String text = Uri.encodeFull("Ola Dr. Paula!");
-                          Uri uri =
-                              Uri.parse("https://wa.me/$phone?text=$text");
-                          tryLaunchUri(uri);
-                        },
-                        child: const Text("AGENDE JÁ A SUA CONSULA"),
-                      )
                     ],
                   ),
                 ),
-                imgLeft
-                    ? const SizedBox()
-                    : Expanded(
-                        flex: 4,
-                        child: img,
-                      ),
               ],
             ),
     );
