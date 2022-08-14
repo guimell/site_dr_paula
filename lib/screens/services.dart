@@ -54,15 +54,15 @@ class ServicesPage extends StatefulWidget {
       "A P2P elabora sua AET contemplando todos os itens acima e te orienta em como executá-lo. ";
   final String textService6 =
       "O LTCAT é um documento estabelecido pelo INSS (Instituto Nacional do Seguro Social), "
-      "com o objetivo de avaliar se o trabalhador tem direito a aposentadoria especial por ter exposição a agentes nocivos à saúde."
-      " Ele é obrigatório para todas as empresas que tem 1 ou mais funcionários,"
-      " e é utilizado para o preenchimento do PPP (Perfil Profissiográfico Previdenciário)"
-      " que a partir de janeiro/23 será eletrônico, enviado pelo eSocial."
+      "com o objetivo de avaliar se o trabalhador tem direito a aposentadoria especial por ter exposição a agentes nocivos à saúde.\n\n"
+      "Ele é obrigatório para todas as empresas que tem 1 ou mais funcionários,"
+      "e é utilizado para o preenchimento do PPP (Perfil Profissiográfico Previdenciário)"
+      " que a partir de janeiro/23 será eletrônico, enviado pelo eSocial.\n\n"
       "Deve ser expedido por médico do trabalho ou engenheiro de segurança do trabalho nos termos da legislação trabalhista. ";
   final String textService7 =
       "Todas as empresas precisam informar para o governos os eventos de saúde e segurança dos seus trabalhadores: S-2210, S-2220 e S-2240."
       "Nós preenchemos e enviamos para o eSocial todos esses eventos, seguindo as tabelas e lay-outs definidos pelo governo."
-      "No S-2210 enviaremos as informações das comunicações de acidente de trabalho."
+      "No S-2210 enviaremos as informações das comunicações de acidente de trabalho.\n\n"
       "No S-2220 enviaremos as informações dos atestados de saúde ocupacional, sejam eles admissional, demissional, periódico, mudança de função ou retorno ao trabalho."
       "No S-2240 enviaremos as informações de agentes nocivos que o trabalhador estão expostos, com base na avaliação do LTCAT. ";
   final String textService8 =
@@ -132,37 +132,39 @@ class ServicesPageState extends State<ServicesPage> {
         SiteConfig.screenSize.width < SiteConfig.screenSize.height;
 
     List<Widget> titleChildren = [
-      Expanded(
-        flex: 5,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text(
-            "SERVIÇOS",
-            textAlign: TextAlign.end,
-            style: TextStyle(
-              fontSize: SiteConfig.getTitleSize(),
-              fontWeight: FontWeight.bold,
-              color: SiteConfig.lightColors.primary,
-            ),
-          ),
-        ),
-      ),
-      Expanded(
-        flex: SiteConfig.smallScreen ? 10 : 8,
-        child: Padding(
-          padding: EdgeInsets.all(SiteConfig.smallScreen ? 10 : 20),
-          child: Image.asset(
-            "assets/images/serviços/serviço.jpg",
-            fit: BoxFit.contain,
-          ),
-        ),
-      ),
+      // Expanded(
+      //   flex: 5,
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(20),
+      //     child: Text(
+      //       "SERVIÇOS",
+      //       textAlign: TextAlign.end,
+      //       style: TextStyle(
+      //         fontSize: SiteConfig.getTitleSize(),
+      //         fontWeight: FontWeight.bold,
+      //         color: SiteConfig.lightColors.primary,
+      //       ),
+      //     ),
+      //   ),
+      // ),
+      // Expanded(
+      //   flex: SiteConfig.smallScreen ? 10 : 8,
+      //   child: Padding(
+      //     padding: EdgeInsets.all(SiteConfig.smallScreen ? 10 : 20),
+      //     child: Image.asset(
+      //       "assets/images/serviços/serviço.jpg",
+      //       fit: BoxFit.contain,
+      //     ),
+      //   ),
+      // ),
+      Image.asset(
+        "assets/images/serviços/ImagemServiço.png",
+        fit: BoxFit.fitWidth,
+      )
     ];
 
     List<Widget> children = [
       SizedBox(
-        height: 450,
-        width: SiteConfig.screenSize.width,
         child: SiteConfig.smallScreen
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,

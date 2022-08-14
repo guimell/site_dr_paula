@@ -32,23 +32,23 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final List<Widget> carouselImages = [
     // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/pdo.jpg",
-      title: "PDO",
-      index: 1,
-    ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/bioestimuladores.jpg",
-      title: "BIOESTIMULADORES",
-      index: 2,
-    ),
-    // ignore: prefer_const_constructors
-    CarouselImage(
-      image: "assets/images/serviços/peeling.jpg",
-      title: "PEELING",
-      index: 3,
-    ),
+    // CarouselImage(
+    //   image: "assets/images/serviços/serviço2.jpeg",
+    //   title: "",
+    //   index: 1,
+    // ),
+    // // ignore: prefer_const_constructors
+    // CarouselImage(
+    //   image: "assets/images/serviços/CarretelConfuso.png",
+    //   title: "BIOESTIMULADORES",
+    //   index: 2,
+    // ),
+    // // ignore: prefer_const_constructors
+    // CarouselImage(
+    //   image: "assets/images/serviços/peeling.jpg",
+    //   title: "PEELING",
+    //   index: 3,
+    // ),
   ];
 
   @override
@@ -66,22 +66,109 @@ class HomePageState extends State<HomePage> {
       ),
       SiteConfig.smallScreen
           ? Column(
-              children: const [
-                InteractiveContent(
-                    title: "Nossa missão",
-                    icon: Icons.flag_circle,
-                    text:
-                        "\n\nApoiar os empresários a tornarem suas empresas mais produtivas e eficientes através da saúde e segurança dos trabalhadores."),
-                InteractiveContent(
-                    title: "Nossa visão",
-                    icon: Icons.remove_red_eye,
-                    text:
-                        "\n\nSer reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes."),
-                InteractiveContent(
-                    title: "Nossos valores",
-                    icon: Icons.star_rounded,
-                    text:
-                        "\n\n+A vida em 1 lugar\n+Ética é inegociável\n+Eficiência nos processos\n+Qualidade dos serviços\n+Inovação\n+Foco no cliente"),
+              children: [
+                Container(
+                  margin: SiteConfig.smallScreen
+                      ? const EdgeInsets.all(24)
+                      : const EdgeInsets.all(48),
+                  padding: SiteConfig.smallScreen
+                      ? const EdgeInsets.all(12)
+                      : const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    // color: Colors.white.withAlpha(150),
+                    color: SiteConfig.lightColors.primary.withAlpha(25),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.flag_circle,
+                        size: 50,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                      Text(
+                        "Nossa missão",
+                        style: TextStyle(
+                            color: SiteConfig.lightColors.primary,
+                            fontSize: SiteConfig.getHeadingSize()),
+                      ),
+                      Text(
+                        "\n\nApoiar os empresários a tornarem suas empresas mais produtivas e eficientes através da saúde e segurança dos trabalhadores.",
+                        style: TextStyle(
+                            color: SiteConfig.lightColors.background,
+                            fontSize: SiteConfig.getTextSize()),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: SiteConfig.smallScreen
+                      ? const EdgeInsets.all(24)
+                      : const EdgeInsets.all(48),
+                  padding: SiteConfig.smallScreen
+                      ? const EdgeInsets.all(12)
+                      : const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    // color: Colors.white.withAlpha(150),
+                    color: SiteConfig.lightColors.primary.withAlpha(25),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.remove_red_eye,
+                        size: 50,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                      Text(
+                        "Nossa visão",
+                        style: TextStyle(
+                            color: SiteConfig.lightColors.primary,
+                            fontSize: SiteConfig.getHeadingSize()),
+                      ),
+                      Text(
+                        "\n\nSer reconhecida nacionalmente pela qualidade do serviços e atendimento aos clientes.",
+                        style: TextStyle(
+                            color: SiteConfig.lightColors.background,
+                            fontSize: SiteConfig.getTextSize()),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: SiteConfig.smallScreen
+                      ? const EdgeInsets.all(24)
+                      : const EdgeInsets.all(48),
+                  padding: SiteConfig.smallScreen
+                      ? const EdgeInsets.all(12)
+                      : const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    // color: Colors.white.withAlpha(150),
+                    color: SiteConfig.lightColors.primary.withAlpha(25),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.star_rounded,
+                        size: 50,
+                        color: SiteConfig.lightColors.background,
+                      ),
+                      Text(
+                        "Nossos valores",
+                        style: TextStyle(
+                            color: SiteConfig.lightColors.primary,
+                            fontSize: SiteConfig.getHeadingSize()),
+                      ),
+                      Text(
+                        "\n\n+A vida em 1 lugar\n+Ética é inegociável\n+Eficiência nos processos\n+Qualidade dos serviços\n+Inovação\n+Foco no cliente",
+                        style: TextStyle(
+                            color: SiteConfig.lightColors.background,
+                            fontSize: SiteConfig.getTextSize()),
+                      )
+                    ],
+                  ),
+                ),
               ],
             )
           : Row(
@@ -197,41 +284,69 @@ class HomePageState extends State<HomePage> {
               fit: BoxFit.fitWidth,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: CarouselSlider.builder(
-                options: CarouselOptions(
-                  height: SiteConfig.smallScreen
-                      ? SiteConfig.screenSize.width * 0.8
-                      : SiteConfig.screenSize.width * 0.2,
-                  enableInfiniteScroll: true,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 4),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: CarouselSlider(
+                  options: CarouselOptions(height: 500.0),
+                  items: [
+                    Image.asset("assets/images/serviços/CarretelEsocial.png",
+                        fit: BoxFit.fitWidth),
+
+                    // ignore: prefer_const_constructors
+
+                    Image.asset(
+                      "assets/images/serviços/CarretelConfuso.png",
+                      fit: BoxFit.fitWidth,
+                    ),
+
+                    // ignore: prefer_const_constructors
+                    Image.asset("assets/images/serviços/VamosProteger.png",
+                        fit: BoxFit.fitWidth),
+                  ].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: SiteConfig.screenSize.width,
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          child: i,
+                        );
+                      },
+                    );
+                  }).toList(),
+                )
+                //  CarouselSlider.builder(
+                //   options: CarouselOptions(
+                //     height: SiteConfig.smallScreen
+                //         ? SiteConfig.screenSize.width * 0.8
+                //         : SiteConfig.screenSize.width * 0.2,
+                //     enableInfiniteScroll: true,
+                //     autoPlay: true,
+                //     autoPlayInterval: const Duration(seconds: 4),
+                //   ),
+                //   itemCount: SiteConfig.smallScreen ? 1 : 1,
+                //   itemBuilder: (BuildContext context, int index, int realIndex) {
+                //     return SiteConfig.smallScreen
+                //         ? Row(
+                //             children: [carouselImages[index]],
+                //           )
+                //         : index == 0
+                //             ? Row(
+                //                 children: [
+                //                   carouselImages[0],
+                //                   carouselImages[1],
+                //                   carouselImages[2],
+                //                 ],
+                //               )
+                //             : Row(
+                //                 children: [
+                //                   carouselImages[3],
+                //                   carouselImages[4],
+                //                   carouselImages[5],
+                //                   carouselImages[6],
+                //                 ],
+                //               );
+                //   },
+                // ),
                 ),
-                itemCount: SiteConfig.smallScreen ? 1 : 1,
-                itemBuilder: (BuildContext context, int index, int realIndex) {
-                  return SiteConfig.smallScreen
-                      ? Row(
-                          children: [carouselImages[index]],
-                        )
-                      : index == 0
-                          ? Row(
-                              children: [
-                                carouselImages[0],
-                                carouselImages[1],
-                                carouselImages[2],
-                              ],
-                            )
-                          : Row(
-                              children: [
-                                carouselImages[3],
-                                carouselImages[4],
-                                carouselImages[5],
-                                carouselImages[6],
-                              ],
-                            );
-                },
-              ),
-            ),
             Container(
                 color: SiteConfig.lightColors.secondary,
                 // height: SiteConfig.smallScreen

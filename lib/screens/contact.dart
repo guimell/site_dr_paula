@@ -66,6 +66,7 @@ class ContactPageState extends State<ContactPage> {
   final myControllerSobreName = TextEditingController();
   final myControllerEmail = TextEditingController();
   final myControllerMensagem = TextEditingController();
+  final myController = TextEditingController();
 
   bool local = false;
 
@@ -307,6 +308,19 @@ class ContactPageState extends State<ContactPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Flexible(
+                  child: Text(
+                    "Siga nossas redes sociais",
+                    style: TextStyle(
+                        fontSize: SiteConfig.getTextSize(),
+                        color: SiteConfig.lightColors.background),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
                   flex: 1,
                   child: IconButton(
                     color: SiteConfig.lightColors.background,
@@ -344,7 +358,7 @@ class ContactPageState extends State<ContactPage> {
                     margin: const EdgeInsets.all(30),
                     height: SiteConfig.smallScreen
                         ? SiteConfig.screenSize.height * 0.7 * 2
-                        : SiteConfig.screenSize.height * 0.7,
+                        : SiteConfig.screenSize.height * 0.8,
                     width: SiteConfig.screenSize.width * 0.9,
                     child: SiteConfig.smallScreen
                         ? Column(

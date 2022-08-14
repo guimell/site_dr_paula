@@ -516,20 +516,20 @@ class CarouselImageState extends State<CarouselImage> {
                 flex: 2,
                 child: Container(
                   width: SiteConfig.screenSize.width,
-                  color: SiteConfig.lightColors.primary.withAlpha(200),
+                  // color: SiteConfig.lightColors.primary.withAlpha(200),
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text(
-                      widget.title,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: SiteConfig.smallScreen
-                            ? SiteConfig.screenSize.width / 75 + 16
-                            : SiteConfig.screenSize.width / 75 + 2,
-                        fontWeight: FontWeight.bold,
-                        color: SiteConfig.lightColors.background,
-                      ),
-                    ),
+                    // child: Text(
+                    //   widget.title,
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //     fontSize: SiteConfig.smallScreen
+                    //         ? SiteConfig.screenSize.width / 75 + 16
+                    //         : SiteConfig.screenSize.width / 75 + 2,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: SiteConfig.lightColors.background,
+                    //   ),
+                    // ),
                   ),
                 ),
               ),
