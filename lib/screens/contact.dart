@@ -66,7 +66,6 @@ class ContactPageState extends State<ContactPage> {
   final myControllerSobreName = TextEditingController();
   final myControllerEmail = TextEditingController();
   final myControllerMensagem = TextEditingController();
-  final myController = TextEditingController();
 
   bool local = false;
 
@@ -157,36 +156,15 @@ class ContactPageState extends State<ContactPage> {
             Flexible(
               flex: 1,
               child: MyTextField(
-                labelText: 'E-mail:',
+                labelText: 'Sobrenome :',
+                myController: myControllerSobreName,
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: MyTextField(
+                labelText: 'E-mail :',
                 myController: myControllerEmail,
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: MyTextField(
-                labelText: 'Numero de telefone :',
-                myController: myControllerName,
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: MyTextField(
-                labelText: 'Nome da empresa  :',
-                myController: myControllerName,
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: MyTextField(
-                labelText: 'CNPJ :',
-                myController: myControllerName,
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: MyTextField(
-                labelText: 'Quantida de funcionarios: ',
-                myController: myControllerName,
               ),
             ),
             Flexible(
@@ -229,7 +207,7 @@ class ContactPageState extends State<ContactPage> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: SiteConfig.lightColors.secondary,
+          color: SiteConfig.lightColors.primary,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -240,7 +218,7 @@ class ContactPageState extends State<ContactPage> {
               style: TextStyle(
                 fontSize: SiteConfig.getHeadingSize(),
                 fontWeight: FontWeight.bold,
-                color: SiteConfig.lightColors.primary,
+                color: SiteConfig.lightColors.background,
               ),
             ),
             Row(
@@ -257,13 +235,13 @@ class ContactPageState extends State<ContactPage> {
                   flex: 2,
                   child: TextButton(
                     onPressed: () {
-                      String phone = "5571981618308";
-                      String text = Uri.encodeFull("Ola P2P!");
+                      String phone = "5571997042642";
+                      String text = Uri.encodeFull("Ola Dr. Paula!");
                       Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
                       tryLaunchUri(uri);
                     },
                     child: Text(
-                      "+55 71-98161-8308",
+                      "+55 71 98807-8855",
                       style: TextStyle(
                         fontSize: SiteConfig.getTextSize(),
                         color: SiteConfig.lightColors.background,
@@ -294,7 +272,7 @@ class ContactPageState extends State<ContactPage> {
                       );
                     },
                     child: Text(
-                      "p2psaudeeseg@gmail.com",
+                      "drapaularcbrasil@gmail.com",
                       style: TextStyle(
                         fontSize: SiteConfig.getTextSize(),
                         color: SiteConfig.lightColors.background,
@@ -307,12 +285,61 @@ class ContactPageState extends State<ContactPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.location_on,
+                    size: iconSize,
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
                 Flexible(
-                  child: Text(
-                    "Siga nossas redes sociais",
-                    style: TextStyle(
+                  flex: 3,
+                  child: TextButton(
+                    onPressed: () {
+                      Uri uri = Uri.parse(
+                        "https://www.google.com.br/maps/place/Cl%C3%ADnica+Odontol%C3%B3gica+Cores/@-12.9790901,-38.4607998,17z/data=!3m1!4b1!4m5!3m4!1s0x7161b193cc176a7:0x15d266c0b7fc1f58!8m2!3d-12.9790901!4d-38.4607998",
+                      );
+                      tryLaunchUri(uri);
+                    },
+                    child: Text(
+                      "Avenida Tancredo Neves, 620, SL 324 MUNDO PLAZA Caminho das Arvores - Salvador - BA",
+                      style: TextStyle(
                         fontSize: SiteConfig.getTextSize(),
-                        color: SiteConfig.lightColors.background),
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.location_on,
+                    size: iconSize,
+                    color: SiteConfig.lightColors.background,
+                  ),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: TextButton(
+                    onPressed: () {
+                      Uri uri = Uri.parse(
+                        "https://www.google.com.br/maps/place/Cliortho+Odontologia+Est%C3%A9tica+e+Digital/@-13.0027839,-38.5061044,17z/data=!4m9!1m2!2m1!1sCIS+Prof.+Fernando+Filgueiras+-+Rua+Eduardo+Jos%C3%A9+dos+Santos,+Av.+Anita+Garibaldi,+147+-+sala+703,+Salvador+-+BA,+41940-455!3m5!1s0x716052c81ddac79:0x4da84e2160b383e2!8m2!3d-13.0027841!4d-38.5019846!15sCntDSVMgUHJvZi4gRmVybmFuZG8gRmlsZ3VlaXJhcyAtIFJ1YSBFZHVhcmRvIEpvc8OpIGRvcyBTYW50b3MsIEF2LiBBbml0YSBHYXJpYmFsZGksIDE0NyAtIHNhbGEgNzAzLCBTYWx2YWRvciAtIEJBLCA0MTk0MC00NTWSAQ1kZW50YWxfY2xpbmlj",
+                      );
+                      tryLaunchUri(uri);
+                    },
+                    child: Text(
+                      "CIS Prof. Fernando Filgueiras - Rua Eduardo José dos Santos, Av. Anita Garibaldi, 147 - sala 703, Salvador - BA, ",
+                      style: TextStyle(
+                        fontSize: SiteConfig.getTextSize(),
+                        color: SiteConfig.lightColors.background,
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -333,6 +360,23 @@ class ContactPageState extends State<ContactPage> {
                     },
                     icon: const FaIcon(
                       FontAwesomeIcons.instagram,
+                      size: 40,
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: IconButton(
+                    color: SiteConfig.lightColors.background,
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Uri uri = Uri.parse(
+                        "https://www.facebook.com/prbrasil",
+                      );
+                      tryLaunchUri(uri);
+                    },
+                    icon: const FaIcon(
+                      FontAwesomeIcons.facebook,
                       size: 40,
                     ),
                   ),
@@ -358,7 +402,7 @@ class ContactPageState extends State<ContactPage> {
                     margin: const EdgeInsets.all(30),
                     height: SiteConfig.smallScreen
                         ? SiteConfig.screenSize.height * 0.7 * 2
-                        : SiteConfig.screenSize.height * 0.8,
+                        : SiteConfig.screenSize.height * 0.7,
                     width: SiteConfig.screenSize.width * 0.9,
                     child: SiteConfig.smallScreen
                         ? Column(
@@ -377,6 +421,54 @@ class ContactPageState extends State<ContactPage> {
                           ),
                   ),
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Localizações",
+                      style: TextStyle(
+                        color: SiteConfig.lightColors.primary,
+                        fontSize: SiteConfig.getHeadingSize(),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                color: SiteConfig.lightColors.primary.withAlpha(25),
+                child: SiteConfig.smallScreen
+                    ? Column(
+                        children: [
+                          widget.clinicMap1,
+                          widget.clinicLink1,
+                          widget.clinicMap2,
+                          widget.clinicLink2,
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              children: [
+                                widget.clinicMap1,
+                                widget.clinicLink1,
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                widget.clinicMap2,
+                                widget.clinicLink2,
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
               ),
               const SizedBox(height: 100),
             ],

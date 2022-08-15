@@ -24,9 +24,9 @@ class SiteConfig {
   static Brightness platformBrightness = Brightness.light;
   static ColorScheme lightColors = const ColorScheme(
     brightness: Brightness.light,
-    primary: Color.fromARGB(255, 204, 154, 68),
+    primary: Color.fromARGB(255, 175, 127, 75),
     onPrimary: Colors.white,
-    secondary: Color.fromARGB(255, 32, 86, 99),
+    secondary: Color(0xff03dac6),
     onSecondary: Colors.black,
     error: Color(0xffb00020),
     onError: Colors.white,
@@ -92,11 +92,11 @@ class SiteConfig {
           SizedBox(
             height: 60,
             child: Image.asset(
-              "assets/images/paula/p2pLogo.png",
+              "assets/images/paula/logoMarcaT.png",
               fit: BoxFit.contain,
             ),
           ),
-          const Text(''),
+          const Text('Dra. Paula Brasil'),
         ],
       ),
       leading: screenSize.width < navButtonsWidth
@@ -138,8 +138,8 @@ class SiteConfig {
           foregroundColor: lightColors.background,
           backgroundColor: lightColors.primary,
           onPressed: (() async {
-            String phone = "5571981618308";
-            String text = Uri.encodeFull("Ola P2P!");
+            String phone = "5571997042642";
+            String text = Uri.encodeFull("Ola Dr. Paula!");
             Uri uri = Uri.parse("https://wa.me/$phone?text=$text");
             tryLaunchUri(uri);
           }),
@@ -160,7 +160,7 @@ class SiteConfig {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Image.asset(
-            "assets/images/paula/p2pLogo.png",
+            "assets/images/paula/logoMarca.jpeg",
             fit: BoxFit.contain,
             height: sizeI * 10,
             width: sizeI * 10,
@@ -172,11 +172,26 @@ class SiteConfig {
         child: IconButton(
           padding: EdgeInsets.zero,
           onPressed: () {
-            Uri uri = Uri.parse("https://www.instagram.com/p2psaudeeseg/");
+            Uri uri = Uri.parse("https://www.instagram.com/drapaulabrasil/");
             tryLaunchUri(uri);
           },
           icon: FaIcon(
             FontAwesomeIcons.instagram,
+            color: SiteConfig.lightColors.primary,
+            size: sizeI,
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: IconButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            Uri uri = Uri.parse("https://www.facebook.com/prbrasil");
+            tryLaunchUri(uri);
+          },
+          icon: FaIcon(
+            FontAwesomeIcons.facebook,
             color: SiteConfig.lightColors.primary,
             size: sizeI,
           ),
