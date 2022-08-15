@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -97,7 +99,7 @@ class HomePageState extends State<HomePage> {
             " ou seja, você que está visitando minha página! \n\n"
             "Sou apaixonada pela estética desde minha infância,"
             " por isso encontrar a sua melhor versão será um grande prazer e uma imensa alegria. Minha maior ESPECIALIDADE é deixar você mais BONITA e NATURAL,"
-            " através da HARMONIZAÇÃO OROFACIAL..",
+            " através da HARMONIZAÇÃO OROFACIAL.",
             style: TextStyle(
               fontSize: SiteConfig.getTextSize(),
               color: SiteConfig.lightColors.primary,
