@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -110,7 +112,7 @@ class HomePageState extends State<HomePage> {
         flex: 1,
         fit: FlexFit.loose,
         child: Image.asset(
-          "assets/images/paula/logoMarcaT.png",
+          "assets/images/paula/logoMarca.png",
           fit: BoxFit.contain,
         ),
       ),
