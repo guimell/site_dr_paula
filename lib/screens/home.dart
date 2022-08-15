@@ -36,7 +36,7 @@ class HomePageState extends State<HomePage> {
     // ignore: prefer_const_constructors
     CarouselImage(
       image: "assets/images/serviços/microagulhamento.jpg",
-      title: "MICROAGULHAMENTO",
+      title: "MICROAGULHAMENTO.",
       index: 4,
     ),
     // ignore: prefer_const_constructors
