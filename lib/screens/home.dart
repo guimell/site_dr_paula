@@ -30,6 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  CarouselController carouselController = CarouselController();
   final List<Widget> carouselImages = [
     // ignore: prefer_const_constructors
     // CarouselImage(
@@ -243,8 +244,11 @@ class HomePageState extends State<HomePage> {
                     ],
                   )
                 : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Flexible(
+                      SizedBox(
+                        height: SiteConfig.screenSize.height * 0.55,
+                        width: SiteConfig.screenSize.width * 0.45,
                         child: ServiceContainer(
                             img: Image.asset("assets/images/paula/pity.jpg"),
                             text:
@@ -254,7 +258,9 @@ class HomePageState extends State<HomePage> {
                                 "",
                             title: "Dra. Priscila Merces"),
                       ),
-                      Flexible(
+                      SizedBox(
+                        height: SiteConfig.screenSize.height * 0.55,
+                        width: SiteConfig.screenSize.width * 0.45,
                         child: ServiceContainer(
                             img: Image.asset(
                                 "assets/images/paula/engenheiraSeg.jpeg"),
@@ -285,33 +291,77 @@ class HomePageState extends State<HomePage> {
             ),
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: CarouselSlider(
-                  options: CarouselOptions(height: 500.0),
-                  items: [
-                    Image.asset("assets/images/serviços/CarretelEsocial.png",
-                        fit: BoxFit.fitWidth),
+                child: SizedBox(
+                  height: SiteConfig.screenSize.width * 4 / 15,
+                  child: Stack(
+                    children: [
+                      CarouselSlider(
+                        carouselController: carouselController,
+                        options: CarouselOptions(
+                          viewportFraction: 1,
+                          height: SiteConfig.screenSize.width * 4 / 15,
+                        ),
+                        items: [
+                          Image.asset(
+                              "assets/images/serviços/CarretelEsocial.png",
+                              fit: BoxFit.fitWidth),
 
-                    // ignore: prefer_const_constructors
+                          // ignore: prefer_const_constructors
 
-                    Image.asset(
-                      "assets/images/serviços/CarretelConfuso.png",
-                      fit: BoxFit.fitWidth,
-                    ),
+                          Image.asset(
+                            "assets/images/serviços/CarretelConfuso.png",
+                            fit: BoxFit.fitWidth,
+                          ),
 
-                    // ignore: prefer_const_constructors
-                    Image.asset("assets/images/serviços/VamosProteger.png",
-                        fit: BoxFit.fitWidth),
-                  ].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                          width: SiteConfig.screenSize.width,
-                          margin: EdgeInsets.symmetric(horizontal: 5.0),
-                          child: i,
-                        );
-                      },
-                    );
-                  }).toList(),
+                          // ignore: prefer_const_constructors
+                          Image.asset(
+                              "assets/images/serviços/VamosProteger.png",
+                              fit: BoxFit.fitWidth),
+                        ].map((i) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Container(
+                                width: SiteConfig.screenSize.width,
+                                child: i,
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withAlpha(50),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: IconButton(
+                            iconSize: 50,
+                            onPressed: () {
+                              // Use the controller to change the current page
+                              carouselController.previousPage();
+                            },
+                            icon: Icon(Icons.arrow_back),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.black.withAlpha(50),
+                              borderRadius: BorderRadius.circular(50)),
+                          child: IconButton(
+                            iconSize: 50,
+                            onPressed: () {
+                              // Use the controller to change the current page
+                              carouselController.nextPage();
+                            },
+                            icon: Icon(Icons.arrow_forward),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 )
                 //  CarouselSlider.builder(
                 //   options: CarouselOptions(
