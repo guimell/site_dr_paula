@@ -1,5 +1,5 @@
-name: dentista_paula_brasil
-description: Website para a dentista Dra. Paula Brasil.
+name: site_pity
+description: Website para P2P Saude e Segurança.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
