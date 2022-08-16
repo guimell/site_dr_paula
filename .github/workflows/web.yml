@@ -19,5 +19,5 @@ jobs:
       # - uses: erickzanardo/flutter-gh-pages@v7
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
-          baseHref: /pity_site/
+          baseHref: /site_dr_paula/
           webRenderer: html
