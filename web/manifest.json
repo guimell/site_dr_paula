@@ -1,11 +1,11 @@
 {
-    "name": "dentista_paula_brasil",
-    "short_name": "dentista_paula_brasil",
+    "name": "Dra_paula_brasil",
+    "short_name": "Dra_paula_brasil",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Website para a dentista Dra. Paula Brasil.",
+    "description": "Dra. Paula Brasil.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
