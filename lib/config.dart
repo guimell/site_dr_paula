@@ -351,8 +351,8 @@ class Post {
 }
 
 class Blog {
-  static const String apiKey = "AIzaSyADhFrefjuOoDgHeQZsp2Twilx031KWGKk";
-  static const String blogID = "476912652482766745";
+  static const String apiKey = "AIzaSyDan-qGc5X3ZUMIZFRwDnEhgb2fIvb6d3U";
+  static const String blogID = "1427929617595499407";
   static final Uri uri = Uri.parse(
     "https://www.googleapis.com/blogger/v3/blogs/$blogID/posts?key=$apiKey",
   );
