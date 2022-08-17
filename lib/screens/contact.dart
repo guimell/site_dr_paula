@@ -63,7 +63,7 @@ class ContactPage extends StatefulWidget {
 
 class ContactPageState extends State<ContactPage> {
   final myControllerName = TextEditingController();
-  final myControllerSobreName = TextEditingController();
+  final myControllerAssunto = TextEditingController();
   final myControllerEmail = TextEditingController();
   final myControllerMensagem = TextEditingController();
 
@@ -76,7 +76,7 @@ class ContactPageState extends State<ContactPage> {
       SiteConfig.sendEmail(
         name: myControllerName.text,
         email: myControllerEmail.text,
-        subject: myControllerSobreName.text,
+        subject: myControllerAssunto.text,
         message: myControllerMensagem.text,
       ).then((bool success) {
         if (success) {
@@ -114,7 +114,7 @@ class ContactPageState extends State<ContactPage> {
   void dispose() {
     // Clean up the controller when the widget is disposed.
     myControllerName.dispose();
-    myControllerSobreName.dispose();
+    myControllerAssunto.dispose();
     myControllerEmail.dispose();
     myControllerMensagem.dispose();
 
@@ -156,8 +156,8 @@ class ContactPageState extends State<ContactPage> {
             Flexible(
               flex: 1,
               child: MyTextField(
-                labelText: 'Sobrenome :',
-                myController: myControllerSobreName,
+                labelText: 'Assunto :',
+                myController: myControllerAssunto,
               ),
             ),
             Flexible(

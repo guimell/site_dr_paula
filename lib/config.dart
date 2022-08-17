@@ -238,9 +238,9 @@ class SiteConfig {
     required String subject,
     required String message,
   }) async {
-    const serviceID = 'service_5io0bdq';
-    const templateID = 'template_ksmrhks';
-    const userID = '7HSzBI9HYk-Fk7Ye3';
+    const serviceID = 'service_iw5573v';
+    const templateID = 'template_ov5w0hq';
+    const userID = 'g4rwdn8lkdgOPcco1';
 
     final uri = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
     final response = await http.post(
