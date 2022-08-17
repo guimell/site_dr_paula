@@ -160,7 +160,7 @@ class SiteConfig {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Image.asset(
-            "assets/images/paula/logoMarca.jpeg",
+            "assets/images/paula/logoMarca2.png",
             fit: BoxFit.contain,
             height: sizeI * 10,
             width: sizeI * 10,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'config.dart';
 import 'screens/home.dart';
 
@@ -12,6 +12,7 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await initializeDateFormatting("pt_Br");
   Blog.getBlog();
+  setUrlStrategy(PathUrlStrategy());
   runApp(const AppWidget());
 }
 
