@@ -34,7 +34,7 @@ class AppWidget extends StatelessWidget {
         BlogPage.route: (context) => BlogPage(),
         ContactPage.route: (context) => ContactPage(),
       },
-      title: 'Dr. Paula',
+      title: 'Dra. Paula',
       theme: ThemeData.from(colorScheme: SiteConfig.lightColors),
       darkTheme: ThemeData.from(colorScheme: SiteConfig.darkColors),
       home: const HomePage(),
