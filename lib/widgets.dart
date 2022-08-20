@@ -497,7 +497,7 @@ class CarouselImageState extends State<CarouselImage> {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
               pageBuilder: (_, __, ___) => ServicesPage(index: widget.index),
-              settings: const RouteSettings(name: "/serviços"),
+              settings: const RouteSettings(name: "/servicos"),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
             ),
