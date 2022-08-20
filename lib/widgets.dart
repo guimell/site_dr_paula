@@ -29,7 +29,10 @@ class AppBarButton extends StatelessWidget {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
               pageBuilder: (_, __, ___) => page,
-              settings: RouteSettings(name: "/$text".toLowerCase()),
+              settings: RouteSettings(
+                  name: "$text" == "Serviços"
+                      ? "/servicos"
+                      : "/$text".toLowerCase()),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
             ),
