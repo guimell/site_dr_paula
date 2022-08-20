@@ -56,6 +56,7 @@ class ContactPage extends StatefulWidget {
   );
 
   ContactPage({Key? key}) : super(key: key);
+  static const String route = '/contato';
 
   @override
   State<ContactPage> createState() => ContactPageState();

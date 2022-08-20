@@ -6,6 +6,7 @@ import '../widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+  static const String route = '/home';
 
   final String title = "Home";
 
@@ -193,7 +194,6 @@ class HomePageState extends State<HomePage> {
                       margin: SiteConfig.smallScreen
                           ? const EdgeInsets.symmetric(
                               vertical: 50,
-                              horizontal: 50,
                             )
                           : const EdgeInsets.symmetric(
                               vertical: 100,

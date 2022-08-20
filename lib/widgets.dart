@@ -29,7 +29,7 @@ class AppBarButton extends StatelessWidget {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
               pageBuilder: (_, __, ___) => page,
-              settings: RouteSettings(name: "/$text"),
+              settings: RouteSettings(name: "/$text".toLowerCase()),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
             ),
@@ -497,7 +497,7 @@ class CarouselImageState extends State<CarouselImage> {
           Navigator.of(context).pushReplacement(
             PageRouteBuilder(
               pageBuilder: (_, __, ___) => ServicesPage(index: widget.index),
-              settings: const RouteSettings(name: "/Serviços"),
+              settings: const RouteSettings(name: "/serviços"),
               reverseTransitionDuration: Duration.zero,
               transitionDuration: Duration.zero,
             ),
