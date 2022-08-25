@@ -5,7 +5,6 @@ import '../widgets.dart';
 
 class BlogPage extends StatefulWidget {
   const BlogPage({Key? key}) : super(key: key);
-  static const String route = '/blog';
 
   @override
   State<BlogPage> createState() => _BlogPageState();

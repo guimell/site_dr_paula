@@ -6,7 +6,6 @@ import '../widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-  static const String route = '/home';
 
   final String title = "Home";
 

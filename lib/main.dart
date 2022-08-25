@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:Dra_paula_brasil/screens/blog.dart';
+import 'package:site_dr_paula/screens/blog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -27,13 +27,6 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: HomePage.route,
-      routes: {
-        HomePage.route: (context) => HomePage(),
-        ServicesPage.route: (context) => ServicesPage(),
-        BlogPage.route: (context) => BlogPage(),
-        ContactPage.route: (context) => ContactPage(),
-      },
       title: 'Dra. Paula',
       theme: ThemeData.from(colorScheme: SiteConfig.lightColors),
       darkTheme: ThemeData.from(colorScheme: SiteConfig.darkColors),

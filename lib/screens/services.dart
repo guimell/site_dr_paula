@@ -91,7 +91,6 @@ class ServicesPage extends StatefulWidget {
 
   final int? index;
   const ServicesPage({Key? key, this.index}) : super(key: key);
-  static const String route = '/servicos';
 
   @override
   State<ServicesPage> createState() => ServicesPageState();
