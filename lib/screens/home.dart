@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
     // ignore: prefer_const_constructors
     CarouselImage(
       image: "assets/images/serviços/pdo.jpg",
-      title: "PDO",
+      title: "FIOS DE PDO",
       index: 1,
     ),
     // ignore: prefer_const_constructors
@@ -35,7 +35,7 @@ class HomePageState extends State<HomePage> {
     ),
     // ignore: prefer_const_constructors
     CarouselImage(
-      image: "assets/images/serviços/microagulhamento.jpg",
+      image: "assets/images/serviços/microagulhamento2.jpg",
       title: "MICROAGULHAMENTO",
       index: 4,
     ),
@@ -48,7 +48,7 @@ class HomePageState extends State<HomePage> {
     // ignore: prefer_const_constructors
     CarouselImage(
       image: "assets/images/serviços/Preenchimento.jpg",
-      title: "PREENCHIMENTO",
+      title: "PREENCHIMENTO COM ÁCIDO HIALURÔNICO",
       index: 6,
     ),
     // ignore: prefer_const_constructors
@@ -56,6 +56,12 @@ class HomePageState extends State<HomePage> {
       image: "assets/images/serviços/bichectomia.jpg",
       title: "BICHECTOMIA",
       index: 7,
+    ),
+    // ignore: prefer_const_constructors
+    CarouselImage(
+      image: "assets/images/serviços/lipopapada.png",
+      title: "LIPOASPIRAÇÃO DE PAPADA",
+      index: 8,
     ),
   ];
 
@@ -234,12 +240,12 @@ class HomePageState extends State<HomePage> {
                 options: CarouselOptions(
                   height: SiteConfig.smallScreen
                       ? SiteConfig.screenSize.width * 0.8
-                      : SiteConfig.screenSize.width * 0.2,
+                      : SiteConfig.screenSize.width * 0.25,
                   enableInfiniteScroll: true,
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 4),
                 ),
-                itemCount: SiteConfig.smallScreen ? 7 : 2,
+                itemCount: SiteConfig.smallScreen ? 8 : 2,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   return SiteConfig.smallScreen
                       ? Row(
@@ -251,14 +257,15 @@ class HomePageState extends State<HomePage> {
                                 carouselImages[0],
                                 carouselImages[1],
                                 carouselImages[2],
+                                carouselImages[3],
                               ],
                             )
                           : Row(
                               children: [
-                                carouselImages[3],
                                 carouselImages[4],
                                 carouselImages[5],
                                 carouselImages[6],
+                                carouselImages[7],
                               ],
                             );
                 },
